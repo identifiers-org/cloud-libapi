@@ -7,5 +7,5 @@ package org.identifiers.cloud.libapi;
  * Timestamp: 2018-03-06 13:18
  * ---
  */
-public class ApiFactory {
+public class ApiServicesFactory {
 }
