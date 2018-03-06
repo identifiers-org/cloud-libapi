@@ -7,6 +7,7 @@ package org.identifiers.cloud.libapi.models;
  * Timestamp: 2018-03-06 11:28
  * ---
  */
-public abstract class ServiceRequest {
+public abstract class ServiceRequest<T> {
     private String apiVersion;
+    private T payload;
 }
