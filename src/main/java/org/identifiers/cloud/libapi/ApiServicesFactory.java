@@ -1,5 +1,6 @@
 package org.identifiers.cloud.libapi;
 
+import com.sun.istack.internal.NotNull;
 import org.identifiers.cloud.libapi.services.ResourceRecommenderService;
 
 /**
@@ -10,10 +11,15 @@ import org.identifiers.cloud.libapi.services.ResourceRecommenderService;
  * ---
  */
 public class ApiServicesFactory {
+    
+    public static ResourceRecommenderService getResourceRecommenderService(@NotNull String host) {
+        return new ResourceRecommenderService(host, "80");
+    }
+
+    public static ResourceRecommenderService getResourceRecommenderService(@NotNull String host, @NotNull String port) {
+        return new ResourceRecommenderService(host, port);
+    }
 
     // TODO - Create a method to get a Resource Reommender service pointing at any of our satellite deployments
 
-    public static ResourceRecommenderService getResourceRecommenderService(String host, String port) {
-        return new ResourceRecommenderService(host, port);
-    }
 }
