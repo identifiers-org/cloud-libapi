@@ -8,4 +8,5 @@ package org.identifiers.cloud.libapi.models;
  * ---
  */
 public abstract class ServiceRequest {
+    private String apiVersion;
 }
