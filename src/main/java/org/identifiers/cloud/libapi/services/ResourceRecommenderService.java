@@ -47,13 +47,9 @@ public class ResourceRecommenderService {
         retryTemplate.setBackOffPolicy(backOffPolicy);
     }
 
-    private String serviceHost;
-    private String servicePort;
     private String serviceApiBaseline;
 
     public ResourceRecommenderService(String serviceHost, String servicePort) {
-        this.serviceHost = serviceHost;
-        this.servicePort = servicePort;
         serviceApiBaseline = String.format("http://%s:%s", serviceHost, servicePort);
     }
 

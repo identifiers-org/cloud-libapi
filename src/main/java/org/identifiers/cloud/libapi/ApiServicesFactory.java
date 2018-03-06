@@ -1,5 +1,7 @@
 package org.identifiers.cloud.libapi;
 
+import org.identifiers.cloud.libapi.services.ResourceRecommenderService;
+
 /**
  * @author Manuel Bernal Llinares <mbdebian@gmail.com>
  * Project: libapi
@@ -8,4 +10,10 @@ package org.identifiers.cloud.libapi;
  * ---
  */
 public class ApiServicesFactory {
+
+    // TODO - Create a method to get a Resource Reommender service pointing at any of our satellite deployments
+
+    public static ResourceRecommenderService getResourceRecommenderService(String host, String port) {
+
+    }
 }
