@@ -14,10 +14,20 @@ import java.io.Serializable;
  */
 @JsonIgnoreProperties(ignoreUnknown = true, value = {"httpStatus"})
 public class ServiceResponse<T> implements Serializable {
+    private String apiVersion;
     private String errorMessage;
     private HttpStatus httpStatus = HttpStatus.OK;
     // payload
     private T payload;
+
+    public String getApiVersion() {
+        return apiVersion;
+    }
+
+    public ServiceResponse setApiVersion(String apiVersion) {
+        this.apiVersion = apiVersion;
+        return this;
+    }
 
     public String getErrorMessage() {
         return errorMessage;
