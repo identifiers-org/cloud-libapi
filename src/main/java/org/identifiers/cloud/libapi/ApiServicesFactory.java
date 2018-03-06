@@ -11,7 +11,7 @@ import org.identifiers.cloud.libapi.services.ResourceRecommenderService;
  * ---
  */
 public class ApiServicesFactory {
-    
+
     public static ResourceRecommenderService getResourceRecommenderService(@NotNull String host) {
         return new ResourceRecommenderService(host, "80");
     }
@@ -20,6 +20,6 @@ public class ApiServicesFactory {
         return new ResourceRecommenderService(host, port);
     }
 
-    // TODO - Create a method to get a Resource Reommender service pointing at any of our satellite deployments
+    // TODO - Create a method to get a Resource Recommender service pointing at any of our satellite deployments
 
 }
