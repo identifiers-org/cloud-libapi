@@ -2,9 +2,13 @@ package org.identifiers.cloud.libapi.services;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.retry.backoff.FixedBackOffPolicy;
 import org.springframework.retry.policy.SimpleRetryPolicy;
 import org.springframework.retry.support.RetryTemplate;
+import org.springframework.web.client.ResponseErrorHandler;
+
+import java.io.IOException;
 
 /**
  * @author Manuel Bernal Llinares <mbdebian@gmail.com>
@@ -31,5 +35,26 @@ public class ResourceRecommenderService {
         retryTemplate = new RetryTemplate();
         retryTemplate.setRetryPolicy(retryPolicy);
         retryTemplate.setBackOffPolicy(backOffPolicy);
+    }
+
+    private String resourceRecommenderServiceHost;
+    private String resourceRecommenderServicePort;
+
+    // Error handler for the request
+    class RestTemplateErrorHandler implements ResponseErrorHandler {
+        ClientHttpResponse clientHttpResponse;
+
+        @Override
+        public boolean hasError(ClientHttpResponse clientHttpResponse) throws IOException {
+            // We're going to say that it has no error so we can't handle this properly
+            return false;
+        }
+
+        @Override
+        public void handleError(ClientHttpResponse clientHttpResponse) throws IOException {
+            logger.error("The following error came back from the Recommender Service, HTTP Status #{}, error content '{}'",
+                    clientHttpResponse.getRawStatusCode(),
+                    clientHttpResponse.getStatusText());
+        }
     }
 }
