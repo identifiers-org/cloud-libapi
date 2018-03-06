@@ -18,4 +18,31 @@ public class ServiceResponse<T> implements Serializable {
     private HttpStatus httpStatus = HttpStatus.OK;
     // payload
     private T payload;
+
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+    public ServiceResponse setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
+        return this;
+    }
+
+    public HttpStatus getHttpStatus() {
+        return httpStatus;
+    }
+
+    public ServiceResponse setHttpStatus(HttpStatus httpStatus) {
+        this.httpStatus = httpStatus;
+        return this;
+    }
+
+    public T getPayload() {
+        return payload;
+    }
+
+    public ServiceResponse setPayload(T payload) {
+        this.payload = payload;
+        return this;
+    }
 }
