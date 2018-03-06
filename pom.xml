@@ -1,77 +1,73 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.identifiers.cloud</groupId>
-  <artifactId>libapi</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>1.7</source>
-          <target>1.7</target>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
-  <packaging>jar</packaging>
+    <groupId>org.identifiers.cloud</groupId>
+    <artifactId>libapi</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <packaging>jar</packaging>
 
-  <name>libapi</name>
-  <description>This library provides client side service wrappers to access identifiers.org API</description>
-  <url>http://identifiers.org</url>
+    <name>libapi</name>
+    <description>This library provides client side service wrappers to access identifiers.org API</description>
+    <url>http://identifiers.org</url>
 
-  <licenses>
-    <license>
-      <name>The MIT License</name>
-      <url>https://opensource.org/licenses/MIT</url>
-    </license>
-  </licenses>
+    <licenses>
+        <license>
+            <name>The MIT License</name>
+            <url>https://opensource.org/licenses/MIT</url>
+        </license>
+    </licenses>
 
-  <developers>
-    <developer>
-      <id>mbernal</id>
-      <name>Manuel Bernal-Llinares</name>
-      <email>mbdebian@gmail.com</email>
-      <organization>Hermjakob Team, EMBL-European Bioinformatics Institute</organization>
-      <organizationUrl>http://identifiers.org/</organizationUrl>
-      <roles>
-        <role>developer</role>
-      </roles>
-      <timezone>Europe/London</timezone>
-    </developer>
-  </developers>
+    <developers>
+        <developer>
+            <id>mbernal</id>
+            <name>Manuel Bernal-Llinares</name>
+            <email>mbdebian@gmail.com</email>
+            <organization>Hermjakob Team, EMBL-European Bioinformatics Institute</organization>
+            <organizationUrl>http://identifiers.org/</organizationUrl>
+            <roles>
+                <role>developer</role>
+            </roles>
+            <timezone>Europe/London</timezone>
+        </developer>
+    </developers>
 
-  <scm>
-    <connection>scm:git:git@github.com:identifiers-org/cloud-libapi.git</connection>
-    <developerConnection>scm:git:git@github.com:identifiers-org/cloud-libapi.git</developerConnection>
-    <url>https://github.com/identifiers-org/cloud-libapi</url>
-  </scm>
+    <scm>
+        <connection>scm:git:git@github.com:identifiers-org/cloud-libapi.git</connection>
+        <developerConnection>scm:git:git@github.com:identifiers-org/cloud-libapi.git</developerConnection>
+        <url>https://github.com/identifiers-org/cloud-libapi</url>
+    </scm>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <java.version>1.8</java.version>
-  </properties>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+    </properties>
 
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
-      <artifactId>jackson-annotations</artifactId>
-      <version>2.6.4</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-web</artifactId>
-      <version>4.3.13.RELEASE</version>
-    </dependency>
-  </dependencies>
+    <dependencies>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.6.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>4.3.13.RELEASE</version>
+        </dependency>
+    
+    </dependencies>
 </project>
