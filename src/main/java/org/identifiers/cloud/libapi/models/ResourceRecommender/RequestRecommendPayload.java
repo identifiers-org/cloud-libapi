@@ -13,14 +13,14 @@ import java.util.List;
  * ---
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class RecommendRequestPayload implements Serializable {
+public class RequestRecommendPayload implements Serializable {
     private List<ResolvedResource> resolvedResources;
 
     public List<ResolvedResource> getResolvedResources() {
         return resolvedResources;
     }
 
-    public RecommendRequestPayload setResolvedResources(List<ResolvedResource> resolvedResources) {
+    public RequestRecommendPayload setResolvedResources(List<ResolvedResource> resolvedResources) {
         this.resolvedResources = resolvedResources;
         return this;
     }

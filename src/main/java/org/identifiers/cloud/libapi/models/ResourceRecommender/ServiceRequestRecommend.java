@@ -9,5 +9,5 @@ import org.identifiers.cloud.libapi.models.ServiceRequest;
  * Timestamp: 2018-03-06 12:04
  * ---
  */
-public class ServiceRequestRecommend extends ServiceRequest<RecommendRequestPayload> {
+public class ServiceRequestRecommend extends ServiceRequest<RequestRecommendPayload> {
 }
