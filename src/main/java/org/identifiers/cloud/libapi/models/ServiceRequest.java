@@ -1,5 +1,7 @@
 package org.identifiers.cloud.libapi.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.io.Serializable;
 
 /**
@@ -9,6 +11,7 @@ import java.io.Serializable;
  * Timestamp: 2018-03-06 11:28
  * ---
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class ServiceRequest<T> implements Serializable {
     private String apiVersion;
     private T payload;
