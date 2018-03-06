@@ -10,7 +10,28 @@
   <name>libapi</name>
   <description>This library provides client side service wrappers to access identifiers.org API</description>
   <url>http://identifiers.org</url>
-  
+
+  <licenses>
+    <license>
+      <name>The MIT License</name>
+      <url>https://opensource.org/licenses/MIT</url>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <id>mbernal</id>
+      <name>Manuel Bernal-Llinares</name>
+      <email>mbdebian@gmail.com</email>
+      <organization>Hermjakob Team, EMBL-European Bioinformatics Institute</organization>
+      <organizationUrl>http://identifiers.org/</organizationUrl>
+      <roles>
+        <role>developer</role>
+      </roles>
+      <timezone>Europe/London</timezone>
+    </developer>
+  </developers>
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
