@@ -32,6 +32,12 @@
     </developer>
   </developers>
 
+  <scm>
+    <connection>scm:git:git@github.com:identifiers-org/cloud-libapi.git</connection>
+    <developerConnection>scm:git:git@github.com:identifiers-org/cloud-libapi.git</developerConnection>
+    <url>https://github.com/identifiers-org/cloud-libapi</url>
+  </scm>
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
