@@ -14,6 +14,6 @@ public class ApiServicesFactory {
     // TODO - Create a method to get a Resource Reommender service pointing at any of our satellite deployments
 
     public static ResourceRecommenderService getResourceRecommenderService(String host, String port) {
-
+        return new ResourceRecommenderService(host, port);
     }
 }

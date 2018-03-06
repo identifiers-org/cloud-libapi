@@ -54,7 +54,7 @@ public class ResourceRecommenderService {
     }
 
     // TODO - Extend this in the future to support HTTPS
-    
+
     // Error handler for the request
     class RestTemplateErrorHandler implements ResponseErrorHandler {
         ClientHttpResponse clientHttpResponse;
