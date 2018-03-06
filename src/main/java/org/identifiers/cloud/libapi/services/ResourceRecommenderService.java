@@ -69,7 +69,7 @@ public class ResourceRecommenderService {
         }
     }
 
-    public ServiceResponseRecommend getRecommendations(final List<ResolvedResource> resources) {
+    public ServiceResponseRecommend requestRecommendations(final List<ResolvedResource> resources) {
         String serviceApiEndpoint = String.format("http://%s:%s", resourceRecommenderServiceHost,
                 resourceRecommenderServicePort);
         ServiceResponseRecommend response = new ServiceResponseRecommend();
