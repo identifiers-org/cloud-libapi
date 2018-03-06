@@ -47,8 +47,7 @@ public class ResourceRecommenderService {
         retryTemplate.setBackOffPolicy(backOffPolicy);
     }
 
-    private String resourceRecommenderServiceHost;
-    private String resourceRecommenderServicePort;
+    private String serviceApiBaseline;
 
     // Error handler for the request
     class RestTemplateErrorHandler implements ResponseErrorHandler {
@@ -69,8 +68,7 @@ public class ResourceRecommenderService {
     }
 
     public ServiceResponseRecommend requestRecommendations(final List<ResolvedResource> resources) {
-        String serviceApiEndpoint = String.format("http://%s:%s", resourceRecommenderServiceHost,
-                resourceRecommenderServicePort);
+        String serviceApiEndpoint = serviceApiBaseline;
         ServiceResponseRecommend response = new ServiceResponseRecommend();
         response.setHttpStatus(HttpStatus.I_AM_A_TEAPOT);
         logger.info("Looking for resource recommendations at '{}'", serviceApiEndpoint);
