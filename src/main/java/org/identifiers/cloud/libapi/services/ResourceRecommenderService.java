@@ -35,7 +35,6 @@ public class ResourceRecommenderService {
 
     // Re-try pattern, externalize this later if needed
     private static final RetryTemplate retryTemplate;
-
     static {
         SimpleRetryPolicy retryPolicy = new SimpleRetryPolicy();
         retryPolicy.setMaxAttempts(WS_REQUEST_RETRY_MAX_ATTEMPTS);
