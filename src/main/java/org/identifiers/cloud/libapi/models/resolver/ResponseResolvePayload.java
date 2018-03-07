@@ -2,6 +2,7 @@ package org.identifiers.cloud.libapi.models.resolver;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -12,7 +13,7 @@ import java.util.List;
  * ---
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ResponseResolvePayload {
+public class ResponseResolvePayload implements Serializable {
     private List<ResolvedResource> resolvedResources;
 
     public List<ResolvedResource> getResolvedResources() {
