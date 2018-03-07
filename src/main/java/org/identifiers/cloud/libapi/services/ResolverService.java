@@ -8,4 +8,5 @@ package org.identifiers.cloud.libapi.services;
  * ---
  */
 public class ResolverService {
+    public static final String apiVersion = "1.0";
 }
