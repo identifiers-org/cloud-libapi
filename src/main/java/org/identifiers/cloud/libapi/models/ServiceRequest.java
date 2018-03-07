@@ -12,7 +12,7 @@ import java.io.Serializable;
  * ---
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public abstract class ServiceRequest<T> implements Serializable {
+public class ServiceRequest<T> implements Serializable {
     private String apiVersion;
     private T payload;
 
