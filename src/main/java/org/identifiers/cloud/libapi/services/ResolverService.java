@@ -42,7 +42,7 @@ public class ResolverService {
 
     public ServiceResponseResolve requestCompactIdResolution(String compactId) {
         // TODO
-        String serviceApiEndpoint = serviceApiBaseline;
+        String serviceApiEndpoint = String.format("%s/%s", serviceApiBaseline, compactId);
         ServiceResponseResolve response = createDefaultResponse(HttpStatus.OK, "");
         try {
             ResponseEntity<ServiceResponseResolve> requestResponse = retryTemplate.execute(retryContext -> {
