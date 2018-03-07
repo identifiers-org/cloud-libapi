@@ -56,7 +56,7 @@ public class ResourceRecommenderService {
         return restTemplate.exchange(request, ServiceResponseRecommend.class);
     }
 
-    private ServiceResponseRecommend createErrorResponse(HttpStatus httpStatus, String errorMessage) {
+    private ServiceResponseRecommend createDefaultResponse(HttpStatus httpStatus, String errorMessage) {
         ServiceResponseRecommend errorResponse = new ServiceResponseRecommend();
         errorResponse
                 .setApiVersion(apiVersion)
@@ -68,20 +68,19 @@ public class ResourceRecommenderService {
 
     public ServiceResponseRecommend requestRecommendations(final List<ResolvedResource> resources) {
         String serviceApiEndpoint = serviceApiBaseline;
-        ServiceResponseRecommend response = new ServiceResponseRecommend();
-        response.setHttpStatus(HttpStatus.I_AM_A_TEAPOT);
+        ServiceResponseRecommend response = createDefaultResponse(HttpStatus.OK, "");
         logger.info("Looking for resource recommendations at '{}'", serviceApiEndpoint);
         if (!resources.isEmpty()) {
+            // Prepare the request
+            RequestEntity<ServiceRequestRecommend> request = prepareRequest(resources, serviceApiEndpoint);
             try {
                 ResponseEntity<ServiceResponseRecommend> requestResponse = retryTemplate.execute(retryContext -> {
-                    // Prepare the request
-                    RequestEntity<ServiceRequestRecommend> request = prepareRequest(resources, serviceApiEndpoint);
                     // Do the actual request
                     if (request != null) {
                         return makeRequest(request);
                     }
                     // If we get here, send back a custom made error response
-                    return new ResponseEntity<>(createErrorResponse(HttpStatus.BAD_REQUEST,
+                    return new ResponseEntity<>(createDefaultResponse(HttpStatus.BAD_REQUEST,
                             String.format("INVALID URI %s", serviceApiEndpoint)),
                             HttpStatus.BAD_REQUEST);
                 });
@@ -89,11 +88,7 @@ public class ResourceRecommenderService {
                 response = requestResponse.getBody();
                 // Set actual HTTP Status in the response body
                 response.setHttpStatus(HttpStatus.valueOf(requestResponse.getStatusCodeValue()));
-                if (HttpStatus.valueOf(requestResponse.getStatusCodeValue()) == HttpStatus.OK) {
-                    // TODO We got a valid response
-                    logger.debug("We got recommendations!");
-                }
-                else {
+                if (HttpStatus.valueOf(requestResponse.getStatusCodeValue()) != HttpStatus.OK) {
                     String errorMessage = String.format("ERROR retrieving resource recommendations " +
                                     "from '%s', " +
                                     "HTTP status code '%d', " +
@@ -102,13 +97,13 @@ public class ResourceRecommenderService {
                             requestResponse.getStatusCodeValue(),
                             requestResponse.getBody().getErrorMessage());
                     logger.error(errorMessage);
-                    //throw new ResourceRecommenderStrategyException(errorMessage);
                 }
             } catch (RuntimeException e) {
+                // Make sure we return a default response in case anything bad happens
                 String errorMessage = String.format("ERROR retrieving resource recommendations from '%s' " +
                         "because of '%s'", serviceApiEndpoint, e.getMessage());
                 logger.error(errorMessage);
-                response = createErrorResponse(HttpStatus.BAD_REQUEST, errorMessage);
+                response = createDefaultResponse(HttpStatus.BAD_REQUEST, errorMessage);
             }
         }
         return response;
