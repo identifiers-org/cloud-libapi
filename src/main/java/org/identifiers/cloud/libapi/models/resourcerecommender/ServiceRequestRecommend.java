@@ -1,4 +1,4 @@
-package org.identifiers.cloud.libapi.models.tmp;
+package org.identifiers.cloud.libapi.models.resourcerecommender;
 
 import org.identifiers.cloud.libapi.models.ServiceRequest;
 
