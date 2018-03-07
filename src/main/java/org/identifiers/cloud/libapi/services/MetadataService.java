@@ -89,5 +89,6 @@ public class MetadataService {
 
     public ServiceResponseFetchMetadataForUrl getMetadataForUrl(String url) {
         // TODO
+        return null;
     }
 }
