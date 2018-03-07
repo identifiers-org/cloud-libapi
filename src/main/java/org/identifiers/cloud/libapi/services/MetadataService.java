@@ -86,4 +86,8 @@ public class MetadataService {
         String serviceApiEndpoint = String.format("%s/%s", serviceApiBaseline, compactId);
         return doRequestFetchMetadata(serviceApiEndpoint);
     }
+
+    public ServiceResponseFetchMetadataForUrl getMetadataForUrl(String url) {
+        // TODO
+    }
 }
