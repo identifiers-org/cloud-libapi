@@ -1,5 +1,6 @@
 package org.identifiers.cloud.libapi;
 
+import org.identifiers.cloud.libapi.services.MetadataService;
 import org.identifiers.cloud.libapi.services.ResolverService;
 import org.identifiers.cloud.libapi.services.ResourceRecommenderService;
 
@@ -31,5 +32,15 @@ public class ApiServicesFactory {
     }
 
     // TODO - Create a method to get a Resolver service pointing at any of our satellite deployments
+
+    public static MetadataService getMetadataService(String host) {
+        return getMetadataService(host, "80");
+    }
+
+    public static MetadataService getMetadataService(String host, String port) {
+        return new MetadataService(host, port);
+    }
+
+    // TODO - Create a method to get a Metadata service pointint at any of our satellite deployments
 
 }
