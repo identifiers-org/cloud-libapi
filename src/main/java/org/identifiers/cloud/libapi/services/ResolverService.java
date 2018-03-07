@@ -40,8 +40,7 @@ public class ResolverService {
         return response;
     }
 
-    public ServiceResponseResolve requestCompactIdResolution(String compactId) {
-        String serviceApiEndpoint = String.format("%s/%s", serviceApiBaseline, compactId);
+    private ServiceResponseResolve doRequestResolution(String serviceApiEndpoint) {
         ServiceResponseResolve response = createDefaultResponse(HttpStatus.OK, "");
         try {
             ResponseEntity<ServiceResponseResolve> requestResponse = retryTemplate.execute(retryContext -> {
@@ -53,11 +52,10 @@ public class ResolverService {
             response = requestResponse.getBody();
             response.setHttpStatus(HttpStatus.valueOf(requestResponse.getStatusCodeValue()));
             if (HttpStatus.valueOf(requestResponse.getStatusCodeValue()) != HttpStatus.OK) {
-                String errorMessage = String.format("ERROR resolving Compact ID %s " +
+                String errorMessage = String.format("ERROR resolving Compact ID " +
                                 "at '%s', " +
                                 "HTTP status code '%d', " +
                                 "explanation '%s'",
-                        compactId,
                         serviceApiEndpoint,
                         requestResponse.getStatusCodeValue(),
                         requestResponse.getBody().getErrorMessage());
@@ -65,45 +63,21 @@ public class ResolverService {
             }
         } catch (RuntimeException e) {
             // Make sure we return a default response in case anything bad happens
-            String errorMessage = String.format("ERROR resolving Compact ID '%s' at '%s' " +
-                    "because of '%s'", compactId, serviceApiEndpoint, e.getMessage());
+            String errorMessage = String.format("ERROR resolving Compact ID at '%s' " +
+                    "because of '%s'", serviceApiEndpoint, e.getMessage());
             logger.error(errorMessage);
             response = createDefaultResponse(HttpStatus.BAD_REQUEST, errorMessage);
         }
         return response;
     }
 
+    public ServiceResponseResolve requestCompactIdResolution(String compactId) {
+        String serviceApiEndpoint = String.format("%s/%s", serviceApiBaseline, compactId);
+        return doRequestResolution(serviceApiEndpoint);
+    }
+
     public ServiceResponseResolve requestCompactIdResolution(String compactId, String selector) {
         String serviceApiEndpoint = String.format("%s/%s/%s", serviceApiBaseline, selector, compactId);
-        ServiceResponseResolve response = createDefaultResponse(HttpStatus.OK, "");
-        try {
-            ResponseEntity<ServiceResponseResolve> requestResponse = retryTemplate.execute(retryContext -> {
-                // Make the request
-                RestTemplate restTemplate = new RestTemplate();
-                restTemplate.setErrorHandler(Configuration.responseErrorHandler());
-                return restTemplate.getForEntity(serviceApiEndpoint, ServiceResponseResolve.class);
-            });
-            response = requestResponse.getBody();
-            response.setHttpStatus(HttpStatus.valueOf(requestResponse.getStatusCodeValue()));
-            if (HttpStatus.valueOf(requestResponse.getStatusCodeValue()) != HttpStatus.OK) {
-                String errorMessage = String.format("ERROR resolving Compact ID %s, selector %s " +
-                                "at '%s', " +
-                                "HTTP status code '%d', " +
-                                "explanation '%s'",
-                        compactId,
-                        selector,
-                        serviceApiEndpoint,
-                        requestResponse.getStatusCodeValue(),
-                        requestResponse.getBody().getErrorMessage());
-                logger.error(errorMessage);
-            }
-        } catch (RuntimeException e) {
-            // Make sure we return a default response in case anything bad happens
-            String errorMessage = String.format("ERROR resolving Compact ID '%s', selector '%s', at '%s' " +
-                    "because of '%s'", compactId, selector, serviceApiEndpoint, e.getMessage());
-            logger.error(errorMessage);
-            response = createDefaultResponse(HttpStatus.BAD_REQUEST, errorMessage);
-        }
-        return response;
+        return doRequestResolution(serviceApiEndpoint);
     }
 }
