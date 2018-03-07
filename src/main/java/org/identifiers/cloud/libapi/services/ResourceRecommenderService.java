@@ -58,13 +58,13 @@ public class ResourceRecommenderService {
     }
 
     private ServiceResponseRecommend createDefaultResponse(HttpStatus httpStatus, String errorMessage) {
-        ServiceResponseRecommend errorResponse = new ServiceResponseRecommend();
-        errorResponse
+        ServiceResponseRecommend response = new ServiceResponseRecommend();
+        response
                 .setApiVersion(apiVersion)
                 .setHttpStatus(httpStatus)
                 .setErrorMessage(errorMessage);
-        errorResponse.setPayload(new ResponseRecommendPayload().setResourceRecommendations(new ArrayList<>()));
-        return errorResponse;
+        response.setPayload(new ResponseRecommendPayload().setResourceRecommendations(new ArrayList<>()));
+        return response;
     }
 
     public ServiceResponseRecommend requestRecommendations(final List<ResolvedResource> resources) {
