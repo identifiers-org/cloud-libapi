@@ -8,7 +8,9 @@ import org.identifiers.cloud.libapi.models.metadata.ServiceResponseFetchMetadata
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.retry.support.RetryTemplate;
+import org.springframework.web.client.RestTemplate;
 
 /**
  * @author Manuel Bernal Llinares <mbdebian@gmail.com>
@@ -48,4 +50,40 @@ public class MetadataService {
         return response;
     }
 
+    private ServiceResponseFetchMetadata doRequestFetchMetadata(String serviceApiEndpoint) {
+        ServiceResponseFetchMetadata response = createDefaultResponseFetchMetadata(HttpStatus.OK, "");
+        try {
+            ResponseEntity<ServiceResponseFetchMetadata> requestResponse = retryTemplate.execute(retryContext -> {
+                // Make the request
+                RestTemplate restTemplate = new RestTemplate();
+                restTemplate.setErrorHandler(Configuration.responseErrorHandler());
+                return restTemplate.getForEntity(serviceApiEndpoint, ServiceResponseFetchMetadata.class);
+            });
+            response = requestResponse.getBody();
+            response.setHttpStatus(HttpStatus.valueOf(requestResponse.getStatusCodeValue()));
+            if (HttpStatus.valueOf(requestResponse.getStatusCodeValue()) != HttpStatus.OK) {
+                String errorMessage = String.format("ERROR fetching metadata " +
+                                "at '%s', " +
+                                "HTTP status code '%d', " +
+                                "explanation '%s'",
+                        serviceApiEndpoint,
+                        requestResponse.getStatusCodeValue(),
+                        requestResponse.getBody().getErrorMessage());
+                logger.error(errorMessage);
+            }
+        } catch (RuntimeException e) {
+            // Make sure we return a default response in case anything bad happens
+            String errorMessage = String.format("ERROR resolving Compact ID at '%s' " +
+                    "because of '%s'", serviceApiEndpoint, e.getMessage());
+            logger.error(errorMessage);
+            response = createDefaultResponseFetchMetadata(HttpStatus.BAD_REQUEST, errorMessage);
+        }
+        return response;
+    }
+
+    // --- API ---
+    public ServiceResponseFetchMetadata getMetadataForCompactId(String compactId) {
+        String serviceApiEndpoint = String.format("%s/%s", serviceApiBaseline, compactId);
+        return doRequestFetchMetadata(serviceApiEndpoint);
+    }
 }
