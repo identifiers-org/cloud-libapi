@@ -1,6 +1,7 @@
 package org.identifiers.cloud.libapi.services;
 
 import org.identifiers.cloud.libapi.Configuration;
+import org.identifiers.cloud.libapi.models.resolver.ServiceResponseResolve;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.retry.support.RetryTemplate;
@@ -21,5 +22,9 @@ public class ResolverService {
 
     public ResolverService(String host, String port) {
         serviceApiBaseline = String.format("http://%s:%s", host, port);
+    }
+
+    public ServiceResponseResolve requestCompactIdResolution(String compactId) {
+        // TODO
     }
 }
