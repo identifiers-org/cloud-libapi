@@ -1,5 +1,6 @@
 package org.identifiers.cloud.libapi;
 
+import org.identifiers.cloud.libapi.services.ResolverService;
 import org.identifiers.cloud.libapi.services.ResourceRecommenderService;
 
 /**
@@ -20,5 +21,15 @@ public class ApiServicesFactory {
     }
 
     // TODO - Create a method to get a Resource Recommender service pointing at any of our satellite deployments
+
+    public static ResolverService getResolverService(String host) {
+        return getResolverService(host, "80");
+    }
+
+    public static ResolverService getResolverService(String host, String port) {
+        return new ResolverService(host, port);
+    }
+
+    // TODO - Create a method to get a Resolver service pointing at any of our satellite deployments
 
 }
