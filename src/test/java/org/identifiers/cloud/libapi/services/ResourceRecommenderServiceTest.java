@@ -45,12 +45,6 @@ public class ResourceRecommenderServiceTest {
                 .getResourceRecommenderService("localhost", "8083");
         // Call the service
         ServiceResponseRecommend response = service.requestRecommendations(resolvedResources);
-        assertThat("Response from service is OK",
-                response.getHttpStatus() == HttpStatus.OK,
-                is(true));
-        assertThat("We get the same number of resources back",
-                response.getPayload().getResourceRecommendations().size() == resolvedResources.size(),
-                is(true));
         // Just for debugging purposes, serialized response into the logs
         ObjectMapper mapper = new ObjectMapper();
         try {
@@ -58,5 +52,11 @@ public class ResourceRecommenderServiceTest {
         } catch (JsonProcessingException e) {
             // Ignore
         }
+        assertThat("Response from service is OK",
+                response.getHttpStatus() == HttpStatus.OK,
+                is(true));
+        assertThat("We get the same number of resources back",
+                response.getPayload().getResourceRecommendations().size() == resolvedResources.size(),
+                is(true));
     }
 }
