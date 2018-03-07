@@ -1,7 +1,7 @@
 package org.identifiers.cloud.libapi.services;
 
 import org.identifiers.cloud.libapi.Configuration;
-import org.identifiers.cloud.libapi.models.ResourceRecommender.*;
+import org.identifiers.cloud.libapi.models.resourcerecommender.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
