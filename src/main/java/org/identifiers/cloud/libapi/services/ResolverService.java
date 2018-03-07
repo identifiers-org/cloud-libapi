@@ -29,13 +29,13 @@ public class ResolverService {
     }
 
     private ServiceResponseResolve createDefaultResponse(HttpStatus httpStatus, String errorMessage) {
-        ServiceResponseResolve errorResponse = new ServiceResponseResolve();
-        errorResponse
+        ServiceResponseResolve response = new ServiceResponseResolve();
+        response
                 .setApiVersion(apiVersion)
                 .setHttpStatus(httpStatus)
                 .setErrorMessage(errorMessage);
-        errorResponse.setPayload(new ResponseResolvePayload().setResolvedResources(new ArrayList<>()));
-        return errorResponse;
+        response.setPayload(new ResponseResolvePayload().setResolvedResources(new ArrayList<>()));
+        return response;
     }
 
     public ServiceResponseResolve requestCompactIdResolution(String compactId) {
