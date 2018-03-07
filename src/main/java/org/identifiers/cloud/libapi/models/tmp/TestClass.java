@@ -1,4 +1,4 @@
-package org.identifiers.cloud.libapi.models.resourcerecommender;
+package org.identifiers.cloud.libapi.models.tmp;
 
 /**
  * @author Manuel Bernal Llinares <mbdebian@gmail.com>

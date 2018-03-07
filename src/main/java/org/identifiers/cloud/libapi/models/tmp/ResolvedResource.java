@@ -1,4 +1,4 @@
-package org.identifiers.cloud.libapi.models.ResourceRecommender;
+package org.identifiers.cloud.libapi.models.tmp;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
