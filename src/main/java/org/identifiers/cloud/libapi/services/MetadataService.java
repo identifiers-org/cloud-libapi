@@ -1,5 +1,10 @@
 package org.identifiers.cloud.libapi.services;
 
+import org.identifiers.cloud.libapi.Configuration;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.retry.support.RetryTemplate;
+
 /**
  * @author Manuel Bernal Llinares <mbdebian@gmail.com>
  * Project: libapi
@@ -8,4 +13,15 @@ package org.identifiers.cloud.libapi.services;
  * ---
  */
 public class MetadataService {
+    public static final String apiVersion = "1.0";
+    private static final Logger logger = LoggerFactory.getLogger(MetadataService.class);
+    // Re-try pattern, externalize this later if needed
+    private RetryTemplate retryTemplate = Configuration.retryTemplate();
+    private String serviceApiBaseline;
+
+    public MetadataService(String host, String port) {
+        serviceApiBaseline = String.format("http://%s:%s", host, port);
+    }
+
+
 }
