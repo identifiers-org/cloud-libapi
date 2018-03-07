@@ -41,7 +41,6 @@ public class ResolverService {
     }
 
     public ServiceResponseResolve requestCompactIdResolution(String compactId) {
-        // TODO
         String serviceApiEndpoint = String.format("%s/%s", serviceApiBaseline, compactId);
         ServiceResponseResolve response = createDefaultResponse(HttpStatus.OK, "");
         try {
