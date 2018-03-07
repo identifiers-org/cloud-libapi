@@ -1,6 +1,5 @@
 package org.identifiers.cloud.libapi;
 
-import com.sun.istack.internal.NotNull;
 import org.identifiers.cloud.libapi.services.ResourceRecommenderService;
 
 /**
@@ -12,11 +11,11 @@ import org.identifiers.cloud.libapi.services.ResourceRecommenderService;
  */
 public class ApiServicesFactory {
 
-    public static ResourceRecommenderService getResourceRecommenderService(@NotNull String host) {
+    public static ResourceRecommenderService getResourceRecommenderService(String host) {
         return new ResourceRecommenderService(host, "80");
     }
 
-    public static ResourceRecommenderService getResourceRecommenderService(@NotNull String host, @NotNull String port) {
+    public static ResourceRecommenderService getResourceRecommenderService(String host, String port) {
         return new ResourceRecommenderService(host, port);
     }
 
