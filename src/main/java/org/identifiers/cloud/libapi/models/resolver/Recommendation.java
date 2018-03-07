@@ -1,5 +1,7 @@
 package org.identifiers.cloud.libapi.models.resolver;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * @author Manuel Bernal Llinares <mbdebian@gmail.com>
  * Project: libapi
@@ -7,6 +9,7 @@ package org.identifiers.cloud.libapi.models.resolver;
  * Timestamp: 2018-03-07 7:31
  * ---
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Recommendation {
     // This models a recommendation attached to a particular resource in the response from the Resolver Web Service
     private int recommendationIndex = 0;
