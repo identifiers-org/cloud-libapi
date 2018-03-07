@@ -1,10 +1,14 @@
 package org.identifiers.cloud.libapi.services;
 
 import org.identifiers.cloud.libapi.Configuration;
+import org.identifiers.cloud.libapi.models.resolver.ResponseResolvePayload;
 import org.identifiers.cloud.libapi.models.resolver.ServiceResponseResolve;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.retry.support.RetryTemplate;
+
+import java.util.ArrayList;
 
 /**
  * @author Manuel Bernal Llinares <mbdebian@gmail.com>
@@ -24,7 +28,19 @@ public class ResolverService {
         serviceApiBaseline = String.format("http://%s:%s", host, port);
     }
 
+    private ServiceResponseResolve createDefaultResponse(HttpStatus httpStatus, String errorMessage) {
+        ServiceResponseResolve errorResponse = new ServiceResponseResolve();
+        errorResponse
+                .setApiVersion(apiVersion)
+                .setHttpStatus(httpStatus)
+                .setErrorMessage(errorMessage);
+        errorResponse.setPayload(new ResponseResolvePayload().setResolvedResources(new ArrayList<>()));
+        return errorResponse;
+    }
+
     public ServiceResponseResolve requestCompactIdResolution(String compactId) {
         // TODO
+        String serviceApiEndpoint = serviceApiBaseline;
+        ServiceResponseResolve response = createDefaultResponse(HttpStatus.OK, "");
     }
 }
