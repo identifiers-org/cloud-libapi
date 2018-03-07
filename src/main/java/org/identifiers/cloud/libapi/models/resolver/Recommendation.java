@@ -8,7 +8,7 @@ package org.identifiers.cloud.libapi.models.resolver;
  * ---
  */
 public class Recommendation {
-    // This models a recommendation attached to a particular resource in the response from this web service
+    // This models a recommendation attached to a particular resource in the response from the Resolver Web Service
     private int recommendationIndex = 0;
     private String recommendationExplanation = "--- default explanation ---";
 
