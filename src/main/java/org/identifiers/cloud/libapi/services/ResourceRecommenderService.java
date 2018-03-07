@@ -35,7 +35,8 @@ public class ResourceRecommenderService {
 
     // TODO - Extend this in the future to support HTTPS
 
-    private RequestEntity<ServiceRequestRecommend> prepareRequest(List<ResolvedResource> resources, String serviceApiEndpoint) {
+    private RequestEntity<ServiceRequestRecommend> prepareRecommendRequest(List<ResolvedResource> resources,
+                                                                           String serviceApiEndpoint) {
         // Prepare the request body
         ServiceRequestRecommend requestBody = new ServiceRequestRecommend();
         requestBody.setApiVersion(apiVersion);
@@ -72,7 +73,7 @@ public class ResourceRecommenderService {
         logger.info("Looking for resource recommendations at '{}'", serviceApiEndpoint);
         if (!resources.isEmpty()) {
             // Prepare the request
-            RequestEntity<ServiceRequestRecommend> request = prepareRequest(resources, serviceApiEndpoint);
+            RequestEntity<ServiceRequestRecommend> request = prepareRecommendRequest(resources, serviceApiEndpoint);
             try {
                 ResponseEntity<ServiceResponseRecommend> requestResponse = retryTemplate.execute(retryContext -> {
                     // Do the actual request
