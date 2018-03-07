@@ -6,7 +6,9 @@ import org.identifiers.cloud.libapi.models.resolver.ServiceResponseResolve;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.retry.support.RetryTemplate;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 
@@ -42,5 +44,33 @@ public class ResolverService {
         // TODO
         String serviceApiEndpoint = serviceApiBaseline;
         ServiceResponseResolve response = createDefaultResponse(HttpStatus.OK, "");
+        try {
+            ResponseEntity<ServiceResponseResolve> requestResponse = retryTemplate.execute(retryContext -> {
+                // Make the request
+                RestTemplate restTemplate = new RestTemplate();
+                restTemplate.setErrorHandler(Configuration.responseErrorHandler());
+                return restTemplate.getForEntity(serviceApiEndpoint, ServiceResponseResolve.class);
+            });
+            response = requestResponse.getBody();
+            response.setHttpStatus(HttpStatus.valueOf(requestResponse.getStatusCodeValue()));
+            if (HttpStatus.valueOf(requestResponse.getStatusCodeValue()) != HttpStatus.OK) {
+                String errorMessage = String.format("ERROR resolving Compact ID %s " +
+                                "at '%s', " +
+                                "HTTP status code '%d', " +
+                                "explanation '%s'",
+                        compactId,
+                        serviceApiEndpoint,
+                        requestResponse.getStatusCodeValue(),
+                        requestResponse.getBody().getErrorMessage());
+                logger.error(errorMessage);
+            }
+        } catch (RuntimeException e) {
+            // Make sure we return a default response in case anything bad happens
+            String errorMessage = String.format("ERROR resolving Compact ID '%s' at '%s' " +
+                    "because of '%s'", compactId, serviceApiEndpoint, e.getMessage());
+            logger.error(errorMessage);
+            response = createDefaultResponse(HttpStatus.BAD_REQUEST, errorMessage);
+        }
+        return response;
     }
 }
