@@ -2,6 +2,8 @@ package org.identifiers.cloud.libapi.models.resolver;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.io.Serializable;
+
 /**
  * @author Manuel Bernal Llinares <mbdebian@gmail.com>
  * Project: libapi
@@ -10,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * ---
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ResolvedResource {
+public class ResolvedResource implements Serializable {
     private String accessUrl;
     private String info;
     private String institution;
