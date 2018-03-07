@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.identifiers.cloud.libapi.ApiServicesFactory;
 import org.identifiers.cloud.libapi.models.metadata.ServiceResponseFetchMetadata;
+import org.identifiers.cloud.libapi.models.metadata.ServiceResponseFetchMetadataForUrl;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,5 +44,19 @@ public class MetadataServiceTest {
 
     @Test
     public void getMetadataForUrl() {
+        ServiceResponseFetchMetadataForUrl response = ApiServicesFactory
+                .getMetadataService("localhost", "8082")
+                .getMetadataForUrl("http://reactome.org/content/detail/R-HSA-201451");
+        // Just for debugging purposes, serialized response into the logs
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            logger.info("Test request metadata for URL, " +
+                    "response from the service:\n{}", mapper.writeValueAsString(response));
+        } catch (JsonProcessingException e) {
+            // Ignore
+        }
+        assertThat("Response from service is OK, as there is metadata at that URL",
+                response.getHttpStatus() == HttpStatus.OK,
+                is(true));
     }
 }
