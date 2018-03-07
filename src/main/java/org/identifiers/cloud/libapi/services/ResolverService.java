@@ -17,5 +17,9 @@ public class ResolverService {
     private static final Logger logger = LoggerFactory.getLogger(ResolverService.class);
     // Re-try pattern, externalize this later if needed
     private RetryTemplate retryTemplate = Configuration.retryTemplate();
-    
+    private String serviceApiBaseline;
+
+    public ResolverService(String host, String port) {
+        serviceApiBaseline = String.format("http://%s:%s", host, port);
+    }
 }
