@@ -103,5 +103,13 @@ public class RegistryServiceTest {
         checkResultOk(response, "Validation Request - Organization");
     }
 
+    @Test
+    public void requestValidatePreferredPrefix() {
+        ServiceResponseValidateRequest response =
+                ApiServicesFactory.getRegistryService("localhost", "8081")
+                        .requestValidationPreferredPrefix(payload);
+        checkResultOk(response, "Validation Request - PreferredPrefix");
+    }
+
 
 }
