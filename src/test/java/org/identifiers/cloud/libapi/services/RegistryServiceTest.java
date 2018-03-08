@@ -151,5 +151,12 @@ public class RegistryServiceTest {
         checkResultOk(response, "Validation Request - AdditionalInformation");
     }
 
+    @Test
+    public void requestValidateRequester() {
+        ServiceResponseValidateRequest response =
+                ApiServicesFactory.getRegistryService("localhost", "8081")
+                        .requestValidationRequester(payload);
+        checkResultOk(response, "Validation Request - Requester");
+    }
 
 }
