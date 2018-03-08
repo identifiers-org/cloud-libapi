@@ -111,5 +111,13 @@ public class RegistryServiceTest {
         checkResultOk(response, "Validation Request - PreferredPrefix");
     }
 
+    @Test
+    public void requestValidateResourceAccessRule() {
+        ServiceResponseValidateRequest response =
+                ApiServicesFactory.getRegistryService("localhost", "8081")
+                        .requestValidationResourceAccessRule(payload);
+        checkResultOk(response, "Validation Request - ResourceAccessRule");
+    }
+
 
 }
