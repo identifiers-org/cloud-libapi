@@ -12,7 +12,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.RequestEntity;
+import org.springframework.http.ResponseEntity;
 import org.springframework.retry.support.RetryTemplate;
+import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -79,5 +81,9 @@ public class RegistryService {
         return entityRequest;
     }
 
-    
+    private <T, E> ResponseEntity<T> doRequest(RequestEntity<E> request, Class<T> responseType) {
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.setErrorHandler(Configuration.responseErrorHandler());
+        return restTemplate.exchange(request, responseType);
+    }
 }
