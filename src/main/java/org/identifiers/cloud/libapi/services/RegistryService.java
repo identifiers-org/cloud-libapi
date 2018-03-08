@@ -90,8 +90,12 @@ public class RegistryService {
         return restTemplate;
     }
 
-    private ResponseEntity<ServiceResponseRegisterPrefix> doRegisterPrefixRequest (RequestEntity<ServiceRequestRegisterPrefix> request) {
+    private ResponseEntity<ServiceResponseRegisterPrefix> doRegisterPrefixRequest(RequestEntity<ServiceRequestRegisterPrefix> request) {
         return getRestTemplate().exchange(request, ServiceResponseRegisterPrefix.class);
+    }
+
+    private ResponseEntity<ServiceResponseValidateRequest> doValidateRequest(RequestEntity<ServiceRequestValidate> request) {
+        return getRestTemplate().exchange(request, ServiceResponseValidateRequest.class);
     }
 
     // --- API ---
