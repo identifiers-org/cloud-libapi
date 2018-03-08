@@ -19,4 +19,7 @@ public class RegistryService {
     private RetryTemplate retryTemplate = Configuration.retryTemplate();
     private String serviceApiBaseline;
 
+    public RegistryService(String host, String port) {
+        serviceApiBaseline = String.format("http://%s:%s", host, port);
+    }
 }
