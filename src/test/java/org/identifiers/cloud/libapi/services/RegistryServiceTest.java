@@ -143,5 +143,13 @@ public class RegistryServiceTest {
         checkResultOk(response, "Validation Request - References");
     }
 
+    @Test
+    public void requestValidateAdditionalInformation() {
+        ServiceResponseValidateRequest response =
+                ApiServicesFactory.getRegistryService("localhost", "8081")
+                        .requestValidationAdditionalInformation(payload);
+        checkResultOk(response, "Validation Request - AdditionalInformation");
+    }
+
 
 }
