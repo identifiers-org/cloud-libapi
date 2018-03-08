@@ -98,6 +98,45 @@ public class RegistryService {
         return getRestTemplate().exchange(request, ServiceResponseValidateRequest.class);
     }
 
+    public ServiceResponseValidateRequest requestValidation(String serviceApiEndpoint,
+                                                            ServiceRequestRegisterPrefixPayload payload) {
+        ServiceResponseValidateRequest response = createDefaultResponseValidationRequest();
+        logger.info("Requesting validation at '{}'", serviceApiEndpoint);
+        RequestEntity<ServiceRequestValidate> requestEntity =
+                prepareEntityRequest(createRequestValidationRequest(payload),
+                        serviceApiEndpoint);
+        try {
+            ResponseEntity<ServiceResponseValidateRequest> responseEntity = retryTemplate.execute(retryContext -> {
+                if (requestEntity != null) {
+                    return doValidateRequest(requestEntity);
+                }
+                ServiceResponseValidateRequest errorResponse = createDefaultResponseValidationRequest();
+                errorResponse.setHttpStatus(HttpStatus.BAD_REQUEST)
+                        .setErrorMessage(String.format("INVALID URI %s", serviceApiEndpoint));
+                return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+            });
+            response = responseEntity.getBody();
+            response.setHttpStatus(HttpStatus.valueOf(responseEntity.getStatusCodeValue()));
+            if (HttpStatus.valueOf(responseEntity.getStatusCodeValue()) != HttpStatus.OK) {
+                String errorMessage = String.format("VALIDATION ERROR " +
+                                "at '%s', " +
+                                "HTTP status code '%d', " +
+                                "explanation '%s'",
+                        serviceApiEndpoint,
+                        responseEntity.getStatusCodeValue(),
+                        responseEntity.getBody().getErrorMessage());
+                logger.error(errorMessage);
+            }
+        } catch (RuntimeException e) {
+            String errorMessage = String.format("ERROR while requesting validation at '%s', because of '%s'",
+                    serviceApiEndpoint, e.getMessage());
+            logger.error(errorMessage);
+            response = createDefaultResponseValidationRequest();
+            response.setHttpStatus(HttpStatus.BAD_REQUEST).setErrorMessage(errorMessage);
+        }
+        return response;
+    }
+
     // --- API ---
     public ServiceResponseRegisterPrefix requestPrefixRegistration(ServiceRequestRegisterPrefixPayload registrationPayload) {
         String serviceApiEndpoint = serviceApiBaseline;
