@@ -198,5 +198,9 @@ public class RegistryService {
         return requestValidation(String.format("%s/%s", serviceApiBaseline, "validateRegisterPrefixPreferredPrefix"), payload);
     }
 
+    public ServiceResponseValidateRequest requestValidationResourceAccessRule(ServiceRequestRegisterPrefixPayload payload) {
+        return requestValidation(String.format("%s/%s", serviceApiBaseline, "validateRegisterPrefixResourceAccessRule"), payload);
+    }
+
 
 }
