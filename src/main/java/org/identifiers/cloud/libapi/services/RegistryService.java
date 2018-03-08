@@ -177,4 +177,13 @@ public class RegistryService {
         }
         return response;
     }
+
+    public ServiceResponseValidateRequest requestValidationName(ServiceRequestRegisterPrefixPayload payload) {
+        return requestValidation(String.format("%s/%s", serviceApiBaseline, "validateRegisterPrefixName"), payload);
+    }
+
+    public ServiceResponseValidateRequest requestValidationDescription(ServiceRequestRegisterPrefixPayload payload) {
+        return requestValidation(String.format("%s/%s", serviceApiBaseline, "validateRegisterPrefixDescription"), payload);
+    }
+
 }
