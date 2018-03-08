@@ -1,5 +1,8 @@
 package org.identifiers.cloud.libapi.services;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * @author Manuel Bernal Llinares <mbdebian@gmail.com>
  * Project: libapi
@@ -9,5 +12,5 @@ package org.identifiers.cloud.libapi.services;
  */
 public class RegistryService {
     private static final String apiVersion = "1.0";
-    
+    private static Logger logger = LoggerFactory.getLogger(RegistryService.class);
 }
