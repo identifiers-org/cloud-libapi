@@ -194,5 +194,9 @@ public class RegistryService {
         return requestValidation(String.format("%s/%s", serviceApiBaseline, "validateRegisterPrefixOrganization"), payload);
     }
 
+    public ServiceResponseValidateRequest requestValidationPreferredPrefix(ServiceRequestRegisterPrefixPayload payload) {
+        return requestValidation(String.format("%s/%s", serviceApiBaseline, "validateRegisterPrefixPreferredPrefix"), payload);
+    }
+
 
 }
