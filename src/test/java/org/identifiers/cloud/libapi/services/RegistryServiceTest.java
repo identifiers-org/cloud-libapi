@@ -79,4 +79,13 @@ public class RegistryServiceTest {
         checkResultOk(response, "Validation Request - Name");
     }
 
+    @Test
+    public void requestValidateDescription() {
+        ServiceResponseValidateRequest response =
+                ApiServicesFactory.getRegistryService("localhost", "8081")
+                        .requestValidationDescription(payload);
+        checkResultOk(response, "Validation Request - Description");
+    }
+
+
 }
