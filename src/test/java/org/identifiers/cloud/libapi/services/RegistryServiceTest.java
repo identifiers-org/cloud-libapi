@@ -95,5 +95,13 @@ public class RegistryServiceTest {
         checkResultOk(response, "Validation Request - HomePage");
     }
 
+    @Test
+    public void requestValidateOrganization() {
+        ServiceResponseValidateRequest response =
+                ApiServicesFactory.getRegistryService("localhost", "8081")
+                        .requestValidationOrganization(payload);
+        checkResultOk(response, "Validation Request - Organization");
+    }
+
 
 }
