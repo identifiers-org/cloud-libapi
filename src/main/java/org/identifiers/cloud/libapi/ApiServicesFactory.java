@@ -1,6 +1,7 @@
 package org.identifiers.cloud.libapi;
 
 import org.identifiers.cloud.libapi.services.MetadataService;
+import org.identifiers.cloud.libapi.services.RegistryService;
 import org.identifiers.cloud.libapi.services.ResolverService;
 import org.identifiers.cloud.libapi.services.ResourceRecommenderService;
 
@@ -41,6 +42,15 @@ public class ApiServicesFactory {
         return new MetadataService(host, port);
     }
 
-    // TODO - Create a method to get a Metadata service pointint at any of our satellite deployments
+    // TODO - Create a method to get a Metadata service pointing at any of our satellite deployments
 
+    public static RegistryService getRegistryService(String host) {
+        return getRegistryService(host, "80");
+    }
+
+    public static RegistryService getRegistryService(String host, String port) {
+        return new RegistryService(host, port);
+    }
+
+    // TODO - Create a method to get a Registry service pointing at any of our satellite deployments
 }
