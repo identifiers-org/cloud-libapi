@@ -214,5 +214,9 @@ public class RegistryService {
         return requestValidation(String.format("%s/%s", serviceApiBaseline, "validateRegisterPrefixReferences"), payload);
     }
 
+    public ServiceResponseValidateRequest requestValidationAdditionalInformation(ServiceRequestRegisterPrefixPayload payload) {
+        return requestValidation(String.format("%s/%s", serviceApiBaseline, "validateRegisterPrefixAdditionalInformation"), payload);
+    }
+
 
 }
