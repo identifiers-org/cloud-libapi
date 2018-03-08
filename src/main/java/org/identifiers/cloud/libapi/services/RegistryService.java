@@ -8,4 +8,6 @@ package org.identifiers.cloud.libapi.services;
  * ---
  */
 public class RegistryService {
+    private static final String apiVersion = "1.0";
+    
 }
