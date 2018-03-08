@@ -3,9 +3,11 @@ package org.identifiers.cloud.libapi.services;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.identifiers.cloud.libapi.ApiServicesFactory;
+import org.identifiers.cloud.libapi.models.ServiceResponse;
 import org.identifiers.cloud.libapi.models.registry.Requester;
 import org.identifiers.cloud.libapi.models.registry.requests.prefixregistration.ServiceRequestRegisterPrefixPayload;
 import org.identifiers.cloud.libapi.models.registry.responses.prefixregistration.ServiceResponseRegisterPrefix;
+import org.identifiers.cloud.libapi.models.registry.responses.validation.ServiceResponseValidateRequest;
 import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -47,7 +49,7 @@ public class RegistryServiceTest {
                                 .setName("Manuel Bernal Llinares"));
     }
 
-    private void checkResultOk(ServiceResponseRegisterPrefix response, String context) {
+    private <T> void checkResultOk(ServiceResponse<T> response, String context) {
         // Just for debugging purposes, serialized response into the logs
         ObjectMapper mapper = new ObjectMapper();
         try {
@@ -68,4 +70,13 @@ public class RegistryServiceTest {
                         .requestPrefixRegistration(payload);
         checkResultOk(response, "Prefix Registration Request");
     }
+
+    @Test
+    public void requestValidateName() {
+        ServiceResponseValidateRequest response =
+                ApiServicesFactory.getRegistryService("localhost", "8081")
+                        .requestValidationName(payload);
+        checkResultOk(response, "Validation Request - Name");
+    }
+
 }
