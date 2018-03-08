@@ -135,5 +135,13 @@ public class RegistryServiceTest {
         checkResultOk(response, "Validation Request - RegexPattern");
     }
 
+    @Test
+    public void requestValidateReferences() {
+        ServiceResponseValidateRequest response =
+                ApiServicesFactory.getRegistryService("localhost", "8081")
+                        .requestValidationReferences(payload);
+        checkResultOk(response, "Validation Request - References");
+    }
+
 
 }
