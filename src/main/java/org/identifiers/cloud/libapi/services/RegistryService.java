@@ -4,6 +4,7 @@ import org.identifiers.cloud.libapi.Configuration;
 import org.identifiers.cloud.libapi.models.ServiceRequest;
 import org.identifiers.cloud.libapi.models.ServiceResponse;
 import org.identifiers.cloud.libapi.models.registry.requests.prefixregistration.ServiceRequestRegisterPrefix;
+import org.identifiers.cloud.libapi.models.registry.requests.prefixregistration.ServiceRequestRegisterPrefixPayload;
 import org.identifiers.cloud.libapi.models.registry.requests.validation.ServiceRequestValidate;
 import org.identifiers.cloud.libapi.models.registry.responses.prefixregistration.ServiceResponseRegisterPrefix;
 import org.identifiers.cloud.libapi.models.registry.responses.prefixregistration.ServiceResponseRegisterPrefixPayload;
@@ -59,15 +60,17 @@ public class RegistryService {
         request.setApiVersion(apiVersion);
     }
 
-    private ServiceRequestRegisterPrefix createRequestRegisterPrefix() {
+    private ServiceRequestRegisterPrefix createRequestRegisterPrefix(ServiceRequestRegisterPrefixPayload payload) {
         ServiceRequestRegisterPrefix request = new ServiceRequestRegisterPrefix();
         initRequest(request);
+        request.setPayload(payload);
         return request;
     }
 
-    private ServiceRequestValidate createRequestValidationRequest() {
+    private ServiceRequestValidate createRequestValidationRequest(ServiceRequestRegisterPrefixPayload payload) {
         ServiceRequestValidate request = new ServiceRequestValidate();
         initRequest(request);
+        request.setPayload(payload);
         return request;
     }
 
@@ -81,9 +84,54 @@ public class RegistryService {
         return entityRequest;
     }
 
-    private <T, E> ResponseEntity<T> doRequest(RequestEntity<E> request, Class<T> responseType) {
+    private RestTemplate getRestTemplate() {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.setErrorHandler(Configuration.responseErrorHandler());
-        return restTemplate.exchange(request, responseType);
+        return restTemplate;
+    }
+
+    private ResponseEntity<ServiceResponseRegisterPrefix> doRegisterPrefixRequest (RequestEntity<ServiceRequestRegisterPrefix> request) {
+        return getRestTemplate().exchange(request, ServiceResponseRegisterPrefix.class);
+    }
+
+    // --- API ---
+    public ServiceResponseRegisterPrefix requestPrefixRegistration(ServiceRequestRegisterPrefixPayload registrationPayload) {
+        String serviceApiEndpoint = serviceApiBaseline;
+        ServiceResponseRegisterPrefix response = createDefaultResponseRegisterPrefixRequest();
+        logger.info("Requesting prefix '{}' registration at '{}'", registrationPayload.getPreferredPrefix(),
+                serviceApiEndpoint);
+        RequestEntity<ServiceRequestRegisterPrefix> requestEntity =
+                prepareEntityRequest(createRequestRegisterPrefix(registrationPayload),
+                        serviceApiEndpoint);
+        try {
+            ResponseEntity<ServiceResponseRegisterPrefix> responseEntity = retryTemplate.execute(retryContext -> {
+                if (requestEntity != null) {
+                    return doRegisterPrefixRequest(requestEntity);
+                }
+                ServiceResponseRegisterPrefix errorResponse = createDefaultResponseRegisterPrefixRequest();
+                errorResponse.setHttpStatus(HttpStatus.BAD_REQUEST)
+                        .setErrorMessage(String.format("INVALID URI %s", serviceApiEndpoint));
+                return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+            });
+            response = responseEntity.getBody();
+            response.setHttpStatus(HttpStatus.valueOf(responseEntity.getStatusCodeValue()));
+            if (HttpStatus.valueOf(responseEntity.getStatusCodeValue()) != HttpStatus.OK) {
+                String errorMessage = String.format("ERROR registering your prefix " +
+                                "at '%s', " +
+                                "HTTP status code '%d', " +
+                                "explanation '%s'",
+                        serviceApiEndpoint,
+                        responseEntity.getStatusCodeValue(),
+                        responseEntity.getBody().getErrorMessage());
+                logger.error(errorMessage);
+            }
+        } catch (RuntimeException e) {
+            String errorMessage = String.format("ERROR while registering prefix '%s' at '%s', because of '%s'",
+                    registrationPayload.getPreferredPrefix(), serviceApiEndpoint, e.getMessage());
+            logger.error(errorMessage);
+            response = createDefaultResponseRegisterPrefixRequest();
+            response.setHttpStatus(HttpStatus.BAD_REQUEST).setErrorMessage(errorMessage);
+        }
+        return response;
     }
 }
