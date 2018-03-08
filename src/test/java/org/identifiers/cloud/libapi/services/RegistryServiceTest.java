@@ -127,5 +127,13 @@ public class RegistryServiceTest {
         checkResultOk(response, "Validation Request - ExampleIdentifier");
     }
 
+    @Test
+    public void requestValidateRegexPattern() {
+        ServiceResponseValidateRequest response =
+                ApiServicesFactory.getRegistryService("localhost", "8081")
+                        .requestValidationRegexPattern(payload);
+        checkResultOk(response, "Validation Request - RegexPattern");
+    }
+
 
 }
