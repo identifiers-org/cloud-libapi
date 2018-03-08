@@ -119,5 +119,13 @@ public class RegistryServiceTest {
         checkResultOk(response, "Validation Request - ResourceAccessRule");
     }
 
+    @Test
+    public void requestValidateExampleIdentifier() {
+        ServiceResponseValidateRequest response =
+                ApiServicesFactory.getRegistryService("localhost", "8081")
+                        .requestValidationExampleIdentifier(payload);
+        checkResultOk(response, "Validation Request - ExampleIdentifier");
+    }
+
 
 }
