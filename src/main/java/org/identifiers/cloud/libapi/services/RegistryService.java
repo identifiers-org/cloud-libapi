@@ -1,14 +1,21 @@
 package org.identifiers.cloud.libapi.services;
 
 import org.identifiers.cloud.libapi.Configuration;
+import org.identifiers.cloud.libapi.models.ServiceRequest;
 import org.identifiers.cloud.libapi.models.ServiceResponse;
+import org.identifiers.cloud.libapi.models.registry.requests.prefixregistration.ServiceRequestRegisterPrefix;
+import org.identifiers.cloud.libapi.models.registry.requests.validation.ServiceRequestValidate;
 import org.identifiers.cloud.libapi.models.registry.responses.prefixregistration.ServiceResponseRegisterPrefix;
 import org.identifiers.cloud.libapi.models.registry.responses.prefixregistration.ServiceResponseRegisterPrefixPayload;
 import org.identifiers.cloud.libapi.models.registry.responses.validation.ServiceResponseValidateRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.RequestEntity;
 import org.springframework.retry.support.RetryTemplate;
+
+import java.net.URI;
+import java.net.URISyntaxException;
 
 /**
  * @author Manuel Bernal Llinares <mbdebian@gmail.com>
@@ -45,4 +52,32 @@ public class RegistryService {
         initDefaultResponse(response, new ServiceResponseRegisterPrefixPayload());
         return response;
     }
+
+    private void initRequest(ServiceRequest<?> request) {
+        request.setApiVersion(apiVersion);
+    }
+
+    private ServiceRequestRegisterPrefix createRequestRegisterPrefix() {
+        ServiceRequestRegisterPrefix request = new ServiceRequestRegisterPrefix();
+        initRequest(request);
+        return request;
+    }
+
+    private ServiceRequestValidate createRequestValidationRequest() {
+        ServiceRequestValidate request = new ServiceRequestValidate();
+        initRequest(request);
+        return request;
+    }
+
+    private <T> RequestEntity<T> prepareEntityRequest(T requestBody, String serviceApiEndpoint) {
+        RequestEntity<T> entityRequest = null;
+        try {
+            entityRequest = RequestEntity.post(new URI(serviceApiEndpoint)).body(requestBody);
+        } catch (URISyntaxException e) {
+            logger.error("INVALID URI '{}'", serviceApiEndpoint);
+        }
+        return entityRequest;
+    }
+
+    
 }
