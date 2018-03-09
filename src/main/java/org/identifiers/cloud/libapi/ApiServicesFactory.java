@@ -14,6 +14,7 @@ import org.identifiers.cloud.libapi.services.ResourceRecommenderService;
  */
 public class ApiServicesFactory {
 
+    // --- Resource Recommender Service ---
     public static ResourceRecommenderService getResourceRecommenderService(String host) {
         return new ResourceRecommenderService(host, "80");
     }
@@ -21,9 +22,9 @@ public class ApiServicesFactory {
     public static ResourceRecommenderService getResourceRecommenderService(String host, String port) {
         return new ResourceRecommenderService(host, port);
     }
+    // --- END ---
 
-    // TODO - Create a method to get a Resource Recommender service pointing at any of our satellite deployments
-
+    // --- Resolver Service ---
     public static ResolverService getResolverService(String host) {
         return getResolverService(host, "80");
     }
@@ -32,8 +33,12 @@ public class ApiServicesFactory {
         return new ResolverService(host, port);
     }
 
-    // TODO - Create a method to get a Resolver service pointing at any of our satellite deployments
+    public static ResolverService getResolverService() {
+        return getResolverService(Configuration.getServiceLocation(Configuration.ServiceName.RESOLVER));
+    }
+    // --- END ---
 
+    // --- Metadata Service ---
     public static MetadataService getMetadataService(String host) {
         return getMetadataService(host, "80");
     }
@@ -42,8 +47,9 @@ public class ApiServicesFactory {
         return new MetadataService(host, port);
     }
 
-    // TODO - Create a method to get a Metadata service pointing at any of our satellite deployments
+    // --- END ---
 
+    // --- Registry Service ---
     public static RegistryService getRegistryService(String host) {
         return getRegistryService(host, "80");
     }
@@ -53,4 +59,5 @@ public class ApiServicesFactory {
     }
 
     // TODO - Create a method to get a Registry service pointing at any of our satellite deployments
+    // --- END ---
 }
