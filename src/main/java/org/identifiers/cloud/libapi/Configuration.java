@@ -89,6 +89,7 @@ public class Configuration {
     private static Map<String, Map<String, String>> servicesMap = null;
 
     private static void loadServicesMap() throws ConfigurationException {
+        servicesMap = new HashMap<>();
         // TODO
     }
 
