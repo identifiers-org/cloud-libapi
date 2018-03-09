@@ -1,16 +1,18 @@
 package org.identifiers.cloud.libapi;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import org.identifiers.cloud.libapi.models.ConfigurationException;
 import org.identifiers.cloud.libapi.models.RestTemplateErrorHandlerLogError;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.config.YamlMapFactoryBean;
 import org.springframework.retry.backoff.FixedBackOffPolicy;
 import org.springframework.retry.policy.SimpleRetryPolicy;
 import org.springframework.retry.support.RetryTemplate;
 import org.springframework.web.client.ResponseErrorHandler;
 
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -92,8 +94,19 @@ public class Configuration {
 
     private static void loadServicesMap() throws ConfigurationException {
         servicesMap = new HashMap<>();
-        // TODO
-        ObjectMapper mapper = new ObjectMapper(new YamlMapFactoryBean());
+        ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
+        try {
+            // TODO
+            TypeReference<HashMap<String, HashMap<String, String>>> servicesMapTypeRef
+                    = new TypeReference<HashMap<String, HashMap<String, String>>>() {};
+            servicesMap = mapper.readValue(Configuration.class
+                    .getClassLoader()
+                    .getResourceAsStream("deployments.yml"), servicesMapTypeRef);
+        } catch (IOException e) {
+            String errorMessage = String.format("An ERROR occurred while loading deployment information!, error -> '%s'", e.getMessage());
+            logger.error(errorMessage);
+            throw new ConfigurationException(errorMessage);
+        }
     }
 
     public static void selectDeployment(InfrastructureDeploymentSelector selector) {
