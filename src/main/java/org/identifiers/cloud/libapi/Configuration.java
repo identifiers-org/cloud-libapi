@@ -88,6 +88,10 @@ public class Configuration {
         deploymentSelection = selector;
     }
 
+    public static String getServiceLocation(ServiceName serviceName) {
+        // TODO
+    }
+
     public static RetryTemplate retryTemplate() {
         RetryTemplate retryTemplate = new RetryTemplate();
         SimpleRetryPolicy retryPolicy = new SimpleRetryPolicy();
