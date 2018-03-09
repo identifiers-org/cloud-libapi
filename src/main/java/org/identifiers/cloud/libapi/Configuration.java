@@ -6,6 +6,8 @@ import org.springframework.retry.policy.SimpleRetryPolicy;
 import org.springframework.retry.support.RetryTemplate;
 import org.springframework.web.client.ResponseErrorHandler;
 
+import java.util.Map;
+
 /**
  * @author Manuel Bernal Llinares <mbdebian@gmail.com>
  * Project: libapi
@@ -80,6 +82,7 @@ public class Configuration {
         }
     }
     public static InfrastructureDeploymentSelector deploymentSelection = InfrastructureDeploymentSelector.ANY;
+    private static Map<String, Map<String, String>> servicesMap = null;
 
     public static void selectDeployment(InfrastructureDeploymentSelector selector) {
         deploymentSelection = selector;
