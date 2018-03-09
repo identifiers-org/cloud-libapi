@@ -16,6 +16,10 @@ import org.springframework.web.client.ResponseErrorHandler;
 public class Configuration {
     public static final int WS_REQUEST_RETRY_MAX_ATTEMPTS = 12;
     public static final int WS_REQUEST_RETRY_BACK_OFF_PERIOD = 1500; // 1.5 seconds
+    public enum CloudSelector {
+        private String key;
+        private String description;
+    }
 
     public static RetryTemplate retryTemplate() {
         RetryTemplate retryTemplate = new RetryTemplate();
