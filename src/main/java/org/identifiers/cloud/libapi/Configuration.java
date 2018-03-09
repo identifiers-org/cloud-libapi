@@ -9,7 +9,7 @@ import org.springframework.retry.policy.SimpleRetryPolicy;
 import org.springframework.retry.support.RetryTemplate;
 import org.springframework.web.client.ResponseErrorHandler;
 
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author Manuel Bernal Llinares <mbdebian@gmail.com>
@@ -109,7 +109,9 @@ public class Configuration {
         // Default deployment to be used
         String deploymentKey = deploymentSelection.getKey();
         if (deploymentSelection == InfrastructureDeploymentSelector.ANY) {
-
+            List<String> deployments = new ArrayList<>(servicesMap.keySet());
+            Collections.shuffle(deployments);
+            deploymentKey = deployments.get(0);
         }
     }
 
