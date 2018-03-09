@@ -48,6 +48,10 @@ public class Configuration {
             return this;
         }
     }
+    public enum ServiceName {
+        private String name;
+        private String description;
+    }
     public static InfrastructureDeploymentSelector deploymentSelection = InfrastructureDeploymentSelector.ANY;
 
     public static void selectDeployment(InfrastructureDeploymentSelector selector) {
