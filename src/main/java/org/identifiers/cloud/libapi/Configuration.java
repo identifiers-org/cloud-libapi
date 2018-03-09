@@ -49,7 +49,9 @@ public class Configuration {
         }
     }
     public enum ServiceName {
-        ;
+        RESOLVER("resolver", "Compact ID Resolution Web Service"),
+        METADATA("metadata", "Metadata Web Service"),
+        REGISTRY("registry", "Registry Web Service");
         private String name;
         private String description;
 
