@@ -100,6 +100,10 @@ public class Configuration {
             loadServicesMap();
         }
         // TODO
+        if (servicesMap.keySet().isEmpty()) {
+            logger.error("SERVICES MAP IS EMPTY, there is no information on services deployments!");
+            return "";
+        }
     }
 
     public static RetryTemplate retryTemplate() {
