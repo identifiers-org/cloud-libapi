@@ -107,7 +107,10 @@ public class Configuration {
             throw new ConfigurationException(errorMessage);
         }
         // Default deployment to be used
-        String deploymentKey = InfrastructureDeploymentSelector.AWS.getKey();
+        String deploymentKey = deploymentSelection.getKey();
+        if (deploymentSelection == InfrastructureDeploymentSelector.ANY) {
+
+        }
     }
 
     public static RetryTemplate retryTemplate() {
