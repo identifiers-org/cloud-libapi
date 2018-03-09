@@ -146,7 +146,7 @@ public class Configuration {
         }
         // Default deployment to be used
         String deploymentKey = deploymentSelection.getKey();
-        if (deploymentSelection == InfrastructureDeploymentSelector.ANY) {
+        if (deploymentSelection.getKey() == InfrastructureDeploymentSelector.ANY.getKey()) {
             List<String> deployments = new ArrayList<>(servicesMap.keySet());
             Collections.shuffle(deployments);
             deploymentKey = deployments.get(0);
