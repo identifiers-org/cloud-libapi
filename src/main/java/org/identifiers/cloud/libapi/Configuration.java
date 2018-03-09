@@ -93,6 +93,9 @@ public class Configuration {
     }
 
     public static String getServiceLocation(ServiceName serviceName) {
+        if (servicesMap == null) {
+            loadServicesMap();
+        }
         // TODO
     }
 
