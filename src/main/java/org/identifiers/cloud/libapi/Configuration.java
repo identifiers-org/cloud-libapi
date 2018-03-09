@@ -48,6 +48,7 @@ public class Configuration {
             return this;
         }
     }
+    public static InfrastructureDeploymentSelector deploymentSelection = InfrastructureDeploymentSelector.ANY;
 
     public static RetryTemplate retryTemplate() {
         RetryTemplate retryTemplate = new RetryTemplate();
