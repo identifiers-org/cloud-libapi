@@ -96,7 +96,7 @@ public class Configuration {
         deploymentSelection = selector;
     }
 
-    public static String getServiceLocation(ServiceName serviceName) {
+    public static String getServiceLocation(ServiceName serviceName) throws ConfigurationException {
         if (servicesMap == null) {
             loadServicesMap();
         }
