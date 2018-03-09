@@ -50,6 +50,10 @@ public class Configuration {
     }
     public static InfrastructureDeploymentSelector deploymentSelection = InfrastructureDeploymentSelector.ANY;
 
+    public static void selectDeployment(InfrastructureDeploymentSelector selector) {
+        deploymentSelection = selector;
+    }
+
     public static RetryTemplate retryTemplate() {
         RetryTemplate retryTemplate = new RetryTemplate();
         SimpleRetryPolicy retryPolicy = new SimpleRetryPolicy();
