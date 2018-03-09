@@ -19,7 +19,8 @@ public class Configuration {
     public enum InfrastructureDeploymentSelector {
         AWS("aws", "Amazon Web Services deployment"),
         GCLOUD("gcloud", "Google Cloud deployment"),
-        AZURE("azure", "Microsoft Azure deployment");
+        AZURE("azure", "Microsoft Azure deployment"),
+        ANY("any", "Any deployment");
 
         private String key;
         private String description;
