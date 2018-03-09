@@ -1,9 +1,11 @@
 package org.identifiers.cloud.libapi;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.identifiers.cloud.libapi.models.ConfigurationException;
 import org.identifiers.cloud.libapi.models.RestTemplateErrorHandlerLogError;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.config.YamlMapFactoryBean;
 import org.springframework.retry.backoff.FixedBackOffPolicy;
 import org.springframework.retry.policy.SimpleRetryPolicy;
 import org.springframework.retry.support.RetryTemplate;
@@ -91,6 +93,7 @@ public class Configuration {
     private static void loadServicesMap() throws ConfigurationException {
         servicesMap = new HashMap<>();
         // TODO
+        ObjectMapper mapper = new ObjectMapper(new YamlMapFactoryBean());
     }
 
     public static void selectDeployment(InfrastructureDeploymentSelector selector) {
