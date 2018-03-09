@@ -52,6 +52,7 @@ public class Configuration {
         RESOLVER("resolver", "Compact ID Resolution Web Service"),
         METADATA("metadata", "Metadata Web Service"),
         REGISTRY("registry", "Registry Web Service");
+        // As you can see, THERE IS NO key for the Resource Recommender service, as it is not offered to the public
         private String name;
         private String description;
 
