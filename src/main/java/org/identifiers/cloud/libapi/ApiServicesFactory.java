@@ -47,6 +47,10 @@ public class ApiServicesFactory {
         return new MetadataService(host, port);
     }
 
+    public static MetadataService getMetadataService() {
+        return getMetadataService(Configuration.getServiceLocation(Configuration.ServiceName.METADATA));
+    }
+
     // --- END ---
 
     // --- Registry Service ---
