@@ -55,4 +55,10 @@ public class ConfigurationTest {
         testSelectionLocked(Configuration.ServiceName.METADATA);
     }
 
+    @Test
+    public void testRegistryLocations() {
+        testAnySelection(Configuration.ServiceName.REGISTRY);
+        testSelectionLocked(Configuration.ServiceName.REGISTRY);
+    }
+
 }
