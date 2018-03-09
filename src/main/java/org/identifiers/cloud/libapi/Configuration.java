@@ -133,7 +133,7 @@ public class Configuration {
         logger.info("Deployment information LOADED!");
     }
 
-    public static synchronized void selectDeployment(InfrastructureDeploymentSelector selector) {
+    public static void selectDeployment(InfrastructureDeploymentSelector selector) {
         deploymentSelection = selector;
     }
 
