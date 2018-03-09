@@ -113,6 +113,7 @@ public class Configuration {
             Collections.shuffle(deployments);
             deploymentKey = deployments.get(0);
         }
+        return servicesMap.get(deploymentKey).get(serviceName.name);
     }
 
     public static RetryTemplate retryTemplate() {
