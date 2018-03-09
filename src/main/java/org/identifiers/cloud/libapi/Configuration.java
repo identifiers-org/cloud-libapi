@@ -1,5 +1,6 @@
 package org.identifiers.cloud.libapi;
 
+import org.identifiers.cloud.libapi.models.ConfigurationException;
 import org.identifiers.cloud.libapi.models.RestTemplateErrorHandlerLogError;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -87,7 +88,7 @@ public class Configuration {
     public static InfrastructureDeploymentSelector deploymentSelection = InfrastructureDeploymentSelector.ANY;
     private static Map<String, Map<String, String>> servicesMap = null;
 
-    private static void loadServicesMap() {
+    private static void loadServicesMap() throws ConfigurationException {
         // TODO
     }
 
