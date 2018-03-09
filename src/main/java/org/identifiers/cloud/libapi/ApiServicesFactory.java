@@ -50,7 +50,6 @@ public class ApiServicesFactory {
     public static MetadataService getMetadataService() {
         return getMetadataService(Configuration.getServiceLocation(Configuration.ServiceName.METADATA));
     }
-
     // --- END ---
 
     // --- Registry Service ---
@@ -62,6 +61,8 @@ public class ApiServicesFactory {
         return new RegistryService(host, port);
     }
 
-    // TODO - Create a method to get a Registry service pointing at any of our satellite deployments
+    public static RegistryService getRegistryService() {
+        return getRegistryService(Configuration.getServiceLocation(Configuration.ServiceName.REGISTRY));
+    }
     // --- END ---
 }
