@@ -48,4 +48,11 @@ public class ConfigurationTest {
         testAnySelection(Configuration.ServiceName.RESOLVER);
         testSelectionLocked(Configuration.ServiceName.RESOLVER);
     }
+
+    @Test
+    public void testMetadataLocations() {
+        testAnySelection(Configuration.ServiceName.METADATA);
+        testSelectionLocked(Configuration.ServiceName.METADATA);
+    }
+
 }
