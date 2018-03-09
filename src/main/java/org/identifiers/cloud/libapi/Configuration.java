@@ -109,24 +109,26 @@ public class Configuration {
         }
         // Check the map is correct
         Arrays.stream(InfrastructureDeploymentSelector.values()).forEach(deploymentKey -> {
-            if (!servicesMap.containsKey(deploymentKey.getKey())) {
-                String errorMessage = String.format("MISSING deployment '%s', '%s'",
-                        deploymentKey.getKey().toUpperCase(),
-                        deploymentKey.getDescription());
-                logger.error(errorMessage);
-                throw new ConfigurationException(errorMessage);
-            }
-            Arrays.stream(ServiceName.values()).forEach(serviceName -> {
-                if (!servicesMap.get(deploymentKey.getKey()).containsKey(serviceName.getName())) {
-                    String errorMessage = String.format("MISSING Service '%s', '%s', in Deployment '%s', '%s'",
-                            serviceName.getName(),
-                            serviceName.getDescription(),
+            if (deploymentKey.getKey() != InfrastructureDeploymentSelector.ANY.getKey()) {
+                if (!servicesMap.containsKey(deploymentKey.getKey())) {
+                    String errorMessage = String.format("MISSING deployment '%s', '%s'",
                             deploymentKey.getKey().toUpperCase(),
                             deploymentKey.getDescription());
                     logger.error(errorMessage);
                     throw new ConfigurationException(errorMessage);
                 }
-            });
+                Arrays.stream(ServiceName.values()).forEach(serviceName -> {
+                    if (!servicesMap.get(deploymentKey.getKey()).containsKey(serviceName.getName())) {
+                        String errorMessage = String.format("MISSING Service '%s', '%s', in Deployment '%s', '%s'",
+                                serviceName.getName(),
+                                serviceName.getDescription(),
+                                deploymentKey.getKey().toUpperCase(),
+                                deploymentKey.getDescription());
+                        logger.error(errorMessage);
+                        throw new ConfigurationException(errorMessage);
+                    }
+                });
+            }
         });
         logger.info("Deployment information LOADED!");
     }
