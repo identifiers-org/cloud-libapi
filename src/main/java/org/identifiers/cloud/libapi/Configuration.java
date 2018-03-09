@@ -49,8 +49,14 @@ public class Configuration {
         }
     }
     public enum ServiceName {
+        ;
         private String name;
         private String description;
+
+        ServiceName(String name, String description) {
+            this.name = name;
+            this.description = description;
+        }
     }
     public static InfrastructureDeploymentSelector deploymentSelection = InfrastructureDeploymentSelector.ANY;
 
