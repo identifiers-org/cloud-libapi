@@ -84,6 +84,10 @@ public class Configuration {
     public static InfrastructureDeploymentSelector deploymentSelection = InfrastructureDeploymentSelector.ANY;
     private static Map<String, Map<String, String>> servicesMap = null;
 
+    private static void loadServicesMap() {
+        // TODO
+    }
+
     public static void selectDeployment(InfrastructureDeploymentSelector selector) {
         deploymentSelection = selector;
     }
