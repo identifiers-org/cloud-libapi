@@ -57,6 +57,24 @@ public class Configuration {
             this.name = name;
             this.description = description;
         }
+
+        public String getName() {
+            return name;
+        }
+
+        public ServiceName setName(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public String getDescription() {
+            return description;
+        }
+
+        public ServiceName setDescription(String description) {
+            this.description = description;
+            return this;
+        }
     }
     public static InfrastructureDeploymentSelector deploymentSelection = InfrastructureDeploymentSelector.ANY;
 
