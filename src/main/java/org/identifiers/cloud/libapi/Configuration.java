@@ -1,6 +1,8 @@
 package org.identifiers.cloud.libapi;
 
 import org.identifiers.cloud.libapi.models.RestTemplateErrorHandlerLogError;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.retry.backoff.FixedBackOffPolicy;
 import org.springframework.retry.policy.SimpleRetryPolicy;
 import org.springframework.retry.support.RetryTemplate;
@@ -18,6 +20,7 @@ import java.util.Map;
 public class Configuration {
     public static final int WS_REQUEST_RETRY_MAX_ATTEMPTS = 12;
     public static final int WS_REQUEST_RETRY_BACK_OFF_PERIOD = 1500; // 1.5 seconds
+    public static Logger logger = LoggerFactory.getLogger(Configuration.class);
     public enum InfrastructureDeploymentSelector {
         AWS("aws", "Amazon Web Services deployment"),
         GCLOUD("gcloud", "Google Cloud deployment"),
