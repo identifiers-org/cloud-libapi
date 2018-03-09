@@ -102,8 +102,9 @@ public class Configuration {
         }
         // TODO
         if (servicesMap.keySet().isEmpty()) {
-            logger.error("SERVICES MAP IS EMPTY, there is no information on services deployments!");
-            return "";
+            String errorMessage = "SERVICES MAP IS EMPTY, there is no information on services deployments!";
+            logger.error(errorMessage);
+            throw new ConfigurationException(errorMessage);
         }
     }
 
