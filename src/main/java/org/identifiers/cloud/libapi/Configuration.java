@@ -106,6 +106,8 @@ public class Configuration {
             logger.error(errorMessage);
             throw new ConfigurationException(errorMessage);
         }
+        // Default deployment to be used
+        String deploymentKey = InfrastructureDeploymentSelector.AWS.getKey();
     }
 
     public static RetryTemplate retryTemplate() {
