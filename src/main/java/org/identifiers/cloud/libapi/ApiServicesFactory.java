@@ -57,6 +57,11 @@ public class ApiServicesFactory {
     // --- END ---
 
     // --- Metadata Service ---
+    /**
+     * Get an instance of the Metadata service client, pointing to the given host, on default port 80.
+     * @param host running the service.
+     * @return an instance of the service client pointing to the given host.
+     */
     public static MetadataService getMetadataService(String host) {
         return getMetadataService(host, "80");
     }
