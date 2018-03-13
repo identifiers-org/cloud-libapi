@@ -19,6 +19,8 @@ import java.net.URISyntaxException;
  * Package: org.identifiers.cloud.libapi.services
  * Timestamp: 2018-03-07 13:42
  * ---
+ *
+ * This class implements a cient to the Metadata service API.
  */
 public class MetadataService {
     public static final String apiVersion = "1.0";
