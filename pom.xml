@@ -8,7 +8,7 @@
     <packaging>jar</packaging>
 
     <name>libapi</name>
-    <description>This library provides client side service wrappers to access identifiers.org API</description>
+    <description>This library provides client side service wrappers to access identifiers.org Cloud based API</description>
     <url>http://identifiers.org</url>
 
     <licenses>
