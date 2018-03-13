@@ -13,6 +13,9 @@ import java.io.IOException;
  * Package: org.identifiers.cloud.libapi.models
  * Timestamp: 2018-03-07 4:09
  * ---
+ *
+ * For the different clients (service wrappers), this error handler is used. It's purpose is to log the error but allow
+ * the caller to get the response, so the HTTP status code can be accessed.
  */
 public class RestTemplateErrorHandlerLogError implements ResponseErrorHandler {
     private static Logger logger = LoggerFactory.getLogger(RestTemplateErrorHandlerLogError.class);
