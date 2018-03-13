@@ -57,6 +57,10 @@ public class RegistryService {
         response.setPayload(payload);
     }
 
+    /**
+     * This helper creates a default response for the validation request interface of the registry service.
+     * @return default validation request response
+     */
     private ServiceResponseValidateRequest createDefaultResponseValidationRequest() {
         ServiceResponseValidateRequest response = new ServiceResponseValidateRequest();
         initDefaultResponse(response, new ServiceResponseRegisterPrefixPayload());
