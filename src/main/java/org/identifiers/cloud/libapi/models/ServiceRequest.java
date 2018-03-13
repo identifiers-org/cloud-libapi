@@ -10,6 +10,10 @@ import java.io.Serializable;
  * Package: org.identifiers.cloud.libapi.models
  * Timestamp: 2018-03-06 11:28
  * ---
+ *
+ * This is a generic class that models the common parts to any service request, e.g. the api version information.
+ *
+ * It is specialized with the payload that corresponds to every particular service requests.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ServiceRequest<T> implements Serializable {
