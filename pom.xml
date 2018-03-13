@@ -15,6 +15,7 @@
         <license>
             <name>The MIT License</name>
             <url>https://opensource.org/licenses/MIT</url>
+            <distribution>repo</distribution>
         </license>
     </licenses>
 
