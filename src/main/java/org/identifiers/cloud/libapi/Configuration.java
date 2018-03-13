@@ -66,6 +66,10 @@ public class Configuration {
             return this;
         }
     }
+
+    /**
+     * This structure models keys associated with the different services in identifiers.org satellite deployments
+     */
     public enum ServiceName {
         RESOLVER("resolver", "Compact ID Resolution Web Service"),
         METADATA("metadata", "Metadata Web Service"),
