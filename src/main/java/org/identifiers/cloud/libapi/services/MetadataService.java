@@ -134,6 +134,12 @@ public class MetadataService {
         return request;
     }
 
+    /**
+     * This is a helper method that will actually submit the HTTP POST request of metadata fetch for URL, already
+     * prepared, and it will expect the right response from the service.
+     * @param request already prepared metadata fetch request for URL
+     * @return response from the service
+     */
     private ResponseEntity<ServiceResponseFetchMetadataForUrl> makeRequestFetchMetadataForUrl(RequestEntity<ServiceRequestFetchMetadataForUrl> request) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.setErrorHandler(Configuration.responseErrorHandler());
