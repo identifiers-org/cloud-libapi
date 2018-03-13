@@ -188,6 +188,11 @@ public class Configuration {
         return servicesMap.get(deploymentKey).get(serviceName.name);
     }
 
+    /**
+     * This method creates a Retry Template for use by the services implementing the re-try pattern when contacting the
+     * web services.
+     * @return a re-try template configured with default max attempts and back off period
+     */
     public static RetryTemplate retryTemplate() {
         RetryTemplate retryTemplate = new RetryTemplate();
         SimpleRetryPolicy retryPolicy = new SimpleRetryPolicy();
