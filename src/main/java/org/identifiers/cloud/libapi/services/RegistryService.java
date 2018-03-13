@@ -160,6 +160,14 @@ public class RegistryService {
         return getRestTemplate().exchange(request, ServiceResponseValidateRequest.class);
     }
 
+    /**
+     * This helper method will submit a validation request to the given service endpoint, using the given payload.
+     * Expecting the validation request response from the registry service.
+     * @param serviceApiEndpoint service endpoint where to submit the request.
+     * @param payload data content for this request.
+     * @return validation request response from the registry service, or a guaranteed default response reflecting what
+     * could have happened via its HTTP Status code and error message fields.
+     */
     private ServiceResponseValidateRequest requestValidation(String serviceApiEndpoint,
                                                             ServiceRequestRegisterPrefixPayload payload) {
         ServiceResponseValidateRequest response = createDefaultResponseValidationRequest();
