@@ -16,6 +16,9 @@ import org.identifiers.cloud.libapi.Configuration;
  *  - With no information: a random deployment for the service from identifiers.org will be used.
  *  - With host information: the client will use the service on that host on the default port 80.
  *  - With host and port information: the client will use the service on the specified host and port.
+ *
+ * As you may notice, there is no factory method for a random deployment of the Resource Recommender service, as it is
+ * used internally in identifiers.org satellite deployments, but it is not offered to the public.
  */
 public class ApiServicesFactory {
 
