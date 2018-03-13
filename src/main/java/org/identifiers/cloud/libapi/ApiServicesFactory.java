@@ -76,6 +76,11 @@ public class ApiServicesFactory {
     // --- END ---
 
     // --- Registry Service ---
+    /**
+     * Get an instance of the Registry service client, pointing to the given host, on default port 80.
+     * @param host running the service.
+     * @return an instance of the service client pointing to the given host.
+     */
     public static RegistryService getRegistryService(String host) {
         return getRegistryService(host, "80");
     }
