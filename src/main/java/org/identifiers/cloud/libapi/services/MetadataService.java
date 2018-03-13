@@ -31,7 +31,7 @@ public class MetadataService {
 
     }
 
-    protected MetadataService(String host, String port) {
+    MetadataService(String host, String port) {
         serviceApiBaseline = String.format("http://%s:%s", host, port);
     }
 

@@ -29,7 +29,11 @@ public class ResourceRecommenderService {
     private RetryTemplate retryTemplate = Configuration.retryTemplate();
     private String serviceApiBaseline;
 
-    public ResourceRecommenderService(String serviceHost, String servicePort) {
+    private ResourceRecommenderService() {
+
+    }
+
+    ResourceRecommenderService(String serviceHost, String servicePort) {
         serviceApiBaseline = String.format("http://%s:%s", serviceHost, servicePort);
     }
 

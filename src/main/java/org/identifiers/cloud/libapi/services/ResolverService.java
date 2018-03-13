@@ -26,7 +26,11 @@ public class ResolverService {
     private RetryTemplate retryTemplate = Configuration.retryTemplate();
     private String serviceApiBaseline;
 
-    public ResolverService(String host, String port) {
+    private ResolverService() {
+
+    }
+
+    ResolverService(String host, String port) {
         serviceApiBaseline = String.format("http://%s:%s", host, port);
     }
 
