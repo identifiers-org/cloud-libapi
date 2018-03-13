@@ -23,8 +23,8 @@
             <id>mbernal</id>
             <name>Manuel Bernal-Llinares</name>
             <email>mbdebian@gmail.com</email>
-            <organization>Hermjakob Team, EMBL-European Bioinformatics Institute</organization>
-            <organizationUrl>http://identifiers.org/</organizationUrl>
+            <organization>EMBL-European Bioinformatics Institute</organization>
+            <organizationUrl>http://ebi.ac.uk/</organizationUrl>
             <roles>
                 <role>developer</role>
             </roles>
