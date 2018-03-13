@@ -1,9 +1,6 @@
-package org.identifiers.cloud.libapi;
+package org.identifiers.cloud.libapi.services;
 
-import org.identifiers.cloud.libapi.services.MetadataService;
-import org.identifiers.cloud.libapi.services.RegistryService;
-import org.identifiers.cloud.libapi.services.ResolverService;
-import org.identifiers.cloud.libapi.services.ResourceRecommenderService;
+import org.identifiers.cloud.libapi.Configuration;
 
 /**
  * @author Manuel Bernal Llinares <mbdebian@gmail.com>

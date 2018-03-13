@@ -2,7 +2,6 @@ package org.identifiers.cloud.libapi.services;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.identifiers.cloud.libapi.ApiServicesFactory;
 import org.identifiers.cloud.libapi.models.ServiceResponse;
 import org.identifiers.cloud.libapi.models.registry.Requester;
 import org.identifiers.cloud.libapi.models.registry.requests.prefixregistration.ServiceRequestRegisterPrefixPayload;

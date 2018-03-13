@@ -2,7 +2,6 @@ package org.identifiers.cloud.libapi.services;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.identifiers.cloud.libapi.ApiServicesFactory;
 import org.identifiers.cloud.libapi.models.resourcerecommender.ResolvedResource;
 import org.identifiers.cloud.libapi.models.resourcerecommender.ServiceResponseRecommend;
 import org.junit.Test;
