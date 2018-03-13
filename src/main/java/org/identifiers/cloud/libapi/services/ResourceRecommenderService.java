@@ -41,6 +41,13 @@ public class ResourceRecommenderService {
 
     // TODO - Extend this in the future to support HTTPS
 
+    /**
+     * This helper method prepares the recommendation request, for a given list of resolved resources and a given
+     * service endpoint.
+     * @param resources list of resolved resources for which we want to get a recommendation index.
+     * @param serviceApiEndpoint the service end point where the request should be submitted to.
+     * @return a RequestEntity with all the given information.
+     */
     private RequestEntity<ServiceRequestRecommend> prepareRecommendRequest(List<ResolvedResource> resources,
                                                                            String serviceApiEndpoint) {
         // Prepare the request body
