@@ -22,13 +22,19 @@ public class ApiServicesFactory {
     // --- Resource Recommender Service ---
     /**
      * Get an instance of the Resource Recommender service client, pointing to the given host, on default port 80.
-     * @param host running the service.
+     * @param host host running the service.
      * @return an instance of the service client pointing to the given host.
      */
     public static ResourceRecommenderService getResourceRecommenderService(String host) {
         return new ResourceRecommenderService(host, "80");
     }
 
+    /**
+     * Get an instance of the Resource Recommender service client, pointing to the given host and port.
+     * @param host host running the service
+     * @param port
+     * @return
+     */
     public static ResourceRecommenderService getResourceRecommenderService(String host, String port) {
         return new ResourceRecommenderService(host, port);
     }
@@ -37,7 +43,7 @@ public class ApiServicesFactory {
     // --- Resolver Service ---
     /**
      * Get an instance of the Resolver service client, pointing to the given host, on default port 80.
-     * @param host running the service.
+     * @param host host running the service
      * @return an instance of the service client pointing to the given host.
      */
     public static ResolverService getResolverService(String host) {
@@ -56,7 +62,7 @@ public class ApiServicesFactory {
     // --- Metadata Service ---
     /**
      * Get an instance of the Metadata service client, pointing to the given host, on default port 80.
-     * @param host running the service.
+     * @param host host running the service
      * @return an instance of the service client pointing to the given host.
      */
     public static MetadataService getMetadataService(String host) {
@@ -75,7 +81,7 @@ public class ApiServicesFactory {
     // --- Registry Service ---
     /**
      * Get an instance of the Registry service client, pointing to the given host, on default port 80.
-     * @param host running the service.
+     * @param host host running the service
      * @return an instance of the service client pointing to the given host.
      */
     public static RegistryService getRegistryService(String host) {
