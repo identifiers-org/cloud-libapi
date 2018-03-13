@@ -54,7 +54,7 @@ public class ApiServicesFactory {
      * Get an instance of the Resolver service client, pointing to the given host and port.
      * @param host host running the service.
      * @param port port where the service is listening for connections.
-     * @return
+     * @return an instance of the service client.
      */
     public static ResolverService getResolverService(String host, String port) {
         return new ResolverService(host, port);
