@@ -45,6 +45,11 @@
         <url>https://github.com/identifiers-org/cloud-libapi/tree/master</url>
     </scm>
 
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/identifiers-org/cloud-libapi/issues</url>
+    </issueManagement>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
