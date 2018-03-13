@@ -208,6 +208,13 @@ public class RegistryService {
     }
 
     // --- API ---
+
+    /**
+     * Registry Service API: request prefix registration for the given prefix registration information.
+     * @param registrationPayload prefix registration information.
+     * @return prefix registration request response or a guaranteed default response, for this context, where HTTP
+     * Status code and error message fields have information on what could have happened.
+     */
     public ServiceResponseRegisterPrefix requestPrefixRegistration(ServiceRequestRegisterPrefixPayload registrationPayload) {
         String serviceApiEndpoint = serviceApiBaseline;
         ServiceResponseRegisterPrefix response = createDefaultResponseRegisterPrefixRequest();
