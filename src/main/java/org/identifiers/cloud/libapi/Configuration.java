@@ -148,6 +148,11 @@ public class Configuration {
         logger.info("Deployment information LOADED!");
     }
 
+    /**
+     * This method configures the library to stick to a particular identifiers.org deployment, or a random one if "ANY"
+     * is set.
+     * @param selector identifiers.org satellite deployment selector
+     */
     public static void selectDeployment(InfrastructureDeploymentSelector selector) {
         deploymentSelection = selector;
     }
