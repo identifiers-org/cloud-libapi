@@ -93,7 +93,6 @@ public class ResolverService {
     }
 
     // --- API ---
-
     /**
      * Resolver Service API: resolve a given Compact ID to a list of possible resources / providers of information on
      * that Compact ID.
@@ -107,6 +106,15 @@ public class ResolverService {
         return doRequestResolution(serviceApiEndpoint);
     }
 
+    /**
+     * Resolver Service API: resolve a given Compact ID to a list of possible resources / providers of information on
+     * that Compact ID, constraining the providers list to a single provider that matches the given selector.
+     * @param compactId Compact ID to resolve.
+     * @param selector this parameter will be used to select a provider from the result list of resolved resources.
+     * @return the service response, containing the resolution information, or a default guaranteed response (with an
+     * empty list of resources / providers) where the HTTP Status code and error message fields contain infromation on
+     * what could have happened to the request.
+     */
     public ServiceResponseResolve requestCompactIdResolution(String compactId, String selector) {
         String serviceApiEndpoint = String.format("%s/%s/%s", serviceApiBaseline, selector, compactId);
         return doRequestResolution(serviceApiEndpoint);
