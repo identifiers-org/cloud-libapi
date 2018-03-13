@@ -162,6 +162,15 @@ public class MetadataService {
         return doRequestFetchMetadata(serviceApiEndpoint);
     }
 
+    /**
+     * Metadata Service API: get metadata information for a given URL.
+     *
+     * Whatever happens with the request, at least a default (empty metadata) response is guaranteed, with the HTTP
+     * Status code and error message fields set accordingly.
+     * @param url URL from which metadata wants to be extracted.
+     * @return service response, that includes potentially found metadata, or indications on what could have happened
+     * via HTTP Status codes and additional information on the error message field.
+     */
     public ServiceResponseFetchMetadataForUrl getMetadataForUrl(String url) {
         String serviceApiEndpoint = String.format("%s/getMetadataForUrl", serviceApiBaseline);
         ServiceResponseFetchMetadataForUrl response = createDefaultResponseFetchMetadataForUrl(HttpStatus.OK, "");
