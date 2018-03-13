@@ -10,6 +10,11 @@ import java.io.Serializable;
  * Package: org.identifiers.cloud.libapi.models.ResourceRecommender
  * Timestamp: 2018-03-06 12:15
  * ---
+ *
+ * This POJO models a recommendation for a particular resource, produced by the Resource Reommendation service.
+ *
+ * As Resource Recommender service issues recommendation metrics as scores / indexes, this class implements the
+ * Comparable interface for easy sorting on the client side.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ResourceRecommendation implements Serializable, Comparable<ResourceRecommendation> {
