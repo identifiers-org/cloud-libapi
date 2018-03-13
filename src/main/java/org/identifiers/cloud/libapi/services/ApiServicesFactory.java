@@ -79,7 +79,7 @@ public class ApiServicesFactory {
      * Get an instance of the Metadata service client, pointing to the given host and port.
      * @param host host running the service.
      * @param port port where the service is listening for connections.
-     * @return
+     * @return an instance of the service client.
      */
     public static MetadataService getMetadataService(String host, String port) {
         return new MetadataService(host, port);
@@ -104,7 +104,7 @@ public class ApiServicesFactory {
      * Get an instance of the Registry service client, pointing to the given host and port.
      * @param host host running the service.
      * @param port port where the service is listening for connections.
-     * @return an instance of the service client
+     * @return an instance of the service client.
      */
     public static RegistryService getRegistryService(String host, String port) {
         return new RegistryService(host, port);
@@ -113,7 +113,7 @@ public class ApiServicesFactory {
     /**
      * Get an instance of the Registry service client, randomly pointing to one of the identifiers.org deployments
      * (AWS, Google Cloud, Azure...).
-     * @return an instance of the service client
+     * @return an instance of the service client.
      */
     public static RegistryService getRegistryService() {
         return getRegistryService(Configuration.getServiceLocation(Configuration.ServiceName.REGISTRY));
