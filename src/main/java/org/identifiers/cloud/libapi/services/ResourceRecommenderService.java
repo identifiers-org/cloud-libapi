@@ -75,6 +75,14 @@ public class ResourceRecommenderService {
         return restTemplate.exchange(request, ServiceResponseRecommend.class);
     }
 
+    /**
+     * This helper method creates a default recommendation request response, with contains empty recommendations,
+     * customized with the given HTTP Status code and error message information.
+     * @param httpStatus HTTP Status to set in the service response being created.
+     * @param errorMessage error message to set in the service resopnse being created.
+     * @return a recommend request service response, with empty recommendation data, and customized HTTP Status code and
+     * error information.
+     */
     private ServiceResponseRecommend createDefaultResponse(HttpStatus httpStatus, String errorMessage) {
         ServiceResponseRecommend response = new ServiceResponseRecommend();
         response
