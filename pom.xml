@@ -32,6 +32,10 @@
             <organization>EMBL-European Bioinformatics Institute</organization>
             <organizationUrl>http://ebi.ac.uk/</organizationUrl>
             <timezone>Europe/London</timezone>
+            <roles>
+                <role>architect</role>
+                <role>developer</role>
+            </roles>
         </developer>
     </developers>
 
