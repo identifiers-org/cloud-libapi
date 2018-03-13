@@ -306,6 +306,15 @@ public class RegistryService {
         return requestValidation(String.format("%s/%s", serviceApiBaseline, "validateRegisterPrefixOrganization"), payload);
     }
 
+    /**
+     * Registry Service API: validate 'preferred prefix' field for a prefix registration request.
+     *
+     * This will not validate the whole prefix registration request, only the 'preferred prefix' field of the request.
+     * @param payload a prefix registration payload that contains a value for the field that is being validated.
+     * @return validation request response for the prefix registration field that is being validated, or a guaranteed
+     * default response, for this context, where HTTP Status code and error message fields have information on what
+     * could have happened.
+     */
     public ServiceResponseValidateRequest requestValidationPreferredPrefix(ServiceRequestRegisterPrefixPayload payload) {
         return requestValidation(String.format("%s/%s", serviceApiBaseline, "validateRegisterPrefixPreferredPrefix"), payload);
     }
