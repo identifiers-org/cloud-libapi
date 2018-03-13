@@ -145,12 +145,17 @@ public class RegistryService {
      * Helper method that submits a given prefix registration requests to the registry service and expects a response
      * accordingly.
      * @param request prefix registration request to be submitted.
-     * @return the corresponding response from the service.
+     * @return a ResponseEntity specialized with the expected prefix registration request response type.
      */
     private ResponseEntity<ServiceResponseRegisterPrefix> doRegisterPrefixRequest(RequestEntity<ServiceRequestRegisterPrefix> request) {
         return getRestTemplate().exchange(request, ServiceResponseRegisterPrefix.class);
     }
 
+    /**
+     * Helper method that submits a given validation requests to the registry service and expects a response accordingly.
+     * @param request validation request to be submitted.
+     * @return a ResponseEntity specialized with the expected validation request response type.
+     */
     private ResponseEntity<ServiceResponseValidateRequest> doValidateRequest(RequestEntity<ServiceRequestValidate> request) {
         return getRestTemplate().exchange(request, ServiceResponseValidateRequest.class);
     }
