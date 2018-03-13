@@ -11,6 +11,14 @@ import org.identifiers.cloud.libapi.services.ResourceRecommenderService;
  * Package: org.identifiers.cloud.libapi
  * Timestamp: 2018-03-06 13:18
  * ---
+ *
+ * Service wrappers / clients are meant to be instantiated via this Abstract Factory.
+ *
+ * The mechanism for getting an instance of every service client is the same for all of them, and it has three different
+ * options:
+ *  - With no information: a random deployment for the service from identifiers.org will be used.
+ *  - With host information: the client will use the service on that host on the default port 80.
+ *  - With host and port information: the client will use the service on the specified host and port.
  */
 public class ApiServicesFactory {
 
