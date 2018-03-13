@@ -63,6 +63,11 @@ public class ApiServicesFactory {
         return new ResolverService(host, port);
     }
 
+    /**
+     * Get an instance of the Resolver service client, randomly pointing to one of the identifiers.org deployments
+     * (AWS, Google Cloud, Azure...).
+     * @return an instance of the service client
+     */
     public static ResolverService getResolverService() {
         return getResolverService(Configuration.getServiceLocation(Configuration.ServiceName.RESOLVER));
     }
