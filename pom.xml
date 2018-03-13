@@ -4,7 +4,7 @@
 
     <groupId>org.identifiers.cloud</groupId>
     <artifactId>libapi</artifactId>
-    <version>0.0.1-SNAPSHO</version>
+    <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>libapi</name>
