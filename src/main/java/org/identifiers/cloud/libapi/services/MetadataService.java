@@ -55,6 +55,15 @@ public class MetadataService {
         return response;
     }
 
+    /**
+     * This method prepares a default or baseline response to a metadata fetch request for a given URL, customized with
+     * the given HTTP Status and error message.
+     *
+     * A default response when requesting metadata for a given URL is a response that contains no metadata.
+     * @param httpStatus custom HTTP Status to set in the default response being created
+     * @param errorMessage custom error message to set in the default response being created
+     * @return a default response for a metadata fetching request on a given URL
+     */
     private ServiceResponseFetchMetadataForUrl createDefaultResponseFetchMetadataForUrl(HttpStatus httpStatus, String errorMessage) {
         ServiceResponseFetchMetadataForUrl response = new ServiceResponseFetchMetadataForUrl();
         response.setApiVersion(apiVersion)
