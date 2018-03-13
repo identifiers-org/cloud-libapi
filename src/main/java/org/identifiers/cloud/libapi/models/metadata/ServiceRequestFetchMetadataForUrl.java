@@ -10,7 +10,7 @@ import org.identifiers.cloud.libapi.models.ServiceRequest;
  * ---
  *
  * This class models a metadata request, to the metadata service, for a given URL, by specializing the ServiceRequest
- * class with the right payload
+ * class with the right payload.
  */
 public class ServiceRequestFetchMetadataForUrl extends ServiceRequest<RequestFetchMetadataForUrlPayload> {
 }
