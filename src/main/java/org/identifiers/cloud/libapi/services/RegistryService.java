@@ -44,6 +44,13 @@ public class RegistryService {
         serviceApiBaseline = String.format("http://%s:%s", host, port);
     }
 
+    /**
+     * This generic helper will initialize a default response from the registry service, with given payload, and api
+     * version information as well as a default HTTP Status code.
+     * @param response service response to initialize.
+     * @param payload payload to use for response initialization.
+     * @param <T> this parameter is the type of the payload that the given response is specialized on.
+     */
     private <T> void initDefaultResponse(ServiceResponse<T> response, T payload) {
         response.setApiVersion(apiVersion)
                 .setHttpStatus(HttpStatus.OK);
