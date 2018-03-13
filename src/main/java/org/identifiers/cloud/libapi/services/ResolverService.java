@@ -54,6 +54,13 @@ public class ResolverService {
         return response;
     }
 
+    /**
+     * Helper method that submits a resolution HTTP GET request to the resolver service, and expects the corresponding
+     * response.
+     * @param serviceApiEndpoint service endpoint for the HTTP GET request.
+     * @return resolution request response from the service or a guaranteed default response, where HTTP Status code and
+     * error message contains information on what could have happened with the request.
+     */
     private ServiceResponseResolve doRequestResolution(String serviceApiEndpoint) {
         ServiceResponseResolve response = createDefaultResponse(HttpStatus.OK, "");
         try {
