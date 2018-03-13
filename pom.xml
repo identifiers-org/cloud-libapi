@@ -19,6 +19,11 @@
         </license>
     </licenses>
 
+    <organization>
+        <name>The European Bioinformatics Institute</name>
+        <url>https://ebi.ac.uk</url>
+    </organization>
+
     <developers>
         <developer>
             <id>mbernal</id>
