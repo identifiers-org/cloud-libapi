@@ -11,6 +11,10 @@ import java.util.List;
  * Package: org.identifiers.cloud.libapi.models.ResourceRecommender
  * Timestamp: 2018-03-06 12:13
  * ---
+ *
+ * As a result to a recommendation requests on the Resource Recommender service, a list of recommendations for all the
+ * 'resolved resources' that were analized is produced. And this will be part of the response from the Resource
+ * Recommender service.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ResponseRecommendPayload implements Serializable {
