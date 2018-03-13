@@ -32,7 +32,7 @@
     <scm>
         <connection>scm:git:git://github.com/identifiers-org/cloud-libapi.git</connection>
         <developerConnection>scm:git:ssh://github.com:identifiers-org/cloud-libapi.git</developerConnection>
-        <url>https://github.com/identifiers-org/cloud-libapi</url>
+        <url>https://github.com/identifiers-org/cloud-libapi/tree/master</url>
     </scm>
 
     <properties>
