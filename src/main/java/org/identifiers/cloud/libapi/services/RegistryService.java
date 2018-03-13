@@ -26,6 +26,8 @@ import java.net.URISyntaxException;
  * Package: org.identifiers.cloud.libapi.services
  * Timestamp: 2018-03-08 11:31
  * ---
+ *
+ * This class implements a client to the Registry service API.
  */
 public class RegistryService {
     private static final String apiVersion = "1.0";
