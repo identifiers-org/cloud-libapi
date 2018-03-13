@@ -31,8 +31,8 @@ public class ApiServicesFactory {
 
     /**
      * Get an instance of the Resource Recommender service client, pointing to the given host and port.
-     * @param host host running the service
-     * @param port
+     * @param host host running the service.
+     * @param port port where the service is listening for connections.
      * @return
      */
     public static ResourceRecommenderService getResourceRecommenderService(String host, String port) {
