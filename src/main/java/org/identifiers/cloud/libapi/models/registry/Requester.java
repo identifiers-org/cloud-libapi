@@ -8,6 +8,9 @@ import java.io.Serializable;
  * Package: org.identifiers.org.cloud.ws.register.models
  * Timestamp: 2018-01-30 20:53
  * ---
+ *
+ * This POJO is part of the payload for requesting a prefix registration or validation operations on the registry
+ * service. It models the requester of the prefix registration request.
  */
 public class Requester implements Serializable {
     private String name;
