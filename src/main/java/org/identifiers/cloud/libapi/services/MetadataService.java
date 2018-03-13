@@ -37,6 +37,15 @@ public class MetadataService {
         serviceApiBaseline = String.format("http://%s:%s", host, port);
     }
 
+    /**
+     * This method prepares a default or baseline response to a metadata fetch request for a given Compact ID,
+     * customized with the given HTTP Status and error message.
+     *
+     * A default response when requesting metadata for a given Compact ID is a response that contains no metadata.
+     * @param httpStatus custom HTTP Status to set in the default response being created
+     * @param errorMessage custom error message to set in the default response being created
+     * @return a default response for a metadata fetching request on a Compact ID
+     */
     private ServiceResponseFetchMetadata createDefaultResponseFetchMetadata(HttpStatus httpStatus, String errorMessage) {
         ServiceResponseFetchMetadata response = new ServiceResponseFetchMetadata();
         response.setApiVersion(apiVersion)
