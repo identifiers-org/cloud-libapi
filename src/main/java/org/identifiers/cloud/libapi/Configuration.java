@@ -30,6 +30,10 @@ public class Configuration {
     public static final int WS_REQUEST_RETRY_MAX_ATTEMPTS = 12;
     public static final int WS_REQUEST_RETRY_BACK_OFF_PERIOD = 1500; // 1.5 seconds
     public static Logger logger = LoggerFactory.getLogger(Configuration.class);
+
+    /**
+     * This structure models the keys that represent each identifiers.org satellite deployment.
+     */
     public enum InfrastructureDeploymentSelector {
         AWS("aws", "Amazon Web Services deployment"),
         GCLOUD("gcloud", "Google Cloud deployment"),
