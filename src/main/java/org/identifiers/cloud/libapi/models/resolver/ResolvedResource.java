@@ -10,6 +10,9 @@ import java.io.Serializable;
  * Package: org.identifiers.cloud.libapi.models.resolver
  * Timestamp: 2018-03-07 7:28
  * ---
+ *
+ * This POJO models a Compact ID information provider, as result of a resolution request to the Resolver for a
+ * particular Compact ID.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ResolvedResource implements Serializable {
