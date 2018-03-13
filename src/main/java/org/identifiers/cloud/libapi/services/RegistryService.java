@@ -67,6 +67,10 @@ public class RegistryService {
         return response;
     }
 
+    /**
+     * This helper creates a default response for the prefix registration request interface of the registry service.
+     * @return default prefix registration response.
+     */
     private ServiceResponseRegisterPrefix createDefaultResponseRegisterPrefixRequest() {
         ServiceResponseRegisterPrefix response = new ServiceResponseRegisterPrefix();
         initDefaultResponse(response, new ServiceResponseRegisterPrefixPayload());
