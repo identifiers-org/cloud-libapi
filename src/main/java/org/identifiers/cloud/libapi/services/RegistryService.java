@@ -85,6 +85,11 @@ public class RegistryService {
         request.setApiVersion(apiVersion);
     }
 
+    /**
+     * This helper method creates a request for the prefix registration interface of the registry service.
+     * @param payload body of the request.
+     * @return the created service request.
+     */
     private ServiceRequestRegisterPrefix createRequestRegisterPrefix(ServiceRequestRegisterPrefixPayload payload) {
         ServiceRequestRegisterPrefix request = new ServiceRequestRegisterPrefix();
         initRequest(request);
