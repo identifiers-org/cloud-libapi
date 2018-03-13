@@ -75,6 +75,12 @@ public class MetadataService {
         return response;
     }
 
+    /**
+     * This method sends a HTTP GET request to the given service endpoint, expecting a metadata fetch request response
+     * back from it.
+     * @param serviceApiEndpoint this is the endpoint URL where to submit the request to.
+     * @return a metadata fetch request response.
+     */
     private ServiceResponseFetchMetadata doRequestFetchMetadata(String serviceApiEndpoint) {
         ServiceResponseFetchMetadata response = createDefaultResponseFetchMetadata(HttpStatus.OK, "");
         try {
