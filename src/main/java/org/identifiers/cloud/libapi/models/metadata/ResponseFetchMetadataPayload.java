@@ -19,6 +19,11 @@ public class ResponseFetchMetadataPayload implements Serializable {
         return metadata;
     }
 
+    /**
+     * This is the constructor used by the service wrapper, no client library will instantiate this response.
+     * @param metadata fetched from the best scoring resource that provides data on the given Compact ID
+     * @return the metadata payload object that is part of the response from the metadata service
+     */
     public ResponseFetchMetadataPayload setMetadata(Object metadata) {
         this.metadata = metadata;
         return this;
