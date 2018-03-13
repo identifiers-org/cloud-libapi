@@ -112,6 +112,12 @@ public class MetadataService {
         return response;
     }
 
+    /**
+     * This method prepares the HTTP POST request for fetching metadata from a given URL.
+     * @param url URL to fetch metadata from.
+     * @param serviceApiEndpoint service endpoint URL for this request.
+     * @return a request entity with all set to go, including the request body.
+     */
     private RequestEntity<ServiceRequestFetchMetadataForUrl> prepareRequestFetchMetadataForUrl(String url,
                                                                                                String serviceApiEndpoint) {
         // Prepare the request body
