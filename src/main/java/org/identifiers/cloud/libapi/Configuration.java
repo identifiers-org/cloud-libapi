@@ -207,6 +207,11 @@ public class Configuration {
         return retryTemplate;
     }
 
+    /**
+     * This factory method creates an instance of the response error handler used all over the library by the rest
+     * templates.
+     * @return a response error handler to use in a rest template.
+     */
     public static ResponseErrorHandler responseErrorHandler() {
         return new RestTemplateErrorHandlerLogError();
     }
