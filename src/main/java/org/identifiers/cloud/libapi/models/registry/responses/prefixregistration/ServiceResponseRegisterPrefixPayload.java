@@ -10,6 +10,8 @@ import java.io.Serializable;
  * Package: org.identifiers.cloud.libapi.models.registry.responses.prefixregistration
  * Timestamp: 2018-03-08 5:42
  * ---
+ *
+ * This class models the payload information within a prefix registration request response, from the registry service.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ServiceResponseRegisterPrefixPayload implements Serializable {
