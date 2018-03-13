@@ -64,6 +64,11 @@ public class ResourceRecommenderService {
         return request;
     }
 
+    /**
+     * Helper method to submit the request and collect a ResponseEntity from the service response.
+     * @param request the request to be submitted.
+     * @return a ResponseEntity out of the received service response.
+     */
     private ResponseEntity<ServiceResponseRecommend> makeRequest(RequestEntity<ServiceRequestRecommend> request) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.setErrorHandler(Configuration.responseErrorHandler());
