@@ -21,6 +21,8 @@ import java.util.List;
  * Package: org.identifiers.cloud.libapi.services
  * Timestamp: 2018-03-06 11:35
  * ---
+ *
+ * This class implements a client to the Resource Recommender service API.
  */
 public class ResourceRecommenderService {
     public static final String apiVersion = "1.0";
