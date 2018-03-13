@@ -128,6 +128,10 @@ public class RegistryService {
         return entityRequest;
     }
 
+    /**
+     * Helper method to instantiate rest templates used for submitting requests to the registry service.
+     * @return a new instance of the RestTemplate
+     */
     private RestTemplate getRestTemplate() {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.setErrorHandler(Configuration.responseErrorHandler());
