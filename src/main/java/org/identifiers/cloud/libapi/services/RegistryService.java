@@ -131,8 +131,8 @@ public class RegistryService {
     /**
      * Helper method to instantiate rest templates used for submitting requests to the registry service.
      *
-     * It will also set the right error handler.
-     * 
+     * It will also set the right error handler in the rest template instance.
+     *
      * @return a new instance of the RestTemplate
      */
     private RestTemplate getRestTemplate() {
