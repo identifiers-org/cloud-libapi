@@ -141,6 +141,12 @@ public class RegistryService {
         return restTemplate;
     }
 
+    /**
+     * Helper method that submits a given prefix registration requests to the registry service and expects a response
+     * accordingly.
+     * @param request prefix registration request to be submitted.
+     * @return the corresponding response from the service.
+     */
     private ResponseEntity<ServiceResponseRegisterPrefix> doRegisterPrefixRequest(RequestEntity<ServiceRequestRegisterPrefix> request) {
         return getRestTemplate().exchange(request, ServiceResponseRegisterPrefix.class);
     }
