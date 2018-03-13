@@ -177,9 +177,9 @@
                                 <goal>jar</goal>
                             </goals>
                             <!-- Prevent that nasty error from Java 8 DocLint new feature -->
-                            <configuration>
+                            <!-- <configuration>
                                 <additionalparam>-Xdoclint:none</additionalparam>
-                            </configuration>
+                            </configuration> -->
                         </execution>
                     </executions>
                 </plugin>
