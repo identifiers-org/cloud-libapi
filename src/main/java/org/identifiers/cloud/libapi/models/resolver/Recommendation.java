@@ -10,6 +10,9 @@ import java.io.Serializable;
  * Package: org.identifiers.cloud.libapi.models.resolver
  * Timestamp: 2018-03-07 7:31
  * ---
+ *
+ * This class models a recommendation score, with a posisble explanation, for a particular resource in the response from
+ * the Resolver service, when the resolution of a Comapct ID has been requested.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Recommendation implements Serializable {
