@@ -10,6 +10,11 @@ import java.io.Serializable;
  * Package: org.identifiers.cloud.libapi.models.registry.requests.prefixregistration
  * Timestamp: 2018-01-30 17:47
  * ---
+ *
+ * This class models the payload used when interacting with the registry service for registration and validation
+ * requests.
+ *
+ * It's a basic POJO with self explanatory fields.
  */
 public class ServiceRequestRegisterPrefixPayload implements Serializable {
     private String name;
