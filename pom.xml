@@ -25,9 +25,6 @@
             <email>mbdebian@gmail.com</email>
             <organization>EMBL-European Bioinformatics Institute</organization>
             <organizationUrl>http://ebi.ac.uk/</organizationUrl>
-            <roles>
-                <role>developer</role>
-            </roles>
             <timezone>Europe/London</timezone>
         </developer>
     </developers>
