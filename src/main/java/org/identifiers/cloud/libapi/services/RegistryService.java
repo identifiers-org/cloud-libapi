@@ -38,7 +38,7 @@ public class RegistryService {
 
     }
 
-    protected RegistryService(String host, String port) {
+    RegistryService(String host, String port) {
         serviceApiBaseline = String.format("http://%s:%s", host, port);
     }
 
