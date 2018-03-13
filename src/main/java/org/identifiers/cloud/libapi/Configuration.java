@@ -21,6 +21,10 @@ import java.util.*;
  * Package: org.identifiers.cloud.libapi
  * Timestamp: 2018-03-06 11:36
  * ---
+ *
+ * This class defines the configuration for this software library.
+ *
+ * It includes information about identifiers.org satellite deployments and services.
  */
 public class Configuration {
     public static final int WS_REQUEST_RETRY_MAX_ATTEMPTS = 12;
