@@ -38,7 +38,7 @@ public class MetadataService {
     }
 
     /**
-     * This method prepares a default or baseline response to a metadata fetch request for a given Compact ID,
+     * This helper method prepares a default or baseline response to a metadata fetch request for a given Compact ID,
      * customized with the given HTTP Status and error message.
      *
      * A default response when requesting metadata for a given Compact ID is a response that contains no metadata.
@@ -56,7 +56,7 @@ public class MetadataService {
     }
 
     /**
-     * This method prepares a default or baseline response to a metadata fetch request for a given URL, customized with
+     * This helper method prepares a default or baseline response to a metadata fetch request for a given URL, customized with
      * the given HTTP Status and error message.
      *
      * A default response when requesting metadata for a given URL is a response that contains no metadata.
@@ -76,7 +76,7 @@ public class MetadataService {
     }
 
     /**
-     * This method sends a HTTP GET request to the given service endpoint, expecting a metadata fetch request response
+     * This helper method sends a HTTP GET request to the given service endpoint, expecting a metadata fetch request response
      * back from it.
      * @param serviceApiEndpoint this is the endpoint URL where to submit the request to.
      * @return a metadata fetch request response.
@@ -113,7 +113,7 @@ public class MetadataService {
     }
 
     /**
-     * This method prepares the HTTP POST request for fetching metadata from a given URL.
+     * This helper method prepares the HTTP POST request for fetching metadata from a given URL.
      * @param url URL to fetch metadata from.
      * @param serviceApiEndpoint service endpoint URL for this request.
      * @return a request entity with all set to go, including the request body.
