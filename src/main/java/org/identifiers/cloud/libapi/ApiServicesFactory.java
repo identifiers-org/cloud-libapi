@@ -23,6 +23,12 @@ import org.identifiers.cloud.libapi.services.ResourceRecommenderService;
 public class ApiServicesFactory {
 
     // --- Resource Recommender Service ---
+
+    /**
+     * Get an instance of the Resource Recommender service client, pointing to the given host, on default port 80.
+     * @param host running the service.
+     * @return an instance of the service client pointing to the given host.
+     */
     public static ResourceRecommenderService getResourceRecommenderService(String host) {
         return new ResourceRecommenderService(host, "80");
     }
