@@ -77,6 +77,10 @@ public class RegistryService {
         return response;
     }
 
+    /**
+     * This helper method initializes the given request with common request data, e.g. api version information.
+     * @param request request to initialize.
+     */
     private void initRequest(ServiceRequest<?> request) {
         request.setApiVersion(apiVersion);
     }
