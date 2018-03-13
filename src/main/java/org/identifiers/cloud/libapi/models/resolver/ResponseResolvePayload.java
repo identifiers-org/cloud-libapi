@@ -11,6 +11,8 @@ import java.util.List;
  * Package: org.identifiers.cloud.libapi.models.resolver
  * Timestamp: 2018-03-07 7:40
  * ---
+ *
+ * This class models the payload part of a resolution request response, to the Resolver service.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ResponseResolvePayload implements Serializable {
