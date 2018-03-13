@@ -109,6 +109,15 @@ public class RegistryService {
         return request;
     }
 
+    /**
+     * This is a generic helper method that prepares an Entity Request, used by the different kinds of POST requests
+     * this service client implements.
+     * @param requestBody body for the POST request
+     * @param serviceApiEndpoint service enpoint for the request.
+     * @param <T> type of the request body
+     * @return the entity request object, or null if there was a problem creating it, e.g. the provided service endpoint
+     * was invalid
+     */
     private <T> RequestEntity<T> prepareEntityRequest(T requestBody, String serviceApiEndpoint) {
         RequestEntity<T> entityRequest = null;
         try {
