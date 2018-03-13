@@ -27,7 +27,11 @@ public class MetadataService {
     private RetryTemplate retryTemplate = Configuration.retryTemplate();
     private String serviceApiBaseline;
 
-    public MetadataService(String host, String port) {
+    private MetadataService() {
+
+    }
+
+    protected MetadataService(String host, String port) {
         serviceApiBaseline = String.format("http://%s:%s", host, port);
     }
 
