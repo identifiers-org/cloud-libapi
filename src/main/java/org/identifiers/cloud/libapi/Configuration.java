@@ -157,6 +157,18 @@ public class Configuration {
         deploymentSelection = selector;
     }
 
+    /**
+     * This method locates the URL of a given identifiers.org satellite deployment service.
+     *
+     * If a selector is locked for a particular deployment, all services will be resolved to that deployment, e.g. if
+     * the selector is 'AWS', all services URLs will belong to that 'AWS' deployment. In case the deployment selector is
+     * 'ANY' (default), a random satellite deployment will be use to retrieve the service URL, i.e. every time you
+     * request the URL of a service like, for example, the resolver, sometimes you'll get the resolver service URL from
+     * the AWS deployment, sometimes the one from Google Cloud, and so on.
+     * @param serviceName name of the service for which we want the URL.
+     * @return the URL of the service being requested.
+     * @throws ConfigurationException in case there's a problem resolving a service URL.
+     */
     public static String getServiceLocation(ServiceName serviceName) throws ConfigurationException {
         if (servicesMap == null) {
             loadServicesMap();
