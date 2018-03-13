@@ -8,12 +8,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * Package: org.identifiers.cloud.libapi.models.metadata
  * Timestamp: 2018-02-17 20:27
  * ---
- */
-@JsonIgnoreProperties(ignoreUnknown = true)
-/**
+ *
  * When submitting a metadata request to the metadata service for a URL, this is the payload to be used, it just
  * contains the URL from which we want to obtain metadata
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class RequestFetchMetadataForUrlPayload {
     private String url;
 
