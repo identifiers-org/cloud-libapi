@@ -112,7 +112,6 @@ public class Configuration {
         servicesMap = new HashMap<>();
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
         try {
-            // TODO
             TypeReference<HashMap<String, HashMap<String, String>>> servicesMapTypeRef
                     = new TypeReference<HashMap<String, HashMap<String, String>>>() {};
             servicesMap = mapper.readValue(Configuration.class
