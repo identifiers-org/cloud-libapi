@@ -88,6 +88,11 @@ public class ApiServicesFactory {
         return new MetadataService(host, port);
     }
 
+    /**
+     * Get an instance of the Metadata service client, randomly pointing to one of the identifiers.org deployments
+     * (AWS, Google Cloud, Azure...).
+     * @return an instance of the service client
+     */
     public static MetadataService getMetadataService() {
         return getMetadataService(Configuration.getServiceLocation(Configuration.ServiceName.METADATA));
     }
