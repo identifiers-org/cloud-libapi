@@ -10,6 +10,9 @@ import java.io.Serializable;
  * Package: org.identifiers.cloud.libapi.models.ResourceRecommender
  * Timestamp: 2018-03-06 11:58
  * ---
+ *
+ * This POJO models the concept of a "resolved resource" for the recommender service, i.e. a resource that has been
+ * found candidate to provide information on a given Compact ID.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ResolvedResource implements Serializable {
