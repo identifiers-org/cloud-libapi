@@ -31,7 +31,7 @@
 
     <scm>
         <connection>scm:git:git://github.com/identifiers-org/cloud-libapi.git</connection>
-        <developerConnection>scm:git:git@github.com:identifiers-org/cloud-libapi.git</developerConnection>
+        <developerConnection>scm:git:ssh://github.com:identifiers-org/cloud-libapi.git</developerConnection>
         <url>https://github.com/identifiers-org/cloud-libapi</url>
     </scm>
 
