@@ -18,6 +18,8 @@ import java.util.ArrayList;
  * Package: org.identifiers.cloud.libapi.services
  * Timestamp: 2018-03-07 10:04
  * ---
+ *
+ * This class implements a client to the Resolver service API.
  */
 public class ResolverService {
     public static final String apiVersion = "1.0";
@@ -34,6 +36,14 @@ public class ResolverService {
         serviceApiBaseline = String.format("http://%s:%s", host, port);
     }
 
+    /**
+     * This helper method creates a default / baseline response for a resolution request, where the resolved resources
+     * are empty, the api version information is properly set, and the HTTP Status code and error message fields are
+     * customized to the given parameters.
+     * @param httpStatus HTTP Status to set in the default response object.
+     * @param errorMessage error message to set in the default response object.
+     * @return a customized default resolution request service response.
+     */
     private ServiceResponseResolve createDefaultResponse(HttpStatus httpStatus, String errorMessage) {
         ServiceResponseResolve response = new ServiceResponseResolve();
         response
