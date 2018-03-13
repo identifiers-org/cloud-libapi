@@ -110,6 +110,11 @@ public class ApiServicesFactory {
         return new RegistryService(host, port);
     }
 
+    /**
+     * Get an instance of the Registry service client, randomly pointing to one of the identifiers.org deployments
+     * (AWS, Google Cloud, Azure...).
+     * @return an instance of the service client
+     */
     public static RegistryService getRegistryService() {
         return getRegistryService(Configuration.getServiceLocation(Configuration.ServiceName.REGISTRY));
     }
