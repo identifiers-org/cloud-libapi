@@ -104,6 +104,10 @@ public class Configuration {
     public static InfrastructureDeploymentSelector deploymentSelection = InfrastructureDeploymentSelector.ANY;
     private static Map<String, Map<String, String>> servicesMap = null;
 
+    /**
+     * Load the information on identifiers.org satellite deployments from a well known deployment descriptor file.
+     * @throws ConfigurationException if there's any problem loading the data from the deployment descriptor file.
+     */
     private static void loadServicesMap() throws ConfigurationException {
         servicesMap = new HashMap<>();
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
