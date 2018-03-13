@@ -93,6 +93,13 @@ public class ResourceRecommenderService {
         return response;
     }
 
+    // --- API ---
+    /**
+     * Resource Recommender Service API: get recommendation indexes / scores for a given list of resolved resources.
+     * @param resources the list of resolved resources to get recommendation data on
+     * @return a recommend request response from the service or, a guaranteed default response customized with the HTTP
+     * Status code and the error message that describe what could have happened.
+     */
     public ServiceResponseRecommend requestRecommendations(final List<ResolvedResource> resources) {
         String serviceApiEndpoint = serviceApiBaseline;
         ServiceResponseRecommend response = createDefaultResponse(HttpStatus.OK, "");
