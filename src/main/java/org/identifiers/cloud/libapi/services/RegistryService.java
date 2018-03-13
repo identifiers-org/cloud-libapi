@@ -34,7 +34,11 @@ public class RegistryService {
     private RetryTemplate retryTemplate = Configuration.retryTemplate();
     private String serviceApiBaseline;
 
-    public RegistryService(String host, String port) {
+    private RegistryService() {
+
+    }
+    
+    protected RegistryService(String host, String port) {
         serviceApiBaseline = String.format("http://%s:%s", host, port);
     }
 
@@ -98,7 +102,7 @@ public class RegistryService {
         return getRestTemplate().exchange(request, ServiceResponseValidateRequest.class);
     }
 
-    public ServiceResponseValidateRequest requestValidation(String serviceApiEndpoint,
+    private ServiceResponseValidateRequest requestValidation(String serviceApiEndpoint,
                                                             ServiceRequestRegisterPrefixPayload payload) {
         ServiceResponseValidateRequest response = createDefaultResponseValidationRequest();
         logger.info("Requesting validation at '{}'", serviceApiEndpoint);
