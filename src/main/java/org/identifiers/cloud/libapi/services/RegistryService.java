@@ -97,6 +97,11 @@ public class RegistryService {
         return request;
     }
 
+    /**
+     * This helper method creates a request for the validation interface of the registry service.
+     * @param payload body of the request.
+     * @return the created service request.
+     */
     private ServiceRequestValidate createRequestValidationRequest(ServiceRequestRegisterPrefixPayload payload) {
         ServiceRequestValidate request = new ServiceRequestValidate();
         initRequest(request);
