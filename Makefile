@@ -43,7 +43,7 @@ development_run_tests: development_env_up
 	@echo "<===|DEVOPS|===> [TESTS] Running Unit Tests"
 	@mvn clean test
 
-deploy:
+deploy: clean
 	@echo "<===|DEVOPS|===> [DEPLOY] Deploying library to Maven Respository"
 	@mvn clean deploy -P ossrh -DskipTests
 
