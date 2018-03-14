@@ -69,6 +69,8 @@ if $ok ; then
     make
     # Prepare the possible Project next version
     make set_next_development_version
+    git commit -am "Next project development version prepared"
+    git push
 else
     echo -e "\t--- ABORT --- Something went wrong"
 fi
