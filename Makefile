@@ -22,3 +22,7 @@ development_env_down:
 	@# TODO Clean this way of referencing the target name in future iterations
 	@rm -f development_env_up
 	@touch development_env_down
+
+development_run_tests: development_env_up
+	@echo "<===|DEVOPS|===> [TESTS] Running Unit Tests"
+	@mvn clean test
