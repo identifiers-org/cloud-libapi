@@ -31,7 +31,7 @@ development_run_tests: development_env_up
 
 deploy:
 	@echo "<===|DEVOPS|===> [DEPLOY] Deploying library to Maven Respository"
-	#@mvn clean deploy -DskipTests
+	@mvn clean deploy -P ossrh -DskipTests
 
 clean:
 	@echo "<===|DEVOPS|===> [CLEAN] Cleaning the space"
