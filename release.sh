@@ -50,6 +50,7 @@ fi
 
 # Should we publish the changes?
 if $ok ; then
+    # TODO - There is room for detecting if anything went wrong here and revert the changes (feature request)
     echo -e "\tNew version '${version}'"
     echo "${version}" > VERSION
     echo -e "\tUpdate project POM file"
