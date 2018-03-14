@@ -30,7 +30,7 @@ pointing to any of the [identifiers.org](https://identifiers.org) cloud deployme
 
 
 ## Metadata Service
-The following code snippet shows how to get an ainstance of the service wrapper for
+The following code snippet shows how to get an instance of the service wrapper for
 [identifiers.org](https://identifiers.org) _Metadata Service_, and submit metadata requests.
 ```java
 import org.identifiers.cloud.libapi.services.ApiServicesFactory;
@@ -52,3 +52,5 @@ ServiceResponseFetchMetadataForUrl response = ApiServicesFactory
 Additional factory methods are available where only the service 'host' is specified, in that case port '80' will be 
 used, or where no 'host' or 'port' information is given, so the factory will provide an instance of the service client 
 pointing to any of the [identifiers.org](https://identifiers.org) cloud deployments.
+
+
