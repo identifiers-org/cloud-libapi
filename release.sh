@@ -75,6 +75,8 @@ if $ok ; then
     pom_next_snapshot="$(./increment_version.sh -p ${version})-SNAPSHOT"
     echo -e "\tSetting next POM version to ${pom_next_snapshot}"
     mvn versions:set -DnewVersion=${pom_next_snapshot}
+    echo -e "\tCleaning backup POM files"
+    mvn versions:commit
 else
     echo -e "\t--- ABORT --- Something went wrong"
 fi
