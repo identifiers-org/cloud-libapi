@@ -30,3 +30,5 @@ development_run_tests: development_env_up
 clean:
 	@echo "<===|DEVOPS|===> [CLEAN] Cleaning the space"
 	@mvn clean > /dev/null
+
+.PHONY: all clean
