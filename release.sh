@@ -5,7 +5,7 @@
 # Author: Manuel Bernal Llinares <mbdebian@gmail.com>
 
 # Defaults
-verb=nothing
+verb='nothing'
 message=""
 version=$(cat VERSION)
 
