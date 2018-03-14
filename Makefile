@@ -52,4 +52,4 @@ clean:
 	@mvn clean > /dev/null
 	@mvn versions:commit
 
-.PHONY: all clean sync_project_version set_next_development_version development_run_tests deploy release
+.PHONY: all clean deploy release sync_project_version set_next_development_version development_run_tests
