@@ -56,8 +56,10 @@ fi
 
 # Should we publish the changes?
 if $ok ; then
+    echo -e "\tUpdate project POM file"
+    mvn versions:set -DnewVersion=${version}
     echo -e "\tCommit, push and tag version"
-    git add VERSION
+    git add VERSION pom.xml
     if [ "${message}" != "" ] ; then
         echo -e "\tVersion Tag message: ${message}"
     else
@@ -67,7 +69,7 @@ if $ok ; then
     git commit -m "${message}"
     git tag ${version} -m "${message}"
     git push origin ${version}
-    # Pack the new release
+    # Pack the new release and deploy it
     make
 else
     echo -e "\t--- ABORT --- Something went wrong"
