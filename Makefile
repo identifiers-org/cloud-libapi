@@ -25,6 +25,10 @@ set_next_development_version:
 	@echo "<===|DEVOPS|===> [SYNC] Setting the new development version, current ${tag_version}"
 	@mvn versions:set -DnewVersion=$(shell ./increment_version.sh -p ${tag_version})-SNAPSHOT
 
+deploy: clean
+	@echo "<===|DEVOPS|===> [DEPLOY] Deploying library to Maven Respository"
+	@mvn clean deploy -P ossrh -DskipTests
+
 development_env_up:
 	@echo "<===|DEVOPS|===> [ENVIRONMENT] Bringing development environment UP"
 	@docker-compose -f $(docker_compose_development_file) up -d
@@ -42,10 +46,6 @@ development_env_down:
 development_run_tests: development_env_up
 	@echo "<===|DEVOPS|===> [TESTS] Running Unit Tests"
 	@mvn clean test
-
-deploy: clean
-	@echo "<===|DEVOPS|===> [DEPLOY] Deploying library to Maven Respository"
-	@mvn clean deploy -P ossrh -DskipTests
 
 clean:
 	@echo "<===|DEVOPS|===> [CLEAN] Cleaning the space"
