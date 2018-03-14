@@ -11,7 +11,7 @@ version=$(cat VERSION)
 
 if [ $# -lt 1 ]
 then
-  echo "usage: $(basename $0) patch|minor|major major.minor.patch"
+  echo "usage: $(basename $0) patch|minor|major <'descriptive message for this release'>"
   exit 1
 fi
 
