@@ -53,27 +53,22 @@ if $ok ; then
     # TODO - There is room for detecting if anything went wrong here and revert the changes (feature request)
     echo -e "\tNew version '${version}'"
     echo "${version}" > VERSION
-    echo -e "\tUpdate project POM file"
-    mvn versions:set -DnewVersion=${version}
+    echo -e "\tSynchronize project version"
+    make sync_project_version
     echo -e "\tCommit, push and tag version"
-    git add VERSION pom.xml
     if [ "${message}" != "" ] ; then
         echo -e "\tVersion Tag message: ${message}"
     else
         echo -e "\tNO VERSION tag message included"
         message="New release ${version}"
     fi
-    git commit -m "${message}"
+    git commit -am "${message}"
     git tag ${version} -m "${message}"
     git push origin ${version}
-    # Pack the new release and deploy it
+    # Pack and publish
     make
-    # Prepare the possible next version within the POM file
-    pom_next_snapshot="$(./increment_version.sh -p ${version})-SNAPSHOT"
-    echo -e "\tSetting next POM version to ${pom_next_snapshot}"
-    mvn versions:set -DnewVersion=${pom_next_snapshot}
-    echo -e "\tCleaning backup POM files"
-    mvn versions:commit
+    # Prepare the possible Project next version
+    make set_next_development_version
 else
     echo -e "\t--- ABORT --- Something went wrong"
 fi
