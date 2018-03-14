@@ -31,7 +31,6 @@ then
     echo "<===|DEVOPS|===> [RELEASE] PATCH"
     echo -e "\tCurrent version '${version}'"
     version=$(./increment_version.sh -p ${version})
-    echo -e "\tNew version '${version}'"
     ok=true
 fi
 if [ "${verb}" == "minor" ]
@@ -39,7 +38,6 @@ then
     echo "<===|DEVOPS|===> [RELEASE] MINOR"
     echo -e "\tCurrent version '${version}'"
     version=$(./increment_version.sh -m ${version})
-    echo -e "\tNew version '${version}'"
     ok=true
 fi
 if [ "${verb}" == "major" ]
@@ -47,12 +45,12 @@ then
     echo "<===|DEVOPS|===> [RELEASE] MAJOR"
     echo -e "\tCurrent version '${version}'"
     version=$(./increment_version.sh -M ${version})
-    echo -e "\tNew version '${version}'"
     ok=true
 fi
 
 # Should we publish the changes?
 if $ok ; then
+    echo -e "\tNew version '${version}'"
     echo "${version}" > VERSION
     echo -e "\tUpdate project POM file"
     mvn versions:set -DnewVersion=${version}
