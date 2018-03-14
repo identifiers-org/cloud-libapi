@@ -8,6 +8,9 @@ The following sections will explain how to use the different service wrappers to
 The Following code snippet shows how to get an instance of the service wrapper for 
 [identifiers.org](https://identifiers.org) Resolver, and query the service for a given Compact ID.
 ```java
+import org.identifiers.cloud.libapi.services.ApiServicesFactory;
+import org.identifiers.cloud.libapi.models.resolver.ServiceResponseResolve;
+
 // For accessing a locally deployed Resolver service at 'localhost:8080', and requesting resolution of 
 // Compact ID 'CHEBI:36927' 
 ServiceResponseResolve response = ApiServicesFactory
