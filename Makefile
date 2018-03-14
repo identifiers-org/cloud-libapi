@@ -6,10 +6,18 @@
 
 # Environment
 docker_compose_development_file = docker-compose-development.yml
-tag_version = `cat VERSION`
+tag_version = $(shell cat VERSION)
 
 # Targets
 all: deploy
+
+sync_project_version:
+	@echo "<===|DEVOPS|===> [SYNC] Synchronizing project version to version '${tag_version}'"
+	@mvn versions:set -DnewVersion=${tag_version}
+
+set_next_development_version:
+	@echo "<===|DEVOPS|===> [SYNC] Setting the new development version, current ${tag_version}"
+	@mvn versions:set -DnewVersion=$(shell ./increment_version.sh -p ${tag_version})-SNAPSHOT
 
 development_env_up:
 	@echo "<===|DEVOPS|===> [ENVIRONMENT] Bringing development environment UP"
@@ -36,5 +44,6 @@ deploy:
 clean:
 	@echo "<===|DEVOPS|===> [CLEAN] Cleaning the space"
 	@mvn clean > /dev/null
+	@mvn versions:commit
 
-.PHONY: all clean
+.PHONY: all clean sync_project_version set_next_development_version development_run_tests deploy
