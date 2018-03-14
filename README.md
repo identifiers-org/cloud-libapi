@@ -110,3 +110,6 @@ code and a possible error message, as well as a specialized payload for the part
 
 For further details, please refer to the javadoc accompanying this library.
 
+
+### Contact
+Manuel Bernal Llinares
