@@ -3,3 +3,6 @@
 #														#
 # Author: Manuel Bernal Llinares <mbdebian@gmail.com>	#
 #														#
+
+# Environment
+docker_compose_development_file = docker-compose-development.yml
