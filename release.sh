@@ -71,6 +71,10 @@ if $ok ; then
     git push origin ${version}
     # Pack the new release and deploy it
     make
+    # Prepare the possible next version within the POM file
+    pom_next_snapshot="$(./increment_version.sh -p ${version})-SNAPSHOT"
+    echo -e "\tSetting next POM version to ${pom_next_snapshot}"
+    mvn versions:set -DnewVersion=${pom_next_snapshot}
 else
     echo -e "\t--- ABORT --- Something went wrong"
 fi
