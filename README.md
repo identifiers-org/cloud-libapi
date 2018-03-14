@@ -110,6 +110,24 @@ code and a possible error message, as well as a specialized payload for the part
 
 For further details, please refer to the javadoc accompanying this library.
 
+# Library Configuration
+This library is able to provide clients for the different clouds where [identifiers.org](https://identifiers.org) has 
+deployed its services, i.e. Amazon Web Services, Google Cloud or Microsoft Azure. By default, a deployment is chosen 
+randomly between all the possible ones every time a web service client is requested, but this behaviour can be modified 
+for those use cases where we would like to lock in a cloud provider, i.e. we would like to use [identifiers.org](https://identifiers.org) 
+web services that are part of only one cloud deployment, this can be done using a _deployment selector_ within the 
+library configuration as shown in the following code snippet.
+
+````java
+import org.identifiers.cloud.libapi.Configuration;
+
+// This call we'll make the library always select identifiers.org AWS deployment 
+Configuration.selectDeployment(Configuration.InfrastructureDeploymentSelector.AWS);
+
+// To make the library select random deployments again (default behaviour), we use the 'ANY' selector
+Configuration.selectDeployment(Configuration.InfrastructureDeploymentSelector.ANY);
+````
+
 
 ### Contact
 Manuel Bernal Llinares
