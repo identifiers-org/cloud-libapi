@@ -9,6 +9,8 @@ docker_compose_development_file = docker-compose-development.yml
 tag_version = `cat VERSION`
 
 # Targets
+all: deploy
+
 development_env_up:
 	@echo "<===|DEVOPS|===> [ENVIRONMENT] Bringing development environment UP"
 	@docker-compose -f $(docker_compose_development_file) up -d
