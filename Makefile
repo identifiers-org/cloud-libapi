@@ -26,3 +26,7 @@ development_env_down:
 development_run_tests: development_env_up
 	@echo "<===|DEVOPS|===> [TESTS] Running Unit Tests"
 	@mvn clean test
+
+clean:
+	@echo "<===|DEVOPS|===> [CLEAN] Cleaning the space"
+	@mvn clean > /dev/null
