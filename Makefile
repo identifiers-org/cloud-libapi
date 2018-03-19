@@ -15,7 +15,7 @@ release: deploy set_next_development_version
 	@echo "<===|DEVOPS|===> [DEPLOY] Deploying library to Maven Respository"
 	@git add pom.xml
 	@git commit -am "Next project development version prepared"
-    @git push
+	@git push
 
 sync_project_version:
 	@echo "<===|DEVOPS|===> [SYNC] Synchronizing project version to version '${tag_version}'"
