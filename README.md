@@ -13,40 +13,40 @@ This library is available at Maven Central, you can use it by just adding the fo
 <dependency>
     <groupId>org.identifiers.cloud</groupId>
     <artifactId>libapi</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 </dependency>
 ```
 
 **Apache Buildr**
 ```
-'org.identifiers.cloud:libapi:jar:1.0.0'
+'org.identifiers.cloud:libapi:jar:1.0.1'
 ```
 
 **Apache Ivy**
 ```xml
-<dependency org="org.identifiers.cloud" name="libapi" rev="1.0.0" />
+<dependency org="org.identifiers.cloud" name="libapi" rev="1.0.1" />
 ```
 
 **Groovy Grape**
 ```groovy
 @Grapes(
-@Grab(group='org.identifiers.cloud', module='libapi', version='1.0.0')
+@Grab(group='org.identifiers.cloud', module='libapi', version='1.0.1')
 )
 ```
 
 **Gradle/Grails**
 ```gradle
-compile 'org.identifiers.cloud:libapi:1.0.0'
+compile 'org.identifiers.cloud:libapi:1.0.1'
 ```
 
 **Scala SBT**
 ```scala
-libraryDependencies += "org.identifiers.cloud" % "libapi" % "1.0.0"
+libraryDependencies += "org.identifiers.cloud" % "libapi" % "1.0.1"
 ```
 
 **Leiningen**
 ```
-[org.identifiers.cloud/libapi "1.0.0"]
+[org.identifiers.cloud/libapi "1.0.1"]
 ```
 
 # Using to [identifiers.org](https://identifiers.org) API Web Services
