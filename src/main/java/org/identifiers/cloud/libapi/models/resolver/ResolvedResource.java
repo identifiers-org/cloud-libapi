@@ -16,12 +16,32 @@ import java.io.Serializable;
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ResolvedResource implements Serializable {
+    private String id;
+    private String resourcePrefix;
     private String accessUrl;
     private String info;
     private String institution;
     private String location;
     private boolean official;
     private Recommendation recommendation;
+
+    public String getId() {
+        return id;
+    }
+
+    public ResolvedResource setId(String id) {
+        this.id = id;
+        return this;
+    }
+
+    public String getResourcePrefix() {
+        return resourcePrefix;
+    }
+
+    public ResolvedResource setResourcePrefix(String resourcePrefix) {
+        this.resourcePrefix = resourcePrefix;
+        return this;
+    }
 
     public String getAccessUrl() {
         return accessUrl;
