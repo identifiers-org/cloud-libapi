@@ -61,4 +61,4 @@ clean_tmp:
 	@echo "<===|DEVOPS|===> [HOUSEKEEPING] Cleaning temporary folders"
 	@rm -rf tmp
 
-.PHONY: all clean deploy release sync_project_version set_next_development_version development_run_tests
+.PHONY: all clean clean_tmp deploy release sync_project_version set_next_development_version development_run_tests
