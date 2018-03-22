@@ -55,3 +55,9 @@ services:
             - WS_RESOURCE_RECOMMENDER_JVM_MEMORY_MAX=1024m
         ports:
             - 8083:8083
+    fakesmtp:
+        image: digiplant/fake-smtp
+        ports:
+            - "1025:25"
+        volumes:
+            - ./tmp/fakesmtp:/var/mail
