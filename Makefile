@@ -52,4 +52,9 @@ clean:
 	@mvn clean > /dev/null
 	@mvn versions:commit
 
+# Folders
+tmp:
+	@echo "<===|DEVOPS|===> [FOLDER] Creating temporary folders"
+	@mkdir -p tmp/fakesmtp
+
 .PHONY: all clean deploy release sync_project_version set_next_development_version development_run_tests
