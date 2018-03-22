@@ -29,7 +29,7 @@ deploy: clean
 	@echo "<===|DEVOPS|===> [DEPLOY] Deploying library to Maven Respository"
 	@mvn clean deploy -P ossrh -DskipTests
 
-development_env_up:
+development_env_up: tmp
 	@echo "<===|DEVOPS|===> [ENVIRONMENT] Bringing development environment UP"
 	@docker-compose -f $(docker_compose_development_file) up -d
 	@# TODO Clean this way of referencing the target name in future iterations
