@@ -12,3 +12,23 @@ services:
             - 8082:8082
         depends_on:
             - resolver
+    registry:
+        image: identifiersorg/cloud-ws-registry:1.0.0
+        environment:
+            - WS_REGISTRY_CONFIG_RESOLVER_HOST=resolver
+            - WS_REGISTRY_CONFIG_RESOLVER_PORT=8080
+            - WS_REGISTRY_CONFIG_EMAIL_HOST=fakesmtp
+            - WS_REGISTRY_CONFIG_EMAIL_PORT=1025
+            - WS_REGISTRY_CONFIG_EMAIL_USERNAME=nousername
+            - WS_REGISTRY_CONFIG_EMAIL_PASSWORD=nopassword
+            - WS_REGISTRY_CONFIG_EMAIL_TRANSPORT_PROTOCOL=smtp
+            - WS_REGISTRY_CONFIG_EMAIL_BOOLEAN_SMTP_AUTH=false
+            - WS_REGISTRY_CONFIG_EMAIL_BOOLEAN_START_TLS=false
+            - WS_REGISTRY_CONFIG_EMAIL_BOOLEAN_DEBUG=true
+            - WS_REGISTRY_CONFIG_EMAIL_FROM=test@development.env
+            - WS_REGISTRY_JVM_MEMORY_MAX=1024m
+        ports:
+            - 8081:8081
+        depends_on:
+            - resolver
+            - fakesmtp
