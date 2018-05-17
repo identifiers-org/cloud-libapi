@@ -121,8 +121,8 @@ public class ResolverService {
     }
 
     public ServiceResponseResolve getAllSampleIdsResolved() {
-        // TODO
-        return null;
+        String serviceApiEndpoint = String.format("%s/%s", serviceApiBaseline, "get_all_sample_ids_resolved");
+        return doRequestResolution(serviceApiEndpoint);
     }
 
     public ServiceResponseResolve getAllHomeUrls() {
