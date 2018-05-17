@@ -126,7 +126,7 @@ public class ResolverService {
     }
 
     public ServiceResponseResolve getAllHomeUrls() {
-        // TODO
-        return null;
+        String serviceApiEndpoint = String.format("%s/%s", serviceApiBaseline, "get_all_home_urls");
+        return doRequestResolution(serviceApiEndpoint);
     }
 }
