@@ -119,4 +119,9 @@ public class ResolverService {
         String serviceApiEndpoint = String.format("%s/%s/%s", serviceApiBaseline, selector, compactId);
         return doRequestResolution(serviceApiEndpoint);
     }
+
+    public ServiceResponseResolve getAllSampleIdsResolved() {
+        // TODO
+        return null;
+    }
 }
