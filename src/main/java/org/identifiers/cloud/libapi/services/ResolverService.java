@@ -124,4 +124,9 @@ public class ResolverService {
         // TODO
         return null;
     }
+
+    public ServiceResponseResolve getAllHomeUrls() {
+        // TODO
+        return null;
+    }
 }
