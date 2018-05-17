@@ -23,6 +23,7 @@ public class ResolvedResource implements Serializable {
     private String institution;
     private String location;
     private boolean official;
+    private String resourceURL;
     private Recommendation recommendation;
 
     public String getId() {
@@ -85,6 +86,15 @@ public class ResolvedResource implements Serializable {
 
     public ResolvedResource setOfficial(boolean official) {
         this.official = official;
+        return this;
+    }
+
+    public String getResourceURL() {
+        return resourceURL;
+    }
+
+    public ResolvedResource setResourceURL(String resourceURL) {
+        this.resourceURL = resourceURL;
         return this;
     }
 
