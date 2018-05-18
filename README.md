@@ -150,6 +150,9 @@ Additional factory methods are available where only the service 'host' is specif
 used, or where no 'host' or 'port' information is given, so the factory will provide an instance of the service client
 pointing to any of the [identifiers.org](https://identifiers.org) cloud deployments.
 
+## Resolution Data Insight API
+ksjdhflskdjf
+
 ## Responses from the services
 The responses from the different services will provide information on how the request was completed, via HTTP Status
 code and a possible error message, as well as a specialized payload for the particular request submitted.
