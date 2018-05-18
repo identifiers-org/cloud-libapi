@@ -33,7 +33,7 @@ services:
             - resolver
             - fakesmtp
     resolver:
-        image: identifiersorg/cloud-ws-resolver:1.0.1
+        image: identifiersorg/cloud-ws-resolver:1.0.3
         environment:
             - WS_RESOLVER_CONFIG_REDIS_HOST=redis
             - WS_RESOLVER_CONFIG_REDIS_PORT=6379
