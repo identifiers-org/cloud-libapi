@@ -192,6 +192,8 @@ Configuration.selectDeployment(Configuration.InfrastructureDeploymentSelector.AW
 Configuration.selectDeployment(Configuration.InfrastructureDeploymentSelector.ANY);
 ```
 
+**Please, take into account that all code samples provided, were pointing to local deployments of [identifiers.org](https://identifiers.org), and it is advised to let the library configuration manager to either choose a random deployment, or lock it down to a particular cloud, so no information regarding _host_ (e.g. 'localhost' in the examples) and _port_ (e.g. 8080 in the case of the resolution code snippet) is needed.**
+
 
 ### Contact
 Manuel Bernal Llinares
