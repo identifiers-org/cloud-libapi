@@ -59,6 +59,19 @@ public class ResolverServiceTest {
     @Test
     public void getAllResourcesResolvedToTheirSampleIds() {
         // TODO
+        ServiceResponseResolve response = ApiServicesFactory
+                .getResolverService("localhost", "8080")
+                .getAllSampleIdsResolved();
+        // Just for debugging purposes, serialized response into the logs
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            logger.info("Test request resolver, response from the service:\n{}", mapper.writeValueAsString(response));
+        } catch (JsonProcessingException e) {
+            // Ignore
+        }
+        assertThat("Response from service is OK",
+                response.getHttpStatus() == HttpStatus.OK,
+                is(true));
     }
 
     @Test
