@@ -120,6 +120,12 @@ public class ResolverService {
         return doRequestResolution(serviceApiEndpoint);
     }
 
+    /**
+     * Resolver Service API: get all the available resource providers resolved to a sample ID URL.
+     * @return the service response, containing the resolution information, or a default guaranteed response (with an
+     * empty list of resources / providers) where the HTTP Status code and error message fields contain infromation on
+     * what could have happened to the request.
+     */
     public ServiceResponseResolve getAllSampleIdsResolved() {
         String serviceApiEndpoint = String.format("%s/%s", serviceApiBaseline, "get_all_sample_ids_resolved");
         return doRequestResolution(serviceApiEndpoint);
