@@ -63,6 +63,8 @@ if $ok ; then
         message="New release ${version}"
     fi
     git commit -am "${message}"
+    # I need this commit to make sure the latest one is in sync with master branch
+    git push
     git tag ${version} -m "${message}"
     git push origin ${version}
     # Do the release at the project level
