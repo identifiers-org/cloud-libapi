@@ -160,6 +160,11 @@ The currently supported use cases are shown below this line.
 ServiceResponseResolve response = ApiServicesFactory
         .getResolverService("localhost", "8080")
         .getAllSampleIdsResolved();
+
+// To get a home URL for all the resource providers available in the resolution service, the following call can be used
+ServiceResponseResolve response = ApiServicesFactory
+        .getResolverService("localhost", "8080")
+        .getAllHomeUrls();
 ```
 
 
