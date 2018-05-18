@@ -60,4 +60,9 @@ public class ResolverServiceTest {
     public void getAllResourcesResolvedToTheirSampleIds() {
         // TODO
     }
+
+    @Test
+    public void getAllResourcesHomeUrls() {
+        // TODO
+    }
 }
