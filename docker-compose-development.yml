@@ -13,7 +13,7 @@ services:
         depends_on:
             - resolver
     registry:
-        image: identifiersorg/cloud-ws-registry:1.0.0
+        image: identifiersorg/cloud-ws-registry:1.0.1
         environment:
             - WS_REGISTRY_CONFIG_RESOLVER_HOST=resolver
             - WS_REGISTRY_CONFIG_RESOLVER_PORT=8080
