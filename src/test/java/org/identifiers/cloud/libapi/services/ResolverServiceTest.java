@@ -75,7 +75,6 @@ public class ResolverServiceTest {
 
     @Test
     public void getAllResourcesHomeUrls() {
-        // TODO
         ServiceResponseResolve response = ApiServicesFactory
                 .getResolverService("localhost", "8080")
                 .getAllHomeUrls();
