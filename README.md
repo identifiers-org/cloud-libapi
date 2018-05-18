@@ -151,7 +151,17 @@ used, or where no 'host' or 'port' information is given, so the factory will pro
 pointing to any of the [identifiers.org](https://identifiers.org) cloud deployments.
 
 ## Resolution Data Insight API
-ksjdhflskdjf
+It is possible to get 'insights' into currently available resolution data through this API.
+
+The currently supported use cases are shown below this line.
+
+```java
+// To get sample URLs to all the resource providers available in the resolution service, the following call can be used
+ServiceResponseResolve response = ApiServicesFactory
+        .getResolverService("localhost", "8080")
+        .getAllSampleIdsResolved();
+```
+
 
 ## Responses from the services
 The responses from the different services will provide information on how the request was completed, via HTTP Status
@@ -167,7 +177,7 @@ for those use cases where we would like to lock in a cloud provider, i.e. we wou
 web services that are part of only one cloud deployment, this can be done using a _deployment selector_ within the
 library configuration as shown in the following code snippet.
 
-````java
+```java
 import org.identifiers.cloud.libapi.Configuration;
 
 // This call we'll make the library always select identifiers.org AWS deployment
@@ -175,7 +185,7 @@ Configuration.selectDeployment(Configuration.InfrastructureDeploymentSelector.AW
 
 // To make the library select random deployments again (default behaviour), we use the 'ANY' selector
 Configuration.selectDeployment(Configuration.InfrastructureDeploymentSelector.ANY);
-````
+```
 
 
 ### Contact
