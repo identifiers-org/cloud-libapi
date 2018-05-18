@@ -131,6 +131,13 @@ public class ResolverService {
         return doRequestResolution(serviceApiEndpoint);
     }
 
+    /**
+     * Resolver Service API: get the Home URL for all available resource providers, within the context of each namespace
+     * registered in the resolution service.
+     * @return the service response, containing the resolution information, or a default guaranteed response (with an
+     * empty list of resources / providers) where the HTTP Status code and error message fields contain infromation on
+     * what could have happened to the request.
+     */
     public ServiceResponseResolve getAllHomeUrls() {
         String serviceApiEndpoint = String.format("%s/%s", serviceApiBaseline, "get_all_home_urls");
         return doRequestResolution(serviceApiEndpoint);
