@@ -55,4 +55,9 @@ public class ResolverServiceTest {
                 response.getHttpStatus() == HttpStatus.OK,
                 is(true));
     }
+
+    @Test
+    public void getAllResourcesResolvedToTheirSampleIds() {
+        // TODO
+    }
 }
