@@ -58,7 +58,6 @@ public class ResolverServiceTest {
 
     @Test
     public void getAllResourcesResolvedToTheirSampleIds() {
-        // TODO
         ServiceResponseResolve response = ApiServicesFactory
                 .getResolverService("localhost", "8080")
                 .getAllSampleIdsResolved();
