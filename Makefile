@@ -12,7 +12,7 @@ tag_version = $(shell cat VERSION)
 all: deploy
 
 release: deploy set_next_development_version
-	@echo "<===|DEVOPS|===> [DEPLOY] Deploying library to Maven Respository"
+	@echo "<===|DEVOPS|===> [RELEASE] Release cycle run"
 	@git add pom.xml
 	@git commit -am "Next project development version prepared"
 	@git push
