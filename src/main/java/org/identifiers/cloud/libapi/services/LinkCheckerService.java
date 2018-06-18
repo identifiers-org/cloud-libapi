@@ -1,8 +1,11 @@
 package org.identifiers.cloud.libapi.services;
 
 import org.identifiers.cloud.libapi.Configuration;
+import org.identifiers.cloud.libapi.models.linkchecker.responses.ServiceResponseScoringRequest;
+import org.identifiers.cloud.libapi.models.linkchecker.responses.ServiceResponseScoringRequestPayload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.retry.support.RetryTemplate;
 
 /**
@@ -25,6 +28,13 @@ public class LinkCheckerService {
     LinkCheckerService(String serviceHost, String servicePort) {
         // TODO - This needs to be refactored in the future for supporting multiple schema (HTTP, HTTPS)
         serviceApiBaseline = String.format("http://%s:%s", serviceHost, servicePort);
+    }
+
+    private ServiceResponseScoringRequest createDefaultResponse() {
+        ServiceResponseScoringRequest response = new ServiceResponseScoringRequest();
+        response.setApiVersion(apiVersion).setHttpStatus(HttpStatus.OK);
+        response.setPayload(new ServiceResponseScoringRequestPayload());
+        return response;
     }
     // TODO
 }
