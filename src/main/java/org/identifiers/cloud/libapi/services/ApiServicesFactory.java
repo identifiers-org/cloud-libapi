@@ -44,6 +44,13 @@ public class ApiServicesFactory {
     // --- END ---
 
     // --- Link Checker Service ---
+
+    /**
+     * Get an instance of the Link Checker service client, given the (host, port) coordinates of the service
+     * @param host host running the service
+     * @param port port where the service is listening for connections
+     * @return an instance of the service client
+     */
     public static LinkCheckerService getLinkCheckerService(String host, String port) {
         return new LinkCheckerService(host, port);
     }
