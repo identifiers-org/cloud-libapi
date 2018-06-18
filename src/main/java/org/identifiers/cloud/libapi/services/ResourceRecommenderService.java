@@ -32,7 +32,7 @@ public class ResourceRecommenderService {
     private String serviceApiBaseline;
 
     private ResourceRecommenderService() {
-
+        // TODO - I don't think I need this default constructor
     }
 
     ResourceRecommenderService(String serviceHost, String servicePort) {
