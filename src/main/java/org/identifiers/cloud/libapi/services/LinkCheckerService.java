@@ -24,7 +24,7 @@ import java.net.URISyntaxException;
  *
  * @author Manuel Bernal Llinares <mbdebian@gmail.com>
  * ---
- *
+ * <p>
  * This class implements a client for the Link Checker Service.
  */
 public class LinkCheckerService {
@@ -41,6 +41,7 @@ public class LinkCheckerService {
 
     /**
      * Helper method that prepares a default scoring response, to guarantee response back from service.
+     *
      * @return a default scoring request response
      */
     private ServiceResponseScoringRequest createDefaultResponse() {
@@ -53,34 +54,79 @@ public class LinkCheckerService {
     /**
      * This helper will perform any preparation steps needed to get the service request ready for the payload. Right now
      * it only sets the API Version information
+     *
      * @param request on which to perform the preparation steps
      */
     private void prepareScoringRequest(ServiceRequest request) {
         request.setApiVersion(apiVersion);
     }
 
-    public ResponseEntity<ServiceResponseScoringRequest> getScoreForProvider(String providerId, String url) {
-        ServiceResponseScoringRequest response = createDefaultResponse();
+    public ServiceResponseScoringRequest getScoreForProvider(String providerId, String url) {
+        // NOTE - The more I look at this code, the more I think it's shit, maybe I can beautify it in the future.
         String endpoint = String.format("%s/getScoreForProvider");
+        // Prepare the request body
         ServiceRequestScoreProvider requestBody = new ServiceRequestScoreProvider();
         prepareScoringRequest(requestBody);
         requestBody.setPayload(new ScoringRequestWithIdPayload().setId(providerId));
         requestBody.getPayload().setUrl(url);
+        // Prepare response
+        ServiceResponseScoringRequest response = createDefaultResponse();
         // Prepare the request entity
         RequestEntity<ServiceRequestScoreProvider> requestEntity = null;
         try {
             requestEntity = RequestEntity.post(new URI(endpoint)).body(requestBody);
         } catch (URISyntaxException e) {
             logger.error("INVALID URI '{}'", endpoint);
+            response.setHttpStatus(HttpStatus.BAD_REQUEST)
+                    .setErrorMessage(String.format("An error occurred while trying score " +
+                                    "Provider with ID '%s', URL '%s', using service endpoint '%s' INVALID URI",
+                            providerId, url, endpoint));
         }
-        // Make the request
-        RestTemplate restTemplate = new RestTemplate();
-        restTemplate.setErrorHandler(Configuration.responseErrorHandler());
-        return restTemplate.exchange(requestEntity, ServiceResponseScoringRequest.class);
+        if (requestEntity != null) {
+            // Make the request using the re-try pattern
+            RestTemplate restTemplate = new RestTemplate();
+            restTemplate.setErrorHandler(Configuration.responseErrorHandler());
+            try {
+                RequestEntity<ServiceRequestScoreProvider> finalRequestEntity = requestEntity;
+                ResponseEntity<ServiceResponseScoringRequest> responseEntity = retryTemplate.execute(retryContext -> {
+                    return restTemplate.exchange(finalRequestEntity, ServiceResponseScoringRequest.class);
+                });
+                response = responseEntity.getBody();
+                response.setHttpStatus(responseEntity.getStatusCode());
+                if (responseEntity.getStatusCode() != HttpStatus.OK) {
+                    String errorMessage = String.format("ERROR retrieving reliability scoring information for " +
+                                    "Provider ID '%s', URL '%s' " +
+                                    "from '%s', " +
+                                    "HTTP status code '%d', " +
+                                    "explanation '%s'",
+                            providerId,
+                            url,
+                            endpoint,
+                            responseEntity.getStatusCodeValue(),
+                            responseEntity.getBody().getErrorMessage());
+                    logger.error(errorMessage);
+                }
+            } catch (RuntimeException e) {
+                String errorMessage = String.format("ERROR retrieving reliability scoring information for " +
+                                "Provider ID '%s', URL '%s' " +
+                                "from '%s', " +
+                                "explanation '%s'",
+                        providerId,
+                        url,
+                        endpoint,
+                        e.getMessage());
+                response.setHttpStatus(HttpStatus.INTERNAL_SERVER_ERROR).setErrorMessage(errorMessage);
+                logger.error(errorMessage);
+            }
+
+        } else {
+        }
+        return response;
     }
 
     public ResponseEntity<ServiceResponseScoringRequest> getScoreForResolvedId(String resourceId, String url) {
         // TODO
+        return null;
     }
 
     // TODO

@@ -130,6 +130,7 @@ public class ResourceRecommenderService {
                             serviceApiEndpoint,
                             requestResponse.getStatusCodeValue(),
                             requestResponse.getBody().getErrorMessage());
+                    // TODO - Maybe I should set this message within the response as well
                     logger.error(errorMessage);
                 }
             } catch (RuntimeException e) {
