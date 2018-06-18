@@ -6,6 +6,7 @@ import org.identifiers.cloud.libapi.models.linkchecker.responses.ServiceResponse
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.retry.support.RetryTemplate;
 
 /**
@@ -39,6 +40,10 @@ public class LinkCheckerService {
         response.setApiVersion(apiVersion).setHttpStatus(HttpStatus.OK);
         response.setPayload(new ServiceResponseScoringRequestPayload());
         return response;
+    }
+
+    public ResponseEntity<ServiceResponseScoringRequest> getScoreForProvider(String providerId, String url) {
+        // TODO
     }
 
     // TODO
