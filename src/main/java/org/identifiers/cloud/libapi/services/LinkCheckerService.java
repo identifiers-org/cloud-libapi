@@ -30,11 +30,16 @@ public class LinkCheckerService {
         serviceApiBaseline = String.format("http://%s:%s", serviceHost, servicePort);
     }
 
+    /**
+     * Helper method that prepares a default scoring response, to guarantee response back from service.
+     * @return a default scoring request response
+     */
     private ServiceResponseScoringRequest createDefaultResponse() {
         ServiceResponseScoringRequest response = new ServiceResponseScoringRequest();
         response.setApiVersion(apiVersion).setHttpStatus(HttpStatus.OK);
         response.setPayload(new ServiceResponseScoringRequestPayload());
         return response;
     }
+
     // TODO
 }
