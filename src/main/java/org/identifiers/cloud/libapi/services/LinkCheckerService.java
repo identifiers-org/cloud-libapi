@@ -88,9 +88,9 @@ public class LinkCheckerService {
             restTemplate.setErrorHandler(Configuration.responseErrorHandler());
             try {
                 RequestEntity<ServiceRequestScoreProvider> finalRequestEntity = requestEntity;
-                ResponseEntity<ServiceResponseScoringRequest> responseEntity = retryTemplate.execute(retryContext -> {
-                    return restTemplate.exchange(finalRequestEntity, ServiceResponseScoringRequest.class);
-                });
+                ResponseEntity<ServiceResponseScoringRequest> responseEntity =
+                        retryTemplate.execute(retryContext ->
+                                restTemplate.exchange(finalRequestEntity, ServiceResponseScoringRequest.class));
                 response = responseEntity.getBody();
                 response.setHttpStatus(responseEntity.getStatusCode());
                 if (responseEntity.getStatusCode() != HttpStatus.OK) {
@@ -118,8 +118,6 @@ public class LinkCheckerService {
                 response.setHttpStatus(HttpStatus.INTERNAL_SERVER_ERROR).setErrorMessage(errorMessage);
                 logger.error(errorMessage);
             }
-
-        } else {
         }
         return response;
     }
