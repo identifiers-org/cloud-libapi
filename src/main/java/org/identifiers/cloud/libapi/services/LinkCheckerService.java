@@ -1,7 +1,9 @@
 package org.identifiers.cloud.libapi.services;
 
+import org.identifiers.cloud.libapi.Configuration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.retry.support.RetryTemplate;
 
 /**
  * Project: libapi
@@ -16,5 +18,7 @@ import org.slf4j.LoggerFactory;
 public class LinkCheckerService {
     public static final String apiVersion = "1.0";
     private static final Logger logger = LoggerFactory.getLogger(LinkCheckerService.class);
+    // Re-try pattern
+    private RetryTemplate retryTemplate = Configuration.retryTemplate();
     // TODO
 }
