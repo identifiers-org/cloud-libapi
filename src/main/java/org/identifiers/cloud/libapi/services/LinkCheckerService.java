@@ -61,6 +61,15 @@ public class LinkCheckerService {
         request.setApiVersion(apiVersion);
     }
 
+    // --- API ---
+
+    /**
+     * Link Checker Service API: Get a Reliability Score for a given Provider ID, i.e. a provider in the context of a
+     * namespace / prefix.
+     * @param providerId ID of the provider
+     * @param url URL of the given provider in the context of a particular namespace / prefix
+     * @return a scoring response from the Link Checking Service
+     */
     public ServiceResponseScoringRequest getScoreForProvider(String providerId, String url) {
         // NOTE - I still don't like how it looks, but it's a little bit better
         String endpoint = String.format("%s/getScoreForProvider", serviceApiBaseline);
