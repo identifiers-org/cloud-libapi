@@ -1,5 +1,8 @@
 package org.identifiers.cloud.libapi.services;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Project: libapi
  * Package: org.identifiers.cloud.libapi.services
@@ -12,5 +15,6 @@ package org.identifiers.cloud.libapi.services;
  */
 public class LinkCheckerService {
     public static final String apiVersion = "1.0";
+    private static final Logger logger = LoggerFactory.getLogger(LinkCheckerService.class);
     // TODO
 }
