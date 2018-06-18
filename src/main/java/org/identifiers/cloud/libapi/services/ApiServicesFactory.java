@@ -43,6 +43,12 @@ public class ApiServicesFactory {
     }
     // --- END ---
 
+    // --- Link Checker Service ---
+    public static LinkCheckerService getLinkCheckerService(String host, String port) {
+        return new LinkCheckerService(host, port);
+    }
+    // --- END ---
+
     // --- Resolver Service ---
     /**
      * Get an instance of the Resolver service client, pointing to the given host, on default port 80.
