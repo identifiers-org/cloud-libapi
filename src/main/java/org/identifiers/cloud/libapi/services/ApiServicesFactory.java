@@ -44,8 +44,13 @@ public class ApiServicesFactory {
     // --- END ---
 
     // --- Link Checker Service ---
+    /**
+     * Get an instance of the Link Checker service client, pointing to the given host, on default HTTP port 80
+     * @param host host running the service
+     * @return an instance of the service client
+     */
     public static LinkCheckerService getLinkCheckerService(String host) {
-        return getLinkCheckerService(host, "8084");
+        return getLinkCheckerService(host, "80");
     }
 
     /**
