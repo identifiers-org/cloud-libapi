@@ -1,7 +1,5 @@
 package org.identifiers.cloud.libapi.models.linkchecker.requests;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import java.io.Serializable;
 
 /**
@@ -12,7 +10,6 @@ import java.io.Serializable;
  * @author Manuel Bernal Llinares <mbdebian@gmail.com>
  * ---
  */
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class ScoringRequestWithIdPayload extends ScoringRequestPayload implements Serializable {
     private String id;
 
