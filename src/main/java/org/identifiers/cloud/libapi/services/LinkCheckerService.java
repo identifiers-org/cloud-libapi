@@ -20,5 +20,10 @@ public class LinkCheckerService {
     private static final Logger logger = LoggerFactory.getLogger(LinkCheckerService.class);
     // Re-try pattern
     private RetryTemplate retryTemplate = Configuration.retryTemplate();
+    private String serviceApiBaseline;
+
+    public LinkCheckerService() {
+    }
+
     // TODO
 }
