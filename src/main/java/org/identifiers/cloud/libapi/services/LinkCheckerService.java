@@ -67,7 +67,8 @@ public class LinkCheckerService {
         // Prepare the request body
         ServiceRequestScoreProvider requestBody = new ServiceRequestScoreProvider();
         prepareScoringRequest(requestBody);
-        requestBody.setPayload(new ScoringRequestWithIdPayload().setId(providerId));
+        requestBody.setPayload(new ScoringRequestWithIdPayload());
+        requestBody.getPayload().setId(providerId);
         requestBody.getPayload().setUrl(url);
         // Prepare response
         ServiceResponseScoringRequest response = createDefaultResponse();
