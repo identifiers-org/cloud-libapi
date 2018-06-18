@@ -13,4 +13,6 @@ import org.slf4j.LoggerFactory;
  */
 public class LinkCheckerServiceTest {
     private static Logger logger = LoggerFactory.getLogger(LinkCheckerServiceTest.class);
+    // This unit tests are a simple way of human validation of the client, as there is no test data at the current
+    // iteration of this library
 }
