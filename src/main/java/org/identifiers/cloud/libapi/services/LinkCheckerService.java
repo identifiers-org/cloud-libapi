@@ -62,7 +62,7 @@ public class LinkCheckerService {
     }
 
     public ServiceResponseScoringRequest getScoreForProvider(String providerId, String url) {
-        // NOTE - The more I look at this code, the more I think it's shit, maybe I can beautify it in the future.
+        // NOTE - I still don't like how it looks, but it's a little bit better
         String endpoint = String.format("%s/getScoreForProvider");
         // Prepare the request body
         ServiceRequestScoreProvider requestBody = new ServiceRequestScoreProvider();
