@@ -10,5 +10,5 @@ import org.identifiers.cloud.libapi.models.ServiceResponse;
  * @author Manuel Bernal Llinares <mbdebian@gmail.com>
  * ---
  */
-public class ServiceResponseScoringRequest extends ServiceResponse<ServiceResponseScoringRequestPayload}> {
+public class ServiceResponseScoringRequest extends ServiceResponse<ServiceResponseScoringRequestPayload> {
 }
