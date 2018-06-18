@@ -11,5 +11,6 @@ package org.identifiers.cloud.libapi.services;
  * This class implements a client for the Link Checker Service.
  */
 public class LinkCheckerService {
+    public static final String apiVersion = "1.0";
     // TODO
 }
