@@ -63,7 +63,7 @@ public class LinkCheckerService {
 
     public ServiceResponseScoringRequest getScoreForProvider(String providerId, String url) {
         // NOTE - I still don't like how it looks, but it's a little bit better
-        String endpoint = String.format("%s/getScoreForProvider");
+        String endpoint = String.format("%s/getScoreForProvider", serviceApiBaseline);
         // Prepare the request body
         ServiceRequestScoreProvider requestBody = new ServiceRequestScoreProvider();
         prepareScoringRequest(requestBody);
