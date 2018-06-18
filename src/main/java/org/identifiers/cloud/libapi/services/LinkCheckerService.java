@@ -1,13 +1,21 @@
 package org.identifiers.cloud.libapi.services;
 
 import org.identifiers.cloud.libapi.Configuration;
+import org.identifiers.cloud.libapi.models.ServiceRequest;
+import org.identifiers.cloud.libapi.models.linkchecker.requests.ScoringRequestWithIdPayload;
+import org.identifiers.cloud.libapi.models.linkchecker.requests.ServiceRequestScoreProvider;
 import org.identifiers.cloud.libapi.models.linkchecker.responses.ServiceResponseScoringRequest;
 import org.identifiers.cloud.libapi.models.linkchecker.responses.ServiceResponseScoringRequestPayload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.retry.support.RetryTemplate;
+import org.springframework.web.client.RestTemplate;
+
+import java.net.URI;
+import java.net.URISyntaxException;
 
 /**
  * Project: libapi
@@ -42,8 +50,28 @@ public class LinkCheckerService {
         return response;
     }
 
+    private void prepareScoringRequest(ServiceRequest request) {
+        request.setApiVersion(apiVersion);
+    }
+
     public ResponseEntity<ServiceResponseScoringRequest> getScoreForProvider(String providerId, String url) {
-        // TODO
+        ServiceResponseScoringRequest response = createDefaultResponse();
+        String endpoint = String.format("%s/getScoreForProvider");
+        ServiceRequestScoreProvider requestBody = new ServiceRequestScoreProvider();
+        prepareScoringRequest(requestBody);
+        requestBody.setPayload(new ScoringRequestWithIdPayload().setId(providerId));
+        requestBody.getPayload().setUrl(url);
+        // Prepare the request entity
+        RequestEntity<ServiceRequestScoreProvider> requestEntity = null;
+        try {
+            requestEntity = RequestEntity.post(new URI(endpoint)).body(requestBody);
+        } catch (URISyntaxException e) {
+            logger.error("INVALID URI '{}'", endpoint);
+        }
+        // Make the request
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.setErrorHandler(Configuration.responseErrorHandler());
+        return restTemplate.exchange(requestEntity, ServiceResponseScoringRequest.class);
     }
 
     public ResponseEntity<ServiceResponseScoringRequest> getScoreForResolvedId(String resourceId, String url) {
