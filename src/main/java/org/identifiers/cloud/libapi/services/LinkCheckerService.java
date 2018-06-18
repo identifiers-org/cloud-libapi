@@ -22,8 +22,8 @@ public class LinkCheckerService {
     private RetryTemplate retryTemplate = Configuration.retryTemplate();
     private String serviceApiBaseline;
 
-    public LinkCheckerService() {
+    LinkCheckerService(String serviceHost, String servicePort) {
+        serviceApiBaseline = String.format("http://%s:%s", serviceHost, servicePort);
     }
-
     // TODO
 }
