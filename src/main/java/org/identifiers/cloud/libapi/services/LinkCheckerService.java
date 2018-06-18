@@ -50,6 +50,11 @@ public class LinkCheckerService {
         return response;
     }
 
+    /**
+     * This helper will perform any preparation steps needed to get the service request ready for the payload. Right now
+     * it only sets the API Version information
+     * @param request on which to perform the preparation steps
+     */
     private void prepareScoringRequest(ServiceRequest request) {
         request.setApiVersion(apiVersion);
     }
