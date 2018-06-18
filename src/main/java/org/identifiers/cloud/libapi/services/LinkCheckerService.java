@@ -46,5 +46,9 @@ public class LinkCheckerService {
         // TODO
     }
 
+    public ResponseEntity<ServiceResponseScoringRequest> getScoreForResolvedId(String resourceId, String url) {
+        // TODO
+    }
+
     // TODO
 }
