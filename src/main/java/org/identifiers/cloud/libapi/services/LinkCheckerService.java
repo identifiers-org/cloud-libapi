@@ -23,6 +23,7 @@ public class LinkCheckerService {
     private String serviceApiBaseline;
 
     LinkCheckerService(String serviceHost, String servicePort) {
+        // TODO - This needs to be refactored in the future for supporting multiple schema (HTTP, HTTPS)
         serviceApiBaseline = String.format("http://%s:%s", serviceHost, servicePort);
     }
     // TODO
