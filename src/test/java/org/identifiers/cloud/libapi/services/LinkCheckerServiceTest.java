@@ -3,6 +3,7 @@ package org.identifiers.cloud.libapi.services;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.identifiers.cloud.libapi.models.linkchecker.responses.ServiceResponseScoringRequest;
+import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -26,9 +27,10 @@ public class LinkCheckerServiceTest {
     // This unit tests are a simple way of human validation of the client, as there is no test data at the current
     // iteration of this library
 
+    @Test
     public void testReliabilityScoringForProvider() {
-        String providerId = "MIR:00100593";
-        String url = "http://www.molbase.com/";
+        String providerId = "MIR:00100539";
+        String url = "http://bacmap.wishartlab.com/";
         ServiceResponseScoringRequest response = ApiServicesFactory
                 .getLinkCheckerService(serviceHost, servicePort)
                 .getScoreForProvider(providerId, url);
