@@ -15,7 +15,7 @@ import java.io.Serializable;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ServiceResponseScoringRequestPayload implements Serializable {
     // Default scoring
-    public int score = 50;
+    private int score = 50;
 
     public int getScore() {
         return score;
