@@ -133,7 +133,7 @@ public class LinkCheckerService {
         return response;
     }
 
-    public ResponseEntity<ServiceResponseScoringRequest> getScoreForResolvedId(String resourceId, String url) {
+    public ServiceResponseScoringRequest getScoreForResolvedId(String resourceId, String url) {
         String endpoint = String.format("%s/getScoreForResolvedId", serviceApiBaseline);
         // Prepare the request body
         ServiceRequestScoreResource requestBody = new ServiceRequestScoreResource();
@@ -154,9 +154,43 @@ public class LinkCheckerService {
                                     "Resource with ID '%s', URL '%s', using service endpoint '%s' INVALID URI",
                             resourceId, url, endpoint));
         }
-        // TODO
+        if (requestEntity != null) {
+            // Make the request using the re-try pattern
+            RestTemplate restTemplate = new RestTemplate();
+            restTemplate.setErrorHandler(Configuration.responseErrorHandler());
+            try {
+                RequestEntity<ServiceRequestScoreResource> finalRequestEntity = requestEntity;
+                ResponseEntity<ServiceResponseScoringRequest> responseEntity =
+                        retryTemplate.execute(retryContext ->
+                                restTemplate.exchange(finalRequestEntity, ServiceResponseScoringRequest.class));
+                response = responseEntity.getBody();
+                response.setHttpStatus(responseEntity.getStatusCode());
+                if (responseEntity.getStatusCode() != HttpStatus.OK) {
+                    String errorMessage = String.format("ERROR retrieving reliability scoring information for " +
+                                    "Resource ID '%s', URL '%s' " +
+                                    "from '%s', " +
+                                    "HTTP status code '%d', " +
+                                    "explanation '%s'",
+                            resourceId,
+                            url,
+                            endpoint,
+                            responseEntity.getStatusCodeValue(),
+                            responseEntity.getBody().getErrorMessage());
+                    logger.error(errorMessage);
+                }
+            } catch (RuntimeException e) {
+                String errorMessage = String.format("ERROR retrieving reliability scoring information for " +
+                                "Resource ID '%s', URL '%s' " +
+                                "from '%s', " +
+                                "explanation '%s'",
+                        resourceId,
+                        url,
+                        endpoint,
+                        e.getMessage());
+                response.setHttpStatus(HttpStatus.INTERNAL_SERVER_ERROR).setErrorMessage(errorMessage);
+                logger.error(errorMessage);
+            }
+        }
         return response;
     }
-
-    // TODO
 }
