@@ -3,6 +3,7 @@
 version: "3"
 services:
     link-checker:
+        image: identifiersorg/cloud-link-checker:1.0.0
         
     metadata:
         image: identifiersorg/cloud-ws-metadata:1.0.1
