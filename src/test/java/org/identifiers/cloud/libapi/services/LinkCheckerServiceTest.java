@@ -1,8 +1,14 @@
 package org.identifiers.cloud.libapi.services;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.identifiers.cloud.libapi.models.linkchecker.responses.ServiceResponseScoringRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
  * Project: libapi
@@ -28,6 +34,16 @@ public class LinkCheckerServiceTest {
                 .getScoreForProvider(providerId, url);
         logger.info("Reliability score for provider ID #{}, URL '{}' ---> '{}'",
                 providerId, url, response.getPayload().getScore());
-        // TODO
+        // Just for debugging purposes, serialized response into the logs
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            logger.info("Test request link checker, response from the service:\n{}",
+                    mapper.writeValueAsString(response));
+        } catch (JsonProcessingException e) {
+            // Ignore
+        }
+        assertThat("Response from service is OK",
+                response.getHttpStatus() == HttpStatus.OK,
+                is(true));
     }
 }
