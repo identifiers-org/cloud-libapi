@@ -1,5 +1,6 @@
 package org.identifiers.cloud.libapi.services;
 
+import org.identifiers.cloud.libapi.models.linkchecker.responses.ServiceResponseScoringRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,7 +21,13 @@ public class LinkCheckerServiceTest {
     // iteration of this library
 
     public void testReliabilityScoringForProvider() {
-
+        String providerId = "MIR:00100593";
+        String url = "http://www.molbase.com/";
+        ServiceResponseScoringRequest response = ApiServicesFactory
+                .getLinkCheckerService(serviceHost, servicePort)
+                .getScoreForProvider(providerId, url);
+        logger.info("Reliability score for provider ID #{}, URL '{}' ---> '{}'",
+                providerId, url, response.getPayload().getScore());
         // TODO
     }
 }
