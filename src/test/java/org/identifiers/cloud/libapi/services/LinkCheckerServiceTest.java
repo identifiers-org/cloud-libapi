@@ -48,4 +48,26 @@ public class LinkCheckerServiceTest {
                 response.getHttpStatus() == HttpStatus.OK,
                 is(true));
     }
+
+    @Test
+    public void testReliabilityScoringForResource() {
+        String resourceId = "MIR:00100878";
+        String url = "https://w3id.org/oc/oci/1-18";
+        ServiceResponseScoringRequest response = ApiServicesFactory
+                .getLinkCheckerService(serviceHost, servicePort)
+                .getScoreForResolvedId(resourceId, url);
+        logger.info("Reliability score for Resource ID #{}, URL '{}' ---> '{}'",
+                resourceId, url, response.getPayload().getScore());
+        // Just for debugging purposes, serialized response into the logs
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            logger.info("Test request link checker, response from the service:\n{}",
+                    mapper.writeValueAsString(response));
+        } catch (JsonProcessingException e) {
+            // Ignore
+        }
+        assertThat("Response from service is OK",
+                response.getHttpStatus() == HttpStatus.OK,
+                is(true));
+    }
 }
