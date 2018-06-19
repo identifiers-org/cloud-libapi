@@ -2,6 +2,8 @@
 # Author: Manuel Bernal Llinares <mbdebian@gmail.com>
 version: "3"
 services:
+    link-checker:
+        
     metadata:
         image: identifiersorg/cloud-ws-metadata:1.0.1
         environment:
