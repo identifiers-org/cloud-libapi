@@ -3,7 +3,7 @@
 version: "3"
 services:
     link-checker:
-        image: identifiersorg/cloud-ws-link-checker:1.0.0
+        image: identifiersorg/cloud-ws-link-checker:1.0.1
         environment:
             - WS_LINK_CHECKER_CONFIG_REDIS_HOST=redis
             - WS_LINK_CHECKER_CONFIG_BACKEND_SERVICE_RESOLVER_HOST=resolver
