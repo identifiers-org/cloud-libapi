@@ -4,6 +4,7 @@ import org.identifiers.cloud.libapi.Configuration;
 import org.identifiers.cloud.libapi.models.ServiceRequest;
 import org.identifiers.cloud.libapi.models.linkchecker.requests.ScoringRequestWithIdPayload;
 import org.identifiers.cloud.libapi.models.linkchecker.requests.ServiceRequestScoreProvider;
+import org.identifiers.cloud.libapi.models.linkchecker.requests.ServiceRequestScoreResource;
 import org.identifiers.cloud.libapi.models.linkchecker.responses.ServiceResponseScoringRequest;
 import org.identifiers.cloud.libapi.models.linkchecker.responses.ServiceResponseScoringRequestPayload;
 import org.slf4j.Logger;
@@ -133,8 +134,28 @@ public class LinkCheckerService {
     }
 
     public ResponseEntity<ServiceResponseScoringRequest> getScoreForResolvedId(String resourceId, String url) {
+        String endpoint = String.format("%s/getScoreForResolvedId", serviceApiBaseline);
+        // Prepare the request body
+        ServiceRequestScoreResource requestBody = new ServiceRequestScoreResource();
+        prepareScoringRequest(requestBody);
+        requestBody.setPayload(new ScoringRequestWithIdPayload());
+        requestBody.getPayload().setId(resourceId);
+        requestBody.getPayload().setUrl(url);
+        // Prepare response
+        ServiceResponseScoringRequest response = createDefaultResponse();
+        // Prepare the request entity
+        RequestEntity<ServiceRequestScoreResource> requestEntity = null;
+        try {
+            requestEntity = RequestEntity.post(new URI(endpoint)).body(requestBody);
+        } catch (URISyntaxException e) {
+            logger.error("INVALID URI '{}'", endpoint);
+            response.setHttpStatus(HttpStatus.BAD_REQUEST)
+                    .setErrorMessage(String.format("An error occurred while trying score " +
+                                    "Resource with ID '%s', URL '%s', using service endpoint '%s' INVALID URI",
+                            resourceId, url, endpoint));
+        }
         // TODO
-        return null;
+        return response;
     }
 
     // TODO
