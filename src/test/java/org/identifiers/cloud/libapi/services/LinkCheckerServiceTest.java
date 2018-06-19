@@ -29,8 +29,8 @@ public class LinkCheckerServiceTest {
 
     @Test
     public void testReliabilityScoringForProvider() {
-        String providerId = "MIR:00100539";
-        String url = "http://bacmap.wishartlab.com/";
+        String providerId = "MIR:00100175";
+        String url = "http://doqcs.ncbs.res.in/";
         ServiceResponseScoringRequest response = ApiServicesFactory
                 .getLinkCheckerService(serviceHost, servicePort)
                 .getScoreForProvider(providerId, url);
@@ -51,8 +51,8 @@ public class LinkCheckerServiceTest {
 
     @Test
     public void testReliabilityScoringForResource() {
-        String resourceId = "MIR:00100878";
-        String url = "https://w3id.org/oc/oci/1-18";
+        String resourceId = "MIR:00100695";
+        String url = "http://taxonomy.bio2rdf.org/describe/?url=http://bio2rdf.org/taxonomy:9606";
         ServiceResponseScoringRequest response = ApiServicesFactory
                 .getLinkCheckerService(serviceHost, servicePort)
                 .getScoreForResolvedId(resourceId, url);
