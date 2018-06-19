@@ -9,6 +9,8 @@ services:
             - WS_LINK_CHECKER_CONFIG_BACKEND_SERVICE_RESOLVER_HOST=resolver
         ports:
             - "8084:8084"
+        depends_on:
+            - resolver
     metadata:
         image: identifiersorg/cloud-ws-metadata:1.0.1
         environment:
