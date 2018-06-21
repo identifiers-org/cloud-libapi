@@ -27,6 +27,7 @@ public class ResolvedResource implements Serializable {
     private String accessURL;
     // For this particular resolved resource request, provides information on whether the resource is official or not
     private boolean official;
+    // TODO - This field references the Home URL for a provider
 
     public String getId() {
         return id;
