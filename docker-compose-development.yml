@@ -3,10 +3,11 @@
 version: "3"
 services:
     link-checker:
-        image: identifiersorg/cloud-ws-link-checker:1.0.1
+        image: identifiersorg/cloud-ws-link-checker:1.0.3
         environment:
             - WS_LINK_CHECKER_CONFIG_REDIS_HOST=redis
             - WS_LINK_CHECKER_CONFIG_BACKEND_SERVICE_RESOLVER_HOST=resolver
+            - WS_LINK_CHECKER_CONFIG_DAEMON_PERIODIC_LINK_CHECK_REQUESTER_ENABLED=false
         ports:
             - "8084:8084"
         depends_on:
@@ -43,7 +44,7 @@ services:
             - resolver
             - fakesmtp
     resolver:
-        image: identifiersorg/cloud-ws-resolver:1.0.3
+        image: identifiersorg/cloud-ws-resolver:1.0.4
         environment:
             - WS_RESOLVER_CONFIG_REDIS_HOST=redis
             - WS_RESOLVER_CONFIG_REDIS_PORT=6379
@@ -66,6 +67,8 @@ services:
             - WS_RESOURCE_RECOMMENDER_JVM_MEMORY_MAX=1024m
         ports:
             - "8083:8083"
+        depends_on:
+            - link-checker
     fakesmtp:
         image: digiplant/fake-smtp
         ports:
