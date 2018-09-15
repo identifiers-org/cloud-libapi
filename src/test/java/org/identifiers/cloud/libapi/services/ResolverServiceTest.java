@@ -57,6 +57,23 @@ public class ResolverServiceTest {
     }
 
     @Test
+    public void testResolutionWithRawRequest() {
+        ServiceResponseResolve response = ApiServicesFactory
+                .getResolverService()
+                .requestResolutionRawRequest("ark:/57799/b97957");
+        // Just for debugging purposes, serialized response into the logs
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            logger.info("Test request resolver, response from the service:\n{}", mapper.writeValueAsString(response));
+        } catch (JsonProcessingException e) {
+            // Ignore
+        }
+        assertThat("Response from service is OK",
+                response.getHttpStatus() == HttpStatus.OK,
+                is(true));
+    }
+
+    @Test
     public void getAllResourcesResolvedToTheirSampleIds() {
         ServiceResponseResolve response = ApiServicesFactory
                 .getResolverService("localhost", "8080")
