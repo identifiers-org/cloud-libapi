@@ -120,6 +120,16 @@ public class ResolverService {
         return doRequestResolution(serviceApiEndpoint);
     }
 
+    /**
+     * Resolver Service API: given a raw request, i.e. everything that would go after the first '/' in the URL for the
+     * Resolution API Service, request resolution for that raw request. This method is very useful for those cases where
+     * we don't want to use the built-in models for building the request path from a given compact identifier with its
+     * possible selector.
+     * @param rawRequest the raw request for the Resolution API Service
+     * @return the service response, containing the resolution information, or a default guaranteed response (with an
+     * empty list of resources / providers) where the HTTP Status code and error message fields contain information on
+     * what could have happened to the request.
+     */
     public ServiceResponseResolve requestResolutionRawRequest(String rawRequest) {
         String serviceApiEndpoint = String.format("%s/%s", serviceApiBaseline, rawRequest);
         return doRequestResolution(serviceApiEndpoint;
