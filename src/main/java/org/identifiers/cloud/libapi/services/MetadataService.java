@@ -149,7 +149,7 @@ public class MetadataService {
     // --- API ---
 
     /**
-     * Metadata Service API: get metadata information for a given Compact ID.
+     * Metadata API Service: get metadata information for a given Compact ID.
      *
      * Whatever happens with the request, at least a default (empty metadata) response is guaranteed, with the HTTP
      * Status code and error message fields set accordingly.
@@ -162,7 +162,17 @@ public class MetadataService {
         return doRequestFetchMetadata(serviceApiEndpoint);
     }
 
-    // TODO - get metadata for compact ID and provider code
+    /**
+     * Metadata API Service: get metadata information for a given Compact ID, from the provider specified by the given
+     * 'selector' / 'provider code'
+     *
+     * Whatever happens with the request, at least a default (empty metadata) response is guaranteed, with the HTTP
+     * Status code and error message fields set accordingly.
+     * @param compactId Compact ID for which to fetch metadata information.
+     * @param selector provider code of the resource where the metadata should be extracted from
+     * @return service response, that includes potentially found metadata, or indications on what could have happened
+     * via HTTP Status codes and additional information on the error message field.
+     */
     public ServiceResponseFetchMetadata getMetadataForCompactId(String compactId, String selector) {
         String serviceApiEndpoint = String.format("%s/%s/%s", serviceApiBaseline, selector, compactId);
         return doRequestFetchMetadata(serviceApiEndpoint);
