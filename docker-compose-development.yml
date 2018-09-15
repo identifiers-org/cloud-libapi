@@ -11,7 +11,6 @@ services:
         ports:
             - "8084:8084"
         depends_on:
-            - resolver
             - redis
     metadata:
         image: identifiersorg/cloud-ws-metadata
