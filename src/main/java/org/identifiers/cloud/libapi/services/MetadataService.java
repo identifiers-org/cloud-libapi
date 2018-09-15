@@ -164,6 +164,8 @@ public class MetadataService {
 
     // TODO - get metadata for compact ID and provider code
 
+    // TODO - get metadata for raw request
+
     /**
      * Metadata Service API: get metadata information for a given URL.
      *
