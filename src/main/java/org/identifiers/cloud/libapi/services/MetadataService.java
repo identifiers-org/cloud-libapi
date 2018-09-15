@@ -162,6 +162,8 @@ public class MetadataService {
         return doRequestFetchMetadata(serviceApiEndpoint);
     }
 
+    // TODO - get metadata for compact ID and provider code
+
     /**
      * Metadata Service API: get metadata information for a given URL.
      *
