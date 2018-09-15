@@ -132,7 +132,7 @@ public class ResolverService {
      */
     public ServiceResponseResolve requestResolutionRawRequest(String rawRequest) {
         String serviceApiEndpoint = String.format("%s/%s", serviceApiBaseline, rawRequest);
-        return doRequestResolution(serviceApiEndpoint;
+        return doRequestResolution(serviceApiEndpoint);
     }
 
     /**
