@@ -163,6 +163,10 @@ public class MetadataService {
     }
 
     // TODO - get metadata for compact ID and provider code
+    public ServiceResponseFetchMetadata getMetadataForCompactId(String compactId, String selector) {
+        String serviceApiEndpoint = String.format("%s/%s/%s", serviceApiBaseline, selector, compactId);
+        return doRequestFetchMetadata(serviceApiEndpoint);
+    }
 
     // TODO - get metadata for raw request
 
