@@ -59,7 +59,7 @@ public class ResolverServiceTest {
     @Test
     public void testResolutionWithRawRequest() {
         ServiceResponseResolve response = ApiServicesFactory
-                .getResolverService()
+                .getResolverService("localhost", "8080")
                 .requestResolutionRawRequest("ark:/57799/b97957");
         // Just for debugging purposes, serialized response into the logs
         ObjectMapper mapper = new ObjectMapper();
