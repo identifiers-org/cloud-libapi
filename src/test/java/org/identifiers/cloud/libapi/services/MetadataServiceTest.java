@@ -42,6 +42,24 @@ public class MetadataServiceTest {
     }
 
     @Test
+    public void getMetadataForRawRequest() {
+        ServiceResponseFetchMetadata response = ApiServicesFactory
+                .getMetadataService("localhost", "8082")
+                .getMetadataForRawRequest("ark:/57799/b97957");
+        // Just for debugging purposes, serialized response into the logs
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            logger.info("Test request metadata for raw request, " +
+                    "response from the service:\n{}", mapper.writeValueAsString(response));
+        } catch (JsonProcessingException e) {
+            // Ignore
+        }
+        assertThat("Response from service is not OK, as there is no metadata for that Raw Request",
+                response.getHttpStatus() == HttpStatus.OK,
+                is(false));
+    }
+
+    @Test
     public void getMetadataForUrl() {
         ServiceResponseFetchMetadataForUrl response = ApiServicesFactory
                 .getMetadataService("localhost", "8082")
