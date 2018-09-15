@@ -121,7 +121,8 @@ public class ResolverService {
     }
 
     public ServiceResponseResolve requestResolutionRawRequest(String rawRequest) {
-        // TODO
+        String serviceApiEndpoint = String.format("%s/%s", serviceApiBaseline, rawRequest);
+        return doRequestResolution(serviceApiEndpoint;
     }
 
     /**
