@@ -3,7 +3,7 @@
 version: "3"
 services:
     link-checker:
-        image: identifiersorg/cloud-ws-link-checker:1.0.4
+        image: identifiersorg/cloud-ws-link-checker
         environment:
             - WS_LINK_CHECKER_CONFIG_REDIS_HOST=redis
             - WS_LINK_CHECKER_CONFIG_BACKEND_SERVICE_RESOLVER_HOST=resolver
@@ -14,7 +14,7 @@ services:
             - resolver
             - redis
     metadata:
-        image: identifiersorg/cloud-ws-metadata:1.0.1
+        image: identifiersorg/cloud-ws-metadata
         environment:
             - WS_METADATA_CONFIG_RESOLVER_HOST=resolver
             - WS_METADATA_CONFIG_RESOLVER_PORT=8080
@@ -24,7 +24,7 @@ services:
         depends_on:
             - resolver
     registry:
-        image: identifiersorg/cloud-ws-registry:1.0.1
+        image: identifiersorg/cloud-ws-registry
         environment:
             - WS_REGISTRY_CONFIG_RESOLVER_HOST=resolver
             - WS_REGISTRY_CONFIG_RESOLVER_PORT=8080
@@ -44,7 +44,7 @@ services:
             - resolver
             - fakesmtp
     resolver:
-        image: identifiersorg/cloud-ws-resolver:1.0.4
+        image: identifiersorg/cloud-ws-resolver
         environment:
             - WS_RESOLVER_CONFIG_REDIS_HOST=redis
             - WS_RESOLVER_CONFIG_REDIS_PORT=6379
@@ -62,7 +62,7 @@ services:
         ports:
             - "6379:6379"
     recommender:
-        image: identifiersorg/cloud-ws-resource-recommender:1.0.0
+        image: identifiersorg/cloud-ws-resource-recommender
         environment:
             - WS_RESOURCE_RECOMMENDER_JVM_MEMORY_MAX=1024m
         ports:
