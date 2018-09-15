@@ -178,7 +178,14 @@ public class MetadataService {
         return doRequestFetchMetadata(serviceApiEndpoint);
     }
 
-    // TODO - get metadata for raw request
+    /**
+     * Metadata API Service: get metadata information for the given raw request.
+     * This method is very useful for those cases where we don't want to use the built-in models for building the
+     * request path from a given compact identifier with its possible selector.
+     * @param rawRequest raw request
+     * @return service response, that includes potentially found metadata, or indications on what could have happened
+     * via HTTP Status codes and additional information on the error message field.
+     */
     public ServiceResponseFetchMetadata getMetadataForRawRequest(String rawRequest) {
         String serviceApiEndpoint = String.format("%s/%s", serviceApiBaseline, rawRequest);
         return doRequestFetchMetadata(serviceApiEndpoint);
