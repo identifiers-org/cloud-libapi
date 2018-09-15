@@ -120,6 +120,10 @@ public class ResolverService {
         return doRequestResolution(serviceApiEndpoint);
     }
 
+    public ServiceResponseResolve requestResolutionRawRequest(String rawRequest) {
+        // TODO
+    }
+
     /**
      * Resolver Service API: get all the available resource providers resolved to a sample ID URL.
      * @return the service response, containing the resolution information, or a default guaranteed response (with an
