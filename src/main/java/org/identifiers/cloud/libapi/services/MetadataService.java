@@ -179,6 +179,10 @@ public class MetadataService {
     }
 
     // TODO - get metadata for raw request
+    public ServiceResponseFetchMetadata getMetadataForRawRequest(String rawRequest) {
+        String serviceApiEndpoint = String.format("%s/%s", serviceApiBaseline, rawRequest);
+        return doRequestFetchMetadata(serviceApiEndpoint);
+    }
 
     /**
      * Metadata Service API: get metadata information for a given URL.
