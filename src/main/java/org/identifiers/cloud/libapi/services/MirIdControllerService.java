@@ -1,5 +1,7 @@
 package org.identifiers.cloud.libapi.services;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * Project: cloud-libapi
  * Package: org.identifiers.cloud.libapi.services
@@ -10,6 +12,7 @@ package org.identifiers.cloud.libapi.services;
  *
  * This is an implementation of a client for the MIR ID Controller API Service
  */
+@Slf4j
 public class MirIdControllerService {
 
 }
