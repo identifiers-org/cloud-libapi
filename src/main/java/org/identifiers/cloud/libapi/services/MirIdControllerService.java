@@ -7,6 +7,8 @@ package org.identifiers.cloud.libapi.services;
  *
  * @author Manuel Bernal Llinares <mbdebian@gmail.com>
  * ---
+ *
+ * This is an implementation of a client for the MIR ID Controller API Service
  */
 public class MirIdControllerService {
 }
