@@ -24,4 +24,8 @@ public class MirIdControllerService {
         // TODO - This needs to be refactored in the future for supporting multiple schema (HTTP, HTTPS)
         this.serviceApiBaseline = String.format("http://%s:%s", serviceHost, servicePort);
     }
+
+    // TODO - THIS IS ON HOLD, BECAUSE THAT ENDPIONT OF THE MIR ID CONTROLLER WILL BE AUTHENTICATED, SO I'M GOING TO
+    //  FIGURE THAT CODE OUT IN THE REGISTRY SERVICE, AND THEN TRY TO REFACTOR IT OUT TO A CLIENT LIBRARY FOR ANY OTHER
+    //  SERVICE USING THIS FUNCTIONALITY
 }
