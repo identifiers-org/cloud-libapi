@@ -1,6 +1,11 @@
 package org.identifiers.cloud.libapi.models.resolver;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 
@@ -14,96 +19,29 @@ import java.io.Serializable;
  * This POJO models a Compact ID information provider, as result of a resolution request to the Resolver for a
  * particular Compact ID.
  */
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode
+@Accessors(chain = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ResolvedResource implements Serializable {
+    // identifiers.org internal ID for this resource
     private String id;
-    private String resourcePrefix;
-    private String accessUrl;
-    private String info;
-    private String institution;
-    private String location;
+    // Provider code for this resource
+    private String providerCode;
+    // This is the resolved URL for the given compact identifier
+    private String compactIdentifierResolvedUrl;
+    // A description of this resource
+    private String description;
+    // The institution this resource belongs to
+    private Institution institution;
+    // Location information for this resource
+    private Location location;
+    // Whether this resource is official or not
     private boolean official;
-    private String resourceURL;
+    // Home URL for this resource within the context of the namespace where it's registered
+    private String resourceHomeUrl;
+    // Recommendation scoring information
     private Recommendation recommendation;
-
-    public String getId() {
-        return id;
-    }
-
-    public ResolvedResource setId(String id) {
-        this.id = id;
-        return this;
-    }
-
-    public String getResourcePrefix() {
-        return resourcePrefix;
-    }
-
-    public ResolvedResource setResourcePrefix(String resourcePrefix) {
-        this.resourcePrefix = resourcePrefix;
-        return this;
-    }
-
-    public String getAccessUrl() {
-        return accessUrl;
-    }
-
-    public ResolvedResource setAccessUrl(String accessUrl) {
-        this.accessUrl = accessUrl;
-        return this;
-    }
-
-    public String getInfo() {
-        return info;
-    }
-
-    public ResolvedResource setInfo(String info) {
-        this.info = info;
-        return this;
-    }
-
-    public String getInstitution() {
-        return institution;
-    }
-
-    public ResolvedResource setInstitution(String institution) {
-        this.institution = institution;
-        return this;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public ResolvedResource setLocation(String location) {
-        this.location = location;
-        return this;
-    }
-
-    public boolean isOfficial() {
-        return official;
-    }
-
-    public ResolvedResource setOfficial(boolean official) {
-        this.official = official;
-        return this;
-    }
-
-    public String getResourceURL() {
-        return resourceURL;
-    }
-
-    public ResolvedResource setResourceURL(String resourceURL) {
-        this.resourceURL = resourceURL;
-        return this;
-    }
-
-    public Recommendation getRecommendation() {
-        return recommendation;
-    }
-
-    public ResolvedResource setRecommendation(Recommendation recommendation) {
-        this.recommendation = recommendation;
-        return this;
-    }
 }
