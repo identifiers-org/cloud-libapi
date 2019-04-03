@@ -27,7 +27,7 @@ import java.io.Serializable;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ResolvedResource implements Serializable {
     // identifiers.org internal ID for this resource
-    private String id;
+    private long id;
     // Provider code for this resource
     private String providerCode;
     // This is the resolved URL for the given compact identifier
