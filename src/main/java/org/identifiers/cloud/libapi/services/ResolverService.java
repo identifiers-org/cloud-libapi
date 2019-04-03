@@ -142,7 +142,7 @@ public class ResolverService {
      * what could have happened to the request.
      */
     public ServiceResponseResolve getAllSampleIdsResolved() {
-        String serviceApiEndpoint = String.format("%s/%s", serviceApiBaseline, "get_all_sample_ids_resolved");
+        String serviceApiEndpoint = String.format("%s/%s", serviceApiBaseline, "insightApi/get_all_sample_ids_resolved");
         return doRequestResolution(serviceApiEndpoint);
     }
 
@@ -154,7 +154,7 @@ public class ResolverService {
      * what could have happened to the request.
      */
     public ServiceResponseResolve getAllHomeUrls() {
-        String serviceApiEndpoint = String.format("%s/%s", serviceApiBaseline, "get_all_home_urls");
+        String serviceApiEndpoint = String.format("%s/%s", serviceApiBaseline, "insightApi/get_all_home_urls");
         return doRequestResolution(serviceApiEndpoint);
     }
 }
