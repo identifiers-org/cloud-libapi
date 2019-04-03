@@ -7,6 +7,8 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
+
 /**
  * Project: cloud-libapi
  * Package: org.identifiers.cloud.libapi.models.resolver
@@ -21,7 +23,7 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode
 @Accessors(chain = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Institution {
+public class Institution implements Serializable {
     // identifiers.org internal ID for this institution
     private long id;
     private String name;

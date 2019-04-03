@@ -6,6 +6,8 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
+
 /**
  * Project: cloud-libapi
  * Package: org.identifiers.cloud.libapi.models.resolver
@@ -19,7 +21,7 @@ import lombok.experimental.Accessors;
 @NoArgsConstructor
 @EqualsAndHashCode
 @Accessors(chain = true)
-public class Location {
+public class Location implements Serializable {
     private String countryCode;
     private String countryName;
 }
