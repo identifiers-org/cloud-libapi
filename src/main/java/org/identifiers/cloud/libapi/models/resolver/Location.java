@@ -1,5 +1,6 @@
 package org.identifiers.cloud.libapi.models.resolver;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -21,6 +22,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @EqualsAndHashCode
 @Accessors(chain = true)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Location implements Serializable {
     private String countryCode;
     private String countryName;
