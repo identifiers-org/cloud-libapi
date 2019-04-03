@@ -1,6 +1,11 @@
 package org.identifiers.cloud.libapi.models.resolver;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 
@@ -14,27 +19,14 @@ import java.io.Serializable;
  * This class models a recommendation score, with a posisble explanation, for a particular resource in the response from
  * the Resolver service, when the resolution of a Comapct ID has been requested.
  */
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode
+@Accessors(chain = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Recommendation implements Serializable {
     // This models a recommendation attached to a particular resource in the response from the Resolver Web Service
     private int recommendationIndex = 0;
     private String recommendationExplanation = "--- default explanation ---";
-
-    public int getRecommendationIndex() {
-        return recommendationIndex;
-    }
-
-    public Recommendation setRecommendationIndex(int recommendationIndex) {
-        this.recommendationIndex = recommendationIndex;
-        return this;
-    }
-
-    public String getRecommendationExplanation() {
-        return recommendationExplanation;
-    }
-
-    public Recommendation setRecommendationExplanation(String recommendationExplanation) {
-        this.recommendationExplanation = recommendationExplanation;
-        return this;
-    }
 }
