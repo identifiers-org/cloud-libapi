@@ -2,6 +2,7 @@ package org.identifiers.cloud.libapi.services;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.identifiers.cloud.libapi.models.resourcerecommender.Location;
 import org.identifiers.cloud.libapi.models.resourcerecommender.ResolvedResource;
 import org.identifiers.cloud.libapi.models.resourcerecommender.ServiceResponseRecommend;
 import org.junit.Test;
@@ -33,7 +34,9 @@ public class ResourceRecommenderServiceTest {
         // back from it
         List<ResolvedResource> resolvedResources = IntStream.range(0, 9).parallel().mapToObj(index -> {
             return new ResolvedResource()
-                    .setAccessURL(String.format("http://resolved.resource/%d", index))
+                    .setCompactIdentifierResolvedUrl(String.format("http://resolved.resource/%d", index))
+                    .setLocation(new Location().setCountryCode("GB").setCountryName("United Kingdom"))
+                    .setResourceHomeUrl("https://www.ebi.ac.uk")
                     .setId(Integer.toString(index));
         }).collect(Collectors.toList());
         // Set an official one
