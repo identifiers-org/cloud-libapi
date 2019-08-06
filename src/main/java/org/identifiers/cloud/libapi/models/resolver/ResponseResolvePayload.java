@@ -27,4 +27,5 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ResponseResolvePayload implements Serializable {
     private List<ResolvedResource> resolvedResources;
+    private ParsedCompactIdentifier parsedCompactIdentifier;
 }
