@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author Manuel Bernal Llinares <mbdebian@gmail.com>
@@ -28,6 +29,8 @@ import java.io.Serializable;
 public class ResolvedResource implements Serializable {
     // identifiers.org internal ID for this resource
     private long id;
+    // Resource MIR ID
+    private String mirId;
     // Provider code for this resource
     private String providerCode;
     // This is the resolved URL for the given compact identifier
@@ -44,4 +47,10 @@ public class ResolvedResource implements Serializable {
     private String resourceHomeUrl;
     // Recommendation scoring information
     private Recommendation recommendation;
+    // Deprecation information
+    private String namespacePrefix;
+    private boolean deprecatedNamespace = false;
+    private Date namespaceDeprecationDate;
+    private boolean deprecatedResource = false;
+    private Date resourceDeprecationDate;
 }
