@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -37,6 +38,8 @@ public class ResourceRecommenderServiceTest {
                     .setCompactIdentifierResolvedUrl(String.format("http://resolved.resource/%d", index))
                     .setLocation(new Location().setCountryCode("GB").setCountryName("United Kingdom"))
                     .setResourceHomeUrl("https://www.ebi.ac.uk")
+                    .setMirId(String.format("MIR:%08d", index))
+                    .setNamespaceDeprecationDate(new Date(System.currentTimeMillis()))
                     .setId(Integer.toString(index));
         }).collect(Collectors.toList());
         // Set an official one
