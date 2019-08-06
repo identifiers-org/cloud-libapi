@@ -1,6 +1,11 @@
 package org.identifiers.cloud.libapi.models.resourcerecommender;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 
@@ -16,6 +21,11 @@ import java.io.Serializable;
  * As Resource Recommender service issues recommendation metrics as scores / indexes, this class implements the
  * Comparable interface for easy sorting on the client side.
  */
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode
+@Accessors(chain = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ResourceRecommendation implements Serializable, Comparable<ResourceRecommendation> {
     // This is an index [0,99] on how recommendable is this resource, 0 - not at all, 99 - way to go
@@ -23,43 +33,7 @@ public class ResourceRecommendation implements Serializable, Comparable<Resource
     private String recommendationExplanation = "no explanation has been specified";
     // This is the contextual ID of the resource in the current recommendation request
     private String id;
-    private String accessURL;
-
-    public int getRecommendationIndex() {
-        return recommendationIndex;
-    }
-
-    public ResourceRecommendation setRecommendationIndex(int recommendationIndex) {
-        this.recommendationIndex = recommendationIndex;
-        return this;
-    }
-
-    public String getRecommendationExplanation() {
-        return recommendationExplanation;
-    }
-
-    public ResourceRecommendation setRecommendationExplanation(String recommendationExplanation) {
-        this.recommendationExplanation = recommendationExplanation;
-        return this;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public ResourceRecommendation setId(String id) {
-        this.id = id;
-        return this;
-    }
-
-    public String getAccessURL() {
-        return accessURL;
-    }
-
-    public ResourceRecommendation setAccessURL(String accessURL) {
-        this.accessURL = accessURL;
-        return this;
-    }
+    private String compactIdentifierResolvedUrl;
 
     @Override
     public int compareTo(ResourceRecommendation o) {

@@ -1,6 +1,11 @@
 package org.identifiers.cloud.libapi.models.resourcerecommender;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 import java.util.List;
@@ -15,16 +20,12 @@ import java.util.List;
  * This class models the data (payload) that is sent to the Resource Recommender service, when requesting
  * recommendations on one or more resource candidates to provide information on a Compact ID.
  */
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode
+@Accessors(chain = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class RequestRecommendPayload implements Serializable {
     private List<ResolvedResource> resolvedResources;
-
-    public List<ResolvedResource> getResolvedResources() {
-        return resolvedResources;
-    }
-
-    public RequestRecommendPayload setResolvedResources(List<ResolvedResource> resolvedResources) {
-        this.resolvedResources = resolvedResources;
-        return this;
-    }
 }

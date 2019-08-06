@@ -1,6 +1,11 @@
 package org.identifiers.cloud.libapi.models.resourcerecommender;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 import java.util.List;
@@ -16,16 +21,12 @@ import java.util.List;
  * 'resolved resources' that were analized is produced. And this will be part of the response from the Resource
  * Recommender service.
  */
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode
+@Accessors(chain = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ResponseRecommendPayload implements Serializable {
     List<ResourceRecommendation> resourceRecommendations;
-
-    public List<ResourceRecommendation> getResourceRecommendations() {
-        return resourceRecommendations;
-    }
-
-    public ResponseRecommendPayload setResourceRecommendations(List<ResourceRecommendation> resourceRecommendations) {
-        this.resourceRecommendations = resourceRecommendations;
-        return this;
-    }
 }
