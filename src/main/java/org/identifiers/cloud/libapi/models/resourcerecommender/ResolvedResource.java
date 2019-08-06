@@ -1,8 +1,14 @@
 package org.identifiers.cloud.libapi.models.resourcerecommender;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author Manuel Bernal Llinares <mbdebian@gmail.com>
@@ -14,6 +20,11 @@ import java.io.Serializable;
  * This POJO models the concept of a "resolved resource" for the recommender service, i.e. a resource that has been
  * found candidate to provide information on a given Compact ID.
  */
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode
+@Accessors(chain = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ResolvedResource implements Serializable {
     // Even if we have access to another service that, given a resource ID, could provide information on that resource,
@@ -23,36 +34,20 @@ public class ResolvedResource implements Serializable {
 
     // This field references the ID of the resource within the context of the current Compact ID resolved request
     private String id;
-    // This field references the final URL that points to the current resolved resource request
-    private String accessURL;
-    // For this particular resolved resource request, provides information on whether the resource is official or not
+    // Resource MIR ID
+    private String mirId;
+    // This is the resolved URL for the given compact identifier
+    private String compactIdentifierResolvedUrl;
+    // Location information for this resource
+    private Location location;
+    // Whether this resource is official or not
     private boolean official;
-    // TODO - This field references the Home URL for a provider
-
-    public String getId() {
-        return id;
-    }
-
-    public ResolvedResource setId(String id) {
-        this.id = id;
-        return this;
-    }
-
-    public String getAccessURL() {
-        return accessURL;
-    }
-
-    public ResolvedResource setAccessURL(String accessURL) {
-        this.accessURL = accessURL;
-        return this;
-    }
-
-    public boolean isOfficial() {
-        return official;
-    }
-
-    public ResolvedResource setOfficial(boolean official) {
-        this.official = official;
-        return this;
-    }
+    // Home URL for this resource within the context of the namespace where it's registered
+    private String resourceHomeUrl;
+    // Deprecation information
+    private String namespacePrefix;
+    private boolean deprecatedNamespace = false;
+    private String namespaceDeprecationDate;
+    private boolean deprecatedResource = false;
+    private Date resourceDeprecationDate;
 }
