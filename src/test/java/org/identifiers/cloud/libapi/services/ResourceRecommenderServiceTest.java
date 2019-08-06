@@ -40,10 +40,13 @@ public class ResourceRecommenderServiceTest {
                     .setResourceHomeUrl("https://www.ebi.ac.uk")
                     .setMirId(String.format("MIR:%08d", index))
                     .setNamespaceDeprecationDate(new Date(System.currentTimeMillis()))
+                    .setNamespacePrefix("testprefix")
                     .setId(Integer.toString(index));
         }).collect(Collectors.toList());
         // Set an official one
         resolvedResources.get(0).setOfficial(true);
+        resolvedResources.get(1).setDeprecatedResource(true).setResourceDeprecationDate(new Date(System.currentTimeMillis()));
+        resolvedResources.get(2).setDeprecatedNamespace(true).setNamespaceDeprecationDate(new Date(System.currentTimeMillis()));
         // Get the service wrapper
         ResourceRecommenderService service = ApiServicesFactory
                 .getResourceRecommenderService("localhost", "8083");
