@@ -1,6 +1,6 @@
 # identifiers.org Satellite docker-compose based cloud deployment
 # Author: Manuel Bernal Llinares <mbdebian@gmail.com>
-version: "3"
+version: "3.5"
 services:
     # Dependencies from Satellite
     link-checker:
