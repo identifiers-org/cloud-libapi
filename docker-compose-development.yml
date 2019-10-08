@@ -2,6 +2,7 @@
 # Author: Manuel Bernal Llinares <mbdebian@gmail.com>
 version: "3"
 services:
+    # Dependencies from Satellite
     link-checker:
         # This configuration of the link checker does not depende on the resolver because it doesn't warm the link checking history up
         image: identifiersorg/cloud-ws-link-checker
@@ -23,6 +24,20 @@ services:
             - "8082:8082"
         depends_on:
             - resolver
+    resolver:
+        image: identifiersorg/cloud-ws-resolver
+        environment:
+            - WS_RESOLVER_CONFIG_REDIS_HOST=redis
+            - WS_RESOLVER_CONFIG_REDIS_PORT=6379
+            - WS_RESOLVER_CONFIG_RESOURCE_RECOMMENDER_HOST=recommender
+            - WS_RESOLVER_CONFIG_RESOURCE_RECOMMENDER_PORT=8083
+            - WS_RESOLVER_CONFIG_APPLICATION_ACTIVE_PROFILE=development
+        ports:
+            - "8080:8080"
+        depends_on:
+            - redis
+            - recommender
+    # Dependencies from HQ
     registry:
         image: identifiersorg/cloud-ws-registry
         environment:
@@ -42,19 +57,6 @@ services:
         depends_on:
             - resolver
             - fakesmtp
-    resolver:
-        image: identifiersorg/cloud-ws-resolver
-        environment:
-            - WS_RESOLVER_CONFIG_REDIS_HOST=redis
-            - WS_RESOLVER_CONFIG_REDIS_PORT=6379
-            - WS_RESOLVER_CONFIG_RESOURCE_RECOMMENDER_HOST=recommender
-            - WS_RESOLVER_CONFIG_RESOURCE_RECOMMENDER_PORT=8083
-            - WS_RESOLVER_CONFIG_APPLICATION_ACTIVE_PROFILE=development
-        ports:
-            - "8080:8080"
-        depends_on:
-            - redis
-            - recommender
     redis:
         image: redis:4.0.8-alpine
         ports:
