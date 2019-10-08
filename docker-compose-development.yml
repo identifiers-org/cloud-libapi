@@ -49,6 +49,22 @@ services:
             - redis
             - recommender
     # Dependencies from HQ
+    hqregistrypostgresql:
+        image: postgres
+        environment:
+            - POSTGRES_DB=devdatabase
+            - POSTGRES_USER=devusername
+            - POSTGRES_PASSWORD=devpassword
+        ports:
+            - "5430:5432"
+    hqmiridpostgresql:
+        image: postgres
+        environment:
+            - POSTGRES_DB=devdatabase
+            - POSTGRES_USER=devusername
+            - POSTGRES_PASSWORD=devpassword
+        ports:
+            - "5431:5432"
     registry:
         image: identifiersorg/cloud-ws-registry
         environment:
