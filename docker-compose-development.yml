@@ -17,7 +17,6 @@ services:
         environment:
             - WS_METADATA_CONFIG_RESOLVER_HOST=resolver
             - WS_METADATA_CONFIG_RESOLVER_PORT=8080
-            - WS_METADATA_JVM_MEMORY_MAX=1024m
             - WS_METADATA_CONFIG_REDIS_HOST=redis
         ports:
             - "8082:8082"
@@ -37,7 +36,6 @@ services:
             - WS_REGISTRY_CONFIG_EMAIL_BOOLEAN_START_TLS=false
             - WS_REGISTRY_CONFIG_EMAIL_BOOLEAN_DEBUG=true
             - WS_REGISTRY_CONFIG_EMAIL_FROM=test@development.env
-            - WS_REGISTRY_JVM_MEMORY_MAX=1024m
         ports:
             - "8081:8081"
         depends_on:
@@ -50,7 +48,6 @@ services:
             - WS_RESOLVER_CONFIG_REDIS_PORT=6379
             - WS_RESOLVER_CONFIG_RESOURCE_RECOMMENDER_HOST=recommender
             - WS_RESOLVER_CONFIG_RESOURCE_RECOMMENDER_PORT=8083
-            - WS_RESOLVER_JVM_MEMORY_MAX=1024m
             - WS_RESOLVER_CONFIG_APPLICATION_ACTIVE_PROFILE=development
         ports:
             - "8080:8080"
