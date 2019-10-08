@@ -95,3 +95,7 @@ services:
             - "1025:25"
         volumes:
             - ./tmp/fakesmtp:/var/mail
+networks:
+    default:
+        name: libapinet
+
