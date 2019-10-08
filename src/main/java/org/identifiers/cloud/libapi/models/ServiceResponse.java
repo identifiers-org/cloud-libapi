@@ -1,6 +1,11 @@
 package org.identifiers.cloud.libapi.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 import org.springframework.http.HttpStatus;
 
 import java.io.Serializable;
@@ -16,6 +21,11 @@ import java.io.Serializable;
  *
  * It is specialized with the payload that corresponds to every particular service response.
  */
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode
+@Accessors(chain = true)
 @JsonIgnoreProperties(ignoreUnknown = true, value = {"httpStatus"})
 public class ServiceResponse<T> implements Serializable {
     private String apiVersion;
@@ -23,40 +33,4 @@ public class ServiceResponse<T> implements Serializable {
     private HttpStatus httpStatus = HttpStatus.OK;
     // payload
     private T payload;
-
-    public String getApiVersion() {
-        return apiVersion;
-    }
-
-    public ServiceResponse setApiVersion(String apiVersion) {
-        this.apiVersion = apiVersion;
-        return this;
-    }
-
-    public String getErrorMessage() {
-        return errorMessage;
-    }
-
-    public ServiceResponse setErrorMessage(String errorMessage) {
-        this.errorMessage = errorMessage;
-        return this;
-    }
-
-    public HttpStatus getHttpStatus() {
-        return httpStatus;
-    }
-
-    public ServiceResponse setHttpStatus(HttpStatus httpStatus) {
-        this.httpStatus = httpStatus;
-        return this;
-    }
-
-    public T getPayload() {
-        return payload;
-    }
-
-    public ServiceResponse setPayload(T payload) {
-        this.payload = payload;
-        return this;
-    }
 }
