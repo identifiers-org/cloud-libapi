@@ -49,22 +49,6 @@ services:
             - redis
             - recommender
     # Dependencies from HQ
-    hqregistrypostgresql:
-        image: postgres
-        environment:
-            - POSTGRES_DB=devdatabase
-            - POSTGRES_USER=devusername
-            - POSTGRES_PASSWORD=devpassword
-        ports:
-            - "5430:5432"
-    hqmiridpostgresql:
-        image: postgres
-        environment:
-            - POSTGRES_DB=devdatabase
-            - POSTGRES_USER=devusername
-            - POSTGRES_PASSWORD=devpassword
-        ports:
-            - "5431:5432"
     hqregistry:
         image: identifiersorg/cloud-hq-ws-registry
         environment:
@@ -82,7 +66,36 @@ services:
             - hqregistrypostgresql
             - hqmiridcontroller
             - fakesmtp
+    hqmiridcontroller:
+        image: identifiersorg/cloud-hq-ws-mirid-controller
+        environment:
+            - HQ_WS_MIRID_CONTROLLER_CONFIG_JDBC_URL=jdbc:postgresql://hqmiridpostgresql:5432/devdatabase
+            - HQ_WS_MIRID_CONTROLLER_CONFIG_RDBMS_USERNAME=devusername
+            - HQ_WS_MIRID_CONTROLLER_CONFIG_RDBMS_PASSWORD:devpassword
+            - HQ_WS_MIRID_CONTROLLER_CONFIG_REDIS_HOST=redis
+            - HQ_WS_MIRID_CONTROLLER_CONFIG_APPLICATION_ACTIVE_PROFILE=development,authdisabled
+        ports:
+            - "8181:8181"
+        depends_on:
+            - redis
+            - hqmiridpostgresql
     # Common dependencies
+    hqregistrypostgresql:
+        image: postgres
+        environment:
+            - POSTGRES_DB=devdatabase
+            - POSTGRES_USER=devusername
+            - POSTGRES_PASSWORD=devpassword
+        ports:
+            - "5430:5432"
+    hqmiridpostgresql:
+        image: postgres
+        environment:
+            - POSTGRES_DB=devdatabase
+            - POSTGRES_USER=devusername
+            - POSTGRES_PASSWORD=devpassword
+        ports:
+            - "5431:5432"
     redis:
         image: redis:4.0.8-alpine
         ports:
