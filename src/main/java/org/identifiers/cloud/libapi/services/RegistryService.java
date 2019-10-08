@@ -29,6 +29,7 @@ import java.net.URISyntaxException;
  *
  * This class implements a client to the Registry service API.
  */
+// TODO Rewriting of this, for the new registry service in HQ
 public class RegistryService {
     private static final String apiVersion = "1.0";
     private static Logger logger = LoggerFactory.getLogger(RegistryService.class);
