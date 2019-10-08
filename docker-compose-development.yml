@@ -65,24 +65,22 @@ services:
             - POSTGRES_PASSWORD=devpassword
         ports:
             - "5431:5432"
-    registry:
-        image: identifiersorg/cloud-ws-registry
+    hqregistry:
+        image: identifiersorg/cloud-hq-ws-registry
         environment:
-            - WS_REGISTRY_CONFIG_RESOLVER_HOST=resolver
-            - WS_REGISTRY_CONFIG_RESOLVER_PORT=8080
-            - WS_REGISTRY_CONFIG_EMAIL_HOST=fakesmtp
-            - WS_REGISTRY_CONFIG_EMAIL_PORT=25
-            - WS_REGISTRY_CONFIG_EMAIL_USERNAME=nousername
-            - WS_REGISTRY_CONFIG_EMAIL_PASSWORD=nopassword
-            - WS_REGISTRY_CONFIG_EMAIL_TRANSPORT_PROTOCOL=smtp
-            - WS_REGISTRY_CONFIG_EMAIL_BOOLEAN_SMTP_AUTH=false
-            - WS_REGISTRY_CONFIG_EMAIL_BOOLEAN_START_TLS=false
-            - WS_REGISTRY_CONFIG_EMAIL_BOOLEAN_DEBUG=true
-            - WS_REGISTRY_CONFIG_EMAIL_FROM=test@development.env
+            - HQ_WS_REGISTRY_CONFIG_JDBC_URL=jdbc:postgresql://hqregistrypostgresql:5432/devdatabase
+            - HQ_WS_REGISTRY_CONFIG_RDBMS_USERNAME=devusername
+            - HQ_WS_REGISTRY_CONFIG_RDBMS_PASSWORD=devpassword
+            - HQ_WS_REGISTRY_CONFIG_BACKEND_SERVICE_MIRID_CONTROLLER_HOST=hqmiridcontroller
+            - HQ_WS_REGISTRY_CONFIG_BACKEND_SERVICE_MIRID_CONTROLLER_PORT=8181
+            - HQ_WS_REGISTRY_CONFIG_APPLICATION_ACTIVE_PROFILE=development,authdisabled
+            - HQ_WS_REGISTRY_CONFIG_EMAIL_HOST=fakesmtp
+            - HQ_WS_REGISTRY_CONFIG_EMAIL_PORT=25
         ports:
-            - "8081:8081"
+            - "8180:8180"
         depends_on:
-            - resolver
+            - hqregistrypostgresql
+            - hqmiridcontroller
             - fakesmtp
     # Common dependencies
     redis:
