@@ -31,6 +31,8 @@ import java.net.URISyntaxException;
  */
 // TODO Rewriting of this, for the new registry service in HQ
 public class RegistryService {
+    // API subpath
+    public static final String REGISTRY_API_PATH_PREFIX_REGISTRATION = "prefixRegistrationApi";
     private static final String apiVersion = "1.0";
     private static Logger logger = LoggerFactory.getLogger(RegistryService.class);
     // Re-try pattern, externalize this later if needed
@@ -42,7 +44,7 @@ public class RegistryService {
     }
 
     RegistryService(String host, String port) {
-        serviceApiBaseline = String.format("http://%s:%s", host, port);
+        serviceApiBaseline = String.format("http://%s:%s/%s", host, port, REGISTRY_API_PATH_PREFIX_REGISTRATION);
     }
 
     /**
@@ -137,6 +139,7 @@ public class RegistryService {
      * @return a new instance of the RestTemplate
      */
     private RestTemplate getRestTemplate() {
+        // TODO Should we go for a re-try template here?
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.setErrorHandler(Configuration.responseErrorHandler());
         return restTemplate;
