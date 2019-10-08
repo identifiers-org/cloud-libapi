@@ -3,6 +3,7 @@
 version: "3"
 services:
     link-checker:
+        # This configuration of the link checker does not depende on the resolver because it doesn't warm the link checking history up
         image: identifiersorg/cloud-ws-link-checker
         environment:
             - WS_LINK_CHECKER_CONFIG_REDIS_HOST=redis
