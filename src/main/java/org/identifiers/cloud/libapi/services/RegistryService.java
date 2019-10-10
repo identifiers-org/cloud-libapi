@@ -310,7 +310,7 @@ public class RegistryService {
      * could have happened.
      */
     public ServiceResponseValidateRequest requestValidationHomePage(ServiceRequestRegisterPrefixPayload payload) {
-        return requestValidation(String.format("%s/%s", getServiceApiEndpointBaseline(), "validateRegisterPrefixHomePage"), payload);
+        return requestValidation(String.format("%s/%s", getServiceApiEndpointBaseline(), "validateProviderHomeUrl"), payload);
     }
 
     /**
