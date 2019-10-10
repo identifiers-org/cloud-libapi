@@ -108,4 +108,6 @@ public class RegistryServiceTest {
                         .validateDescription(payload);
         checkResultOk(response, "Validation Request - Provider name");
     }
+
+    
 }
