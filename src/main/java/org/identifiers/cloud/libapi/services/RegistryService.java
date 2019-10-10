@@ -303,7 +303,7 @@ public class RegistryService {
     /**
      * Registry Service API: validate the given provider home URL
      *
-     * This will not validate the whole prefix registration request, only the 'home page' field of the request.
+     * This will not validate the whole prefix registration request, only the given provider home URL.
      * @param payload a prefix registration payload that contains a value for the field that is being validated.
      * @return validation request response for the prefix registration field that is being validated, or a guaranteed
      * default response, for this context, where HTTP Status code and error message fields have information on what
