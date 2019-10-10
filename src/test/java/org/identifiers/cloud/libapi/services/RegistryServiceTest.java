@@ -181,4 +181,12 @@ public class RegistryServiceTest {
         checkResultOk(response, "Validation Request - Provider URL Pattern");
     }
 
+    @Test
+    public void testValidateSampleId() {
+        ServiceResponseValidateRequest response =
+                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
+                        .validateSampleId(payload);
+        checkResultOk(response, "Validation Request - Sample ID");
+    }
+
 }
