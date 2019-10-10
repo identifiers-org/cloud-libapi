@@ -80,7 +80,7 @@ public class RegistryServiceTest {
     @Test
     public void requestValidateName() {
         ServiceResponseValidateRequest response =
-                ApiServicesFactory.getRegistryService("localhost", "8081")
+                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
                         .validateName(payload);
         checkResultOk(response, "Validation Request - Name");
     }
@@ -88,7 +88,7 @@ public class RegistryServiceTest {
     @Test
     public void requestValidateDescription() {
         ServiceResponseValidateRequest response =
-                ApiServicesFactory.getRegistryService("localhost", "8081")
+                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
                         .validateDescription(payload);
         checkResultOk(response, "Validation Request - Description");
     }
@@ -96,7 +96,7 @@ public class RegistryServiceTest {
     @Test
     public void requestValidateHomePage() {
         ServiceResponseValidateRequest response =
-                ApiServicesFactory.getRegistryService("localhost", "8081")
+                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
                         .validateProviderHomeUrl(payload);
         checkResultOk(response, "Validation Request - HomePage");
     }
@@ -104,7 +104,7 @@ public class RegistryServiceTest {
     @Test
     public void requestValidateOrganization() {
         ServiceResponseValidateRequest response =
-                ApiServicesFactory.getRegistryService("localhost", "8081")
+                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
                         .validateInstitutionName(payload);
         checkResultOk(response, "Validation Request - Organization");
     }
@@ -112,7 +112,7 @@ public class RegistryServiceTest {
     @Test
     public void requestValidatePreferredPrefix() {
         ServiceResponseValidateRequest response =
-                ApiServicesFactory.getRegistryService("localhost", "8081")
+                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
                         .validateRequestedPrefix(payload);
         checkResultOk(response, "Validation Request - PreferredPrefix");
     }
@@ -120,8 +120,8 @@ public class RegistryServiceTest {
     @Test
     public void requestValidateResourceAccessRule() {
         ServiceResponseValidateRequest response =
-                ApiServicesFactory.getRegistryService("localhost", "8081")
-                        .requestValidationResourceAccessRule(payload);
+                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
+                        .validateProviderUrlPattern(payload);
         checkResultOk(response, "Validation Request - ResourceAccessRule");
     }
 
