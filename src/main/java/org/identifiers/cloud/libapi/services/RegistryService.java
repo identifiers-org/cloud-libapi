@@ -37,14 +37,30 @@ public class RegistryService {
     private static Logger logger = LoggerFactory.getLogger(RegistryService.class);
     // Re-try pattern, externalize this later if needed
     private RetryTemplate retryTemplate = Configuration.retryTemplate();
-    private String serviceApiBaseline;
+    // Default protocol scheme is HTTPS
+    private String protocolScheme = "https";
+    // Default host will be localhost
+    private String host;
+    // Default port is 80
+    private int port = 8180;
 
-    private RegistryService() {
-
-    }
+    private RegistryService() { }
 
     RegistryService(String host, String port) {
-        serviceApiBaseline = String.format("http://%s:%s/%s", host, port, REGISTRY_API_PATH_PREFIX_REGISTRATION);
+        this.host = host;
+        this.port = Integer.parseInt(port);
+    }
+
+    public void setProtocolSchemeToHttp() {
+        protocolScheme = "http";
+    }
+
+    public void setProtocolSchemeToHttps() {
+        protocolScheme = "https";
+    }
+
+    private String getServiceApiEndpointBaseline() {
+        return String.format("%s://%s:%d/%s", protocolScheme, host, port, REGISTRY_API_PATH_PREFIX_REGISTRATION);
     }
 
     /**
