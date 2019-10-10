@@ -130,7 +130,7 @@ public class RegistryServiceTest {
     public void requestValidateRegexPattern() {
         ServiceResponseValidateRequest response =
                 ApiServicesFactory.getRegistryService("localhost", "8081")
-                        .requestValidationRegexPattern(payload);
+                        .validateIdRegexPattern(payload);
         checkResultOk(response, "Validation Request - RegexPattern");
     }
 

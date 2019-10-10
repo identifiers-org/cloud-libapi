@@ -403,7 +403,7 @@ public class RegistryService {
     }
 
     /**
-     * Registry Service API: validate 'regex pattern' field for a prefix registration request.
+     * Registry Service API: validate the regular expression that represents LUIs in the requested namespace
      *
      * This will not validate the whole prefix registration request, only the 'regex pattern' field of the request.
      * @param payload a prefix registration payload that contains a value for the field that is being validated.
@@ -411,8 +411,8 @@ public class RegistryService {
      * default response, for this context, where HTTP Status code and error message fields have information on what
      * could have happened.
      */
-    public ServiceResponseValidateRequest requestValidationRegexPattern(ServiceRequestRegisterPrefixPayload payload) {
-        return requestValidation(String.format("%s/%s", getServiceApiEndpointBaseline(), "validateRegisterPrefixRegexPattern"), payload);
+    public ServiceResponseValidateRequest validateIdRegexPattern(ServiceRequestRegisterPrefixPayload payload) {
+        return requestValidation(String.format("%s/%s", getServiceApiEndpointBaseline(), "validateIdRegexPattern"), payload);
     }
 
     /**
