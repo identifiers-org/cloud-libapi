@@ -283,7 +283,7 @@ public class RegistryService {
      * default response, for this context, where HTTP Status code and error message fields have information on what
      * could have happened.
      */
-    public ServiceResponseValidateRequest requestValidationName(ServiceRequestRegisterPrefixPayload payload) {
+    public ServiceResponseValidateRequest validateName(ServiceRequestRegisterPrefixPayload payload) {
         return requestValidation(String.format("%s/%s", getServiceApiEndpointBaseline(), "validateName"), payload);
     }
 
