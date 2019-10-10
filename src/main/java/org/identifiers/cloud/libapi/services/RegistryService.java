@@ -40,7 +40,7 @@ public class RegistryService {
     // Default protocol scheme is HTTPS
     private String protocolScheme = "https";
     // Default host will be localhost
-    private String host;
+    private String host = "localhost";
     // Default port is 80
     private int port = 8180;
 

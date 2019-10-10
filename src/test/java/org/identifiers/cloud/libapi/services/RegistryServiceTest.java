@@ -72,7 +72,7 @@ public class RegistryServiceTest {
     @Test
     public void requestPrefixRegistration() {
         ServiceResponseRegisterPrefix response =
-                ApiServicesFactory.getRegistryService("localhost", "8081")
+                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
                         .requestPrefixRegistration(payload);
         checkResultOk(response, "Prefix Registration Request");
     }
