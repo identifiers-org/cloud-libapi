@@ -39,6 +39,7 @@ public class RegistryServiceTest {
                         .setProviderDescription("Identifiers.org platform")
                         .setProviderCode("idorg")
                         .setProviderHomeUrl("http://identifiers.org")
+                        .setProviderLocation("GB")
                         .setInstitutionName("EMBL-EBI")
                         .setRequestedPrefix("mynewprefix")
                         .setProviderUrlPattern("http://httpstat.us/{$id}")
