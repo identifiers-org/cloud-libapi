@@ -317,6 +317,18 @@ public class RegistryService {
         return requestValidation(String.format("%s/%s", getServiceApiEndpointBaseline(), "validateProviderName"), payload);
     }
 
+    public ServiceResponseValidateRequest validateProviderDescription(ServiceRequestRegisterPrefixPayload payload) {
+        return requestValidation(String.format("%s/%s", getServiceApiEndpointBaseline(), "validateProviderDescription"), payload);
+    }
+
+    public ServiceResponseValidateRequest validateProviderLocation(ServiceRequestRegisterPrefixPayload payload) {
+        return requestValidation(String.format("%s/%s", getServiceApiEndpointBaseline(), "validateProviderLocation"), payload);
+    }
+
+    public ServiceResponseValidateRequest validateProviderCode(ServiceRequestRegisterPrefixPayload payload) {
+        return requestValidation(String.format("%s/%s", getServiceApiEndpointBaseline(), "validateProviderCode"), payload);
+    }
+
     /**
      * Registry Service API: validate 'organization' field for a prefix registration request.
      *
