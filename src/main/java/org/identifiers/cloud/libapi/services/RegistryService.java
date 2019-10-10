@@ -51,12 +51,14 @@ public class RegistryService {
         this.port = Integer.parseInt(port);
     }
 
-    public void setProtocolSchemeToHttp() {
+    public RegistryService setProtocolSchemeToHttp() {
         protocolScheme = "http";
+        return this;
     }
 
-    public void setProtocolSchemeToHttps() {
+    public RegistryService setProtocolSchemeToHttps() {
         protocolScheme = "https";
+        return this;
     }
 
     private String getServiceApiEndpointBaseline() {
