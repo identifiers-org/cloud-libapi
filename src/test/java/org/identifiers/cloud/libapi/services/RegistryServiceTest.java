@@ -101,4 +101,11 @@ public class RegistryServiceTest {
         checkResultOk(response, "Validation Request - Provider home URL");
     }
 
+    @Test
+    public void testValidateProviderName() {
+        ServiceResponseValidateRequest response =
+                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
+                        .validateDescription(payload);
+        checkResultOk(response, "Validation Request - Provider name");
+    }
 }
