@@ -36,6 +36,7 @@ public class RegistryServiceTest {
                         .setDescription("This is a sample prefix registration request from a unit test of libapi, " +
                                 "we need enouch characters for the description")
                         .setProviderName("Identifiers.org")
+                        .setProviderCode("idorg")
                         .setProviderHomeUrl("http://identifiers.org")
                         .setInstitutionName("EMBL-EBI")
                         .setRequestedPrefix("mynewprefix")
