@@ -205,4 +205,11 @@ public class RegistryServiceTest {
         checkResultOk(response, "Validation Request - References");
     }
 
+    @Test
+    public void testValidateAdditionalInformation() {
+        ServiceResponseValidateRequest response =
+                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
+                        .validateAdditionalInformation(payload);
+        checkResultOk(response, "Validation Request - Additional information");
+    }
 }
