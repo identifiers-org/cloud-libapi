@@ -78,7 +78,7 @@ public class RegistryServiceTest {
     }
 
     @Test
-    public void requestValidateName() {
+    public void testNamespaceNameValidation() {
         ServiceResponseValidateRequest response =
                 ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
                         .validateName(payload);
