@@ -297,7 +297,7 @@ public class RegistryService {
      * could have happened.
      */
     public ServiceResponseValidateRequest requestValidationDescription(ServiceRequestRegisterPrefixPayload payload) {
-        return requestValidation(String.format("%s/%s", getServiceApiEndpointBaseline(), "validateRegisterPrefixDescription"), payload);
+        return requestValidation(String.format("%s/%s", getServiceApiEndpointBaseline(), "validateDescription"), payload);
     }
 
     /**
