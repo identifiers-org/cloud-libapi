@@ -43,6 +43,7 @@ public class RegistryServiceTest {
                         .setInstitutionName("EMBL-EBI")
                         .setInstitutionHomeUrl("https://www.ebi.ac.uk")
                         .setInstitutionDescription("The European Bioinformatics Institute, blah, blah, blah...")
+                        .setInstitutionLocation("GB")
                         .setRequestedPrefix("mynewprefix")
                         .setProviderUrlPattern("http://httpstat.us/{$id}")
                         .setSampleId("200")
