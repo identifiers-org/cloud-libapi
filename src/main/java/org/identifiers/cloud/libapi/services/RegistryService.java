@@ -288,7 +288,7 @@ public class RegistryService {
     }
 
     /**
-     * Registry Service API: validate 'description' field for a prefix registration request.
+     * Registry Service API: validate the namespace description
      *
      * This will not validate the whole prefix registration request, only the 'description' field of the request.
      * @param payload a prefix registration payload that contains a value for the field that is being validated.
@@ -296,12 +296,12 @@ public class RegistryService {
      * default response, for this context, where HTTP Status code and error message fields have information on what
      * could have happened.
      */
-    public ServiceResponseValidateRequest requestValidationDescription(ServiceRequestRegisterPrefixPayload payload) {
+    public ServiceResponseValidateRequest validateDescription(ServiceRequestRegisterPrefixPayload payload) {
         return requestValidation(String.format("%s/%s", getServiceApiEndpointBaseline(), "validateDescription"), payload);
     }
 
     /**
-     * Registry Service API: validate 'home page' field for a prefix registration request.
+     * Registry Service API: validate the given provider home URL
      *
      * This will not validate the whole prefix registration request, only the 'home page' field of the request.
      * @param payload a prefix registration payload that contains a value for the field that is being validated.
@@ -309,7 +309,7 @@ public class RegistryService {
      * default response, for this context, where HTTP Status code and error message fields have information on what
      * could have happened.
      */
-    public ServiceResponseValidateRequest requestValidationHomePage(ServiceRequestRegisterPrefixPayload payload) {
+    public ServiceResponseValidateRequest validateProviderHomeUrl(ServiceRequestRegisterPrefixPayload payload) {
         // TODO
         return requestValidation(String.format("%s/%s", getServiceApiEndpointBaseline(), "validateProviderHomeUrl"), payload);
     }

@@ -82,7 +82,7 @@ public class RegistryServiceTest {
     public void requestValidateDescription() {
         ServiceResponseValidateRequest response =
                 ApiServicesFactory.getRegistryService("localhost", "8081")
-                        .requestValidationDescription(payload);
+                        .validateDescription(payload);
         checkResultOk(response, "Validation Request - Description");
     }
 
@@ -90,7 +90,7 @@ public class RegistryServiceTest {
     public void requestValidateHomePage() {
         ServiceResponseValidateRequest response =
                 ApiServicesFactory.getRegistryService("localhost", "8081")
-                        .requestValidationHomePage(payload);
+                        .validateProviderHomeUrl(payload);
         checkResultOk(response, "Validation Request - HomePage");
     }
 
