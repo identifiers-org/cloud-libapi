@@ -235,7 +235,7 @@ public class RegistryService {
      * Status code and error message fields have information on what could have happened.
      */
     public ServiceResponseRegisterPrefix requestPrefixRegistration(ServiceRequestRegisterPrefixPayload registrationPayload) {
-        String serviceApiEndpoint = serviceApiBaseline;
+        String serviceApiEndpoint = getServiceApiEndpointBaseline();
         ServiceResponseRegisterPrefix response = createDefaultResponseRegisterPrefixRequest();
         logger.info("Requesting prefix '{}' registration at '{}'", registrationPayload.getRequestedPrefix(),
                 serviceApiEndpoint);
@@ -284,7 +284,7 @@ public class RegistryService {
      * could have happened.
      */
     public ServiceResponseValidateRequest requestValidationName(ServiceRequestRegisterPrefixPayload payload) {
-        return requestValidation(String.format("%s/%s", serviceApiBaseline, "validateRegisterPrefixName"), payload);
+        return requestValidation(String.format("%s/%s", getServiceApiEndpointBaseline(), "validateRegisterPrefixName"), payload);
     }
 
     /**
@@ -297,7 +297,7 @@ public class RegistryService {
      * could have happened.
      */
     public ServiceResponseValidateRequest requestValidationDescription(ServiceRequestRegisterPrefixPayload payload) {
-        return requestValidation(String.format("%s/%s", serviceApiBaseline, "validateRegisterPrefixDescription"), payload);
+        return requestValidation(String.format("%s/%s", getServiceApiEndpointBaseline(), "validateRegisterPrefixDescription"), payload);
     }
 
     /**
@@ -310,7 +310,7 @@ public class RegistryService {
      * could have happened.
      */
     public ServiceResponseValidateRequest requestValidationHomePage(ServiceRequestRegisterPrefixPayload payload) {
-        return requestValidation(String.format("%s/%s", serviceApiBaseline, "validateRegisterPrefixHomePage"), payload);
+        return requestValidation(String.format("%s/%s", getServiceApiEndpointBaseline(), "validateRegisterPrefixHomePage"), payload);
     }
 
     /**
@@ -323,7 +323,7 @@ public class RegistryService {
      * could have happened.
      */
     public ServiceResponseValidateRequest requestValidationOrganization(ServiceRequestRegisterPrefixPayload payload) {
-        return requestValidation(String.format("%s/%s", serviceApiBaseline, "validateRegisterPrefixOrganization"), payload);
+        return requestValidation(String.format("%s/%s", getServiceApiEndpointBaseline(), "validateRegisterPrefixOrganization"), payload);
     }
 
     /**
@@ -336,7 +336,7 @@ public class RegistryService {
      * could have happened.
      */
     public ServiceResponseValidateRequest requestValidationPreferredPrefix(ServiceRequestRegisterPrefixPayload payload) {
-        return requestValidation(String.format("%s/%s", serviceApiBaseline, "validateRegisterPrefixPreferredPrefix"), payload);
+        return requestValidation(String.format("%s/%s", getServiceApiEndpointBaseline(), "validateRegisterPrefixPreferredPrefix"), payload);
     }
 
     /**
@@ -349,7 +349,7 @@ public class RegistryService {
      * could have happened.
      */
     public ServiceResponseValidateRequest requestValidationResourceAccessRule(ServiceRequestRegisterPrefixPayload payload) {
-        return requestValidation(String.format("%s/%s", serviceApiBaseline, "validateRegisterPrefixResourceAccessRule"), payload);
+        return requestValidation(String.format("%s/%s", getServiceApiEndpointBaseline(), "validateRegisterPrefixResourceAccessRule"), payload);
     }
 
     /**
@@ -362,7 +362,7 @@ public class RegistryService {
      * could have happened.
      */
     public ServiceResponseValidateRequest requestValidationExampleIdentifier(ServiceRequestRegisterPrefixPayload payload) {
-        return requestValidation(String.format("%s/%s", serviceApiBaseline, "validateRegisterPrefixExampleIdentifier"), payload);
+        return requestValidation(String.format("%s/%s", getServiceApiEndpointBaseline(), "validateRegisterPrefixExampleIdentifier"), payload);
     }
 
     /**
@@ -375,7 +375,7 @@ public class RegistryService {
      * could have happened.
      */
     public ServiceResponseValidateRequest requestValidationRegexPattern(ServiceRequestRegisterPrefixPayload payload) {
-        return requestValidation(String.format("%s/%s", serviceApiBaseline, "validateRegisterPrefixRegexPattern"), payload);
+        return requestValidation(String.format("%s/%s", getServiceApiEndpointBaseline(), "validateRegisterPrefixRegexPattern"), payload);
     }
 
     /**
@@ -388,7 +388,7 @@ public class RegistryService {
      * could have happened.
      */
     public ServiceResponseValidateRequest requestValidationReferences(ServiceRequestRegisterPrefixPayload payload) {
-        return requestValidation(String.format("%s/%s", serviceApiBaseline, "validateRegisterPrefixReferences"), payload);
+        return requestValidation(String.format("%s/%s", getServiceApiEndpointBaseline(), "validateRegisterPrefixReferences"), payload);
     }
 
     /**
@@ -401,7 +401,7 @@ public class RegistryService {
      * could have happened.
      */
     public ServiceResponseValidateRequest requestValidationAdditionalInformation(ServiceRequestRegisterPrefixPayload payload) {
-        return requestValidation(String.format("%s/%s", serviceApiBaseline, "validateRegisterPrefixAdditionalInformation"), payload);
+        return requestValidation(String.format("%s/%s", getServiceApiEndpointBaseline(), "validateRegisterPrefixAdditionalInformation"), payload);
     }
 
     /**
@@ -414,7 +414,7 @@ public class RegistryService {
      * could have happened.
      */
     public ServiceResponseValidateRequest requestValidationRequester(ServiceRequestRegisterPrefixPayload payload) {
-        return requestValidation(String.format("%s/%s", serviceApiBaseline, "validateRegisterPrefixRequester"), payload);
+        return requestValidation(String.format("%s/%s", getServiceApiEndpointBaseline(), "validateRegisterPrefixRequester"), payload);
     }
 
 }
