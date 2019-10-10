@@ -98,7 +98,7 @@ public class RegistryServiceTest {
     public void requestValidateOrganization() {
         ServiceResponseValidateRequest response =
                 ApiServicesFactory.getRegistryService("localhost", "8081")
-                        .requestValidationOrganization(payload);
+                        .validateInstitutionName(payload);
         checkResultOk(response, "Validation Request - Organization");
     }
 
