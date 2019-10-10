@@ -275,7 +275,7 @@ public class RegistryService {
     }
 
     /**
-     * Registry Service API: validate 'name' field for a prefix registration request.
+     * Registry Service API: validate the namespace name.
      *
      * This will not validate the whole prefix registration request, only the 'name' field of the request.
      * @param payload a prefix registration payload that contains a value for the field that is being validated.
