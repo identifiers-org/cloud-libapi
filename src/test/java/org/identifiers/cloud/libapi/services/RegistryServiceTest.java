@@ -122,7 +122,7 @@ public class RegistryServiceTest {
     public void requestValidateExampleIdentifier() {
         ServiceResponseValidateRequest response =
                 ApiServicesFactory.getRegistryService("localhost", "8081")
-                        .requestValidationExampleIdentifier(payload);
+                        .validateSampleId(payload);
         checkResultOk(response, "Validation Request - ExampleIdentifier");
     }
 

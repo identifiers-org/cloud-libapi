@@ -390,7 +390,7 @@ public class RegistryService {
     }
 
     /**
-     * Registry Service API: validate 'example identifier' field for a prefix registration request.
+     * Registry Service API: validate the given sample ID
      *
      * This will not validate the whole prefix registration request, only the 'example identifier' field of the request.
      * @param payload a prefix registration payload that contains a value for the field that is being validated.
@@ -398,8 +398,8 @@ public class RegistryService {
      * default response, for this context, where HTTP Status code and error message fields have information on what
      * could have happened.
      */
-    public ServiceResponseValidateRequest requestValidationExampleIdentifier(ServiceRequestRegisterPrefixPayload payload) {
-        return requestValidation(String.format("%s/%s", getServiceApiEndpointBaseline(), "validateRegisterPrefixExampleIdentifier"), payload);
+    public ServiceResponseValidateRequest validateSampleId(ServiceRequestRegisterPrefixPayload payload) {
+        return requestValidation(String.format("%s/%s", getServiceApiEndpointBaseline(), "validateSampleId"), payload);
     }
 
     /**
