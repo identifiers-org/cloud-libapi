@@ -454,4 +454,8 @@ public class RegistryService {
         return requestValidation(String.format("%s/%s", getServiceApiEndpointBaseline(), "validateRequester"), payload);
     }
 
+    public ServiceResponseValidateRequest validateRequesterName(ServiceRequestRegisterPrefixPayload payload) {
+        return requestValidation(String.format("%s/%s", getServiceApiEndpointBaseline(), "validateRequesterName"), payload);
+    }
+
 }
