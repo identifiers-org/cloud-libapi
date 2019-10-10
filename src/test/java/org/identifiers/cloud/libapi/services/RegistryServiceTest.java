@@ -152,7 +152,7 @@ public class RegistryServiceTest {
     @Test
     public void requestValidateAdditionalInformation() {
         ServiceResponseValidateRequest response =
-                ApiServicesFactory.getRegistryService("localhost", "8081")
+                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
                         .validateAdditionalInformation(payload);
         checkResultOk(response, "Validation Request - AdditionalInformation");
     }
@@ -160,7 +160,7 @@ public class RegistryServiceTest {
     @Test
     public void requestValidateRequester() {
         ServiceResponseValidateRequest response =
-                ApiServicesFactory.getRegistryService("localhost", "8081")
+                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
                         .validateRequester(payload);
         checkResultOk(response, "Validation Request - Requester");
     }
