@@ -212,4 +212,12 @@ public class RegistryServiceTest {
                         .validateAdditionalInformation(payload);
         checkResultOk(response, "Validation Request - Additional information");
     }
+
+    @Test
+    public void testValidateRequesterName() {
+        ServiceResponseValidateRequest response =
+                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
+                        .validateRequesterName(payload);
+        checkResultOk(response, "Validation Request - Requester name");
+    }
 }
