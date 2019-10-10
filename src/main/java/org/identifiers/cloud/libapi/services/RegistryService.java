@@ -522,6 +522,15 @@ public class RegistryService {
         return requestValidation(String.format("%s/%s", getServiceApiEndpointBaseline(), "validateRequesterName"), payload);
     }
 
+    /**
+     * Registry Service API: validate the requester e-mail.
+     *
+     * This will not validate the whole prefix registration request, only the requester e-mail address.
+     * @param payload a prefix registration payload that contains a value for the field that is being validated.
+     * @return validation request response for the prefix registration field that is being validated, or a guaranteed
+     * default response, for this context, where HTTP Status code and error message fields have information on what
+     * could have happened.
+     */
     public ServiceResponseValidateRequest validateRequesterEmail(ServiceRequestRegisterPrefixPayload payload) {
         return requestValidation(String.format("%s/%s", getServiceApiEndpointBaseline(), "validateRequesterEmail"), payload);
     }
