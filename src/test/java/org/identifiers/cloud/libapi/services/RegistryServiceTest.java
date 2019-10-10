@@ -165,4 +165,12 @@ public class RegistryServiceTest {
         checkResultOk(response, "Validation Request - Institution location");
     }
 
+    @Test
+    public void testValidateRequestedPrefix() {
+        ServiceResponseValidateRequest response =
+                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
+                        .validateRequestedPrefix(payload);
+        checkResultOk(response, "Validation Request - Requested prefix");
+    }
+
 }
