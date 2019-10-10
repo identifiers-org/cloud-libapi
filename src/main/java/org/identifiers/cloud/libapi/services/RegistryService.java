@@ -221,7 +221,7 @@ public class RegistryService {
     public ServiceResponseRegisterPrefix requestPrefixRegistration(ServiceRequestRegisterPrefixPayload registrationPayload) {
         String serviceApiEndpoint = serviceApiBaseline;
         ServiceResponseRegisterPrefix response = createDefaultResponseRegisterPrefixRequest();
-        logger.info("Requesting prefix '{}' registration at '{}'", registrationPayload.getPreferredPrefix(),
+        logger.info("Requesting prefix '{}' registration at '{}'", registrationPayload.getRequestedPrefix(),
                 serviceApiEndpoint);
         RequestEntity<ServiceRequestRegisterPrefix> requestEntity =
                 prepareEntityRequest(createRequestRegisterPrefix(registrationPayload),
@@ -250,7 +250,7 @@ public class RegistryService {
             }
         } catch (RuntimeException e) {
             String errorMessage = String.format("ERROR while registering prefix '%s' at '%s', because of '%s'",
-                    registrationPayload.getPreferredPrefix(), serviceApiEndpoint, e.getMessage());
+                    registrationPayload.getRequestedPrefix(), serviceApiEndpoint, e.getMessage());
             logger.error(errorMessage);
             response = createDefaultResponseRegisterPrefixRequest();
             response.setHttpStatus(HttpStatus.BAD_REQUEST).setErrorMessage(errorMessage);
