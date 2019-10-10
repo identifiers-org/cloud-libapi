@@ -138,7 +138,7 @@ public class RegistryServiceTest {
     public void requestValidateReferences() {
         ServiceResponseValidateRequest response =
                 ApiServicesFactory.getRegistryService("localhost", "8081")
-                        .requestValidationReferences(payload);
+                        .validateReferences(payload);
         checkResultOk(response, "Validation Request - References");
     }
 
