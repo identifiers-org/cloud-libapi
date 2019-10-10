@@ -189,4 +189,12 @@ public class RegistryServiceTest {
         checkResultOk(response, "Validation Request - Sample ID");
     }
 
+    @Test
+    public void testValidateIdRegexPattern() {
+        ServiceResponseValidateRequest response =
+                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
+                        .validateIdRegexPattern(payload);
+        checkResultOk(response, "Validation Request - ID Regex Pattern");
+    }
+
 }
