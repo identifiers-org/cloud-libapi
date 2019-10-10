@@ -94,7 +94,7 @@ public class RegistryServiceTest {
     }
 
     @Test
-    public void requestValidateHomePage() {
+    public void testValidateHomePage() {
         ServiceResponseValidateRequest response =
                 ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
                         .validateProviderHomeUrl(payload);
