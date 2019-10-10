@@ -106,7 +106,7 @@ public class RegistryServiceTest {
     public void requestValidatePreferredPrefix() {
         ServiceResponseValidateRequest response =
                 ApiServicesFactory.getRegistryService("localhost", "8081")
-                        .requestValidationPreferredPrefix(payload);
+                        .validateRequestedPrefix(payload);
         checkResultOk(response, "Validation Request - PreferredPrefix");
     }
 

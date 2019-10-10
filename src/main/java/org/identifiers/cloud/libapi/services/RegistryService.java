@@ -346,8 +346,21 @@ public class RegistryService {
         return requestValidation(String.format("%s/%s", getServiceApiEndpointBaseline(), "validateInstitutionHomeUrl"), payload);
     }
 
+    public ServiceResponseValidateRequest validateInstitutionDescription(ServiceRequestRegisterPrefixPayload payload) {
+        return requestValidation(String.format("%s/%s", getServiceApiEndpointBaseline(), "validateInstitutionDescription"), payload);
+    }
+
+    public ServiceResponseValidateRequest validateInstitutionLocation(ServiceRequestRegisterPrefixPayload payload) {
+        return requestValidation(String.format("%s/%s", getServiceApiEndpointBaseline(), "validateInstitutionLocation"), payload);
+    }
+
+
+
+
+
+
     /**
-     * Registry Service API: validate 'preferred prefix' field for a prefix registration request.
+     * Registry Service API: validate the requested prefix.
      *
      * This will not validate the whole prefix registration request, only the 'preferred prefix' field of the request.
      * @param payload a prefix registration payload that contains a value for the field that is being validated.
@@ -355,7 +368,7 @@ public class RegistryService {
      * default response, for this context, where HTTP Status code and error message fields have information on what
      * could have happened.
      */
-    public ServiceResponseValidateRequest requestValidationPreferredPrefix(ServiceRequestRegisterPrefixPayload payload) {
+    public ServiceResponseValidateRequest validateRequestedPrefix(ServiceRequestRegisterPrefixPayload payload) {
         return requestValidation(String.format("%s/%s", getServiceApiEndpointBaseline(), "validateRequestedPrefix"), payload);
     }
 
