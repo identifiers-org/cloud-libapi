@@ -133,4 +133,12 @@ public class RegistryServiceTest {
         checkResultOk(response, "Validation Request - Provider code");
     }
 
+    @Test
+    public void testValidateInstitutionName() {
+        ServiceResponseValidateRequest response =
+                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
+                        .validateInstitutionName(payload);
+        checkResultOk(response, "Validation Request - Institution name");
+    }
+
 }
