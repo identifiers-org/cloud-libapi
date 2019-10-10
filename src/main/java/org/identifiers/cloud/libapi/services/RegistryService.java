@@ -329,6 +329,10 @@ public class RegistryService {
         return requestValidation(String.format("%s/%s", getServiceApiEndpointBaseline(), "validateProviderCode"), payload);
     }
 
+    public ServiceResponseValidateRequest validateProviderUrlPattern(ServiceRequestRegisterPrefixPayload payload) {
+        return requestValidation(String.format("%s/%s", getServiceApiEndpointBaseline(), "validateProviderUrlPattern"), payload);
+    }
+
     /**
      * Registry Service API: validate the provided institution name
      *
