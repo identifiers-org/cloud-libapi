@@ -310,6 +310,7 @@ public class RegistryService {
      * could have happened.
      */
     public ServiceResponseValidateRequest requestValidationHomePage(ServiceRequestRegisterPrefixPayload payload) {
+        // TODO
         return requestValidation(String.format("%s/%s", getServiceApiEndpointBaseline(), "validateProviderHomeUrl"), payload);
     }
 
@@ -323,7 +324,7 @@ public class RegistryService {
      * could have happened.
      */
     public ServiceResponseValidateRequest requestValidationOrganization(ServiceRequestRegisterPrefixPayload payload) {
-        return requestValidation(String.format("%s/%s", getServiceApiEndpointBaseline(), "validateRegisterPrefixOrganization"), payload);
+        return requestValidation(String.format("%s/%s", getServiceApiEndpointBaseline(), "validateInstitutionName"), payload);
     }
 
     /**
