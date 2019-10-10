@@ -197,4 +197,12 @@ public class RegistryServiceTest {
         checkResultOk(response, "Validation Request - ID Regex Pattern");
     }
 
+    @Test
+    public void testValidateReferences() {
+        ServiceResponseValidateRequest response =
+                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
+                        .validateReferences(payload);
+        checkResultOk(response, "Validation Request - References");
+    }
+
 }
