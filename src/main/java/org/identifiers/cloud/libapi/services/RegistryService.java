@@ -352,6 +352,15 @@ public class RegistryService {
         return requestValidation(String.format("%s/%s", getServiceApiEndpointBaseline(), "validateProviderLocation"), payload);
     }
 
+    /**
+     * Registry Service API: validate the given provider code.
+     *
+     * This will not validate the whole prefix registration request, only the given provider code.
+     * @param payload a prefix registration payload that contains a value for the field that is being validated.
+     * @return validation request response for the prefix registration field that is being validated, or a guaranteed
+     * default response, for this context, where HTTP Status code and error message fields have information on what
+     * could have happened.
+     */
     public ServiceResponseValidateRequest validateProviderCode(ServiceRequestRegisterPrefixPayload payload) {
         return requestValidation(String.format("%s/%s", getServiceApiEndpointBaseline(), "validateProviderCode"), payload);
     }
