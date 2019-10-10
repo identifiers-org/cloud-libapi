@@ -228,4 +228,12 @@ public class RegistryServiceTest {
                         .validateRequesterEmail(payload);
         checkResultOk(response, "Validation Request - Requester e-mail");
     }
+
+    @Test
+    public void testValidateRequester() {
+        ServiceResponseValidateRequest response =
+                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
+                        .validateRequester(payload);
+        checkResultOk(response, "Validation Request - Requester");
+    }
 }
