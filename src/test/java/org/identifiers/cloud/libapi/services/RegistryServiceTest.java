@@ -136,7 +136,7 @@ public class RegistryServiceTest {
     @Test
     public void requestValidateRegexPattern() {
         ServiceResponseValidateRequest response =
-                ApiServicesFactory.getRegistryService("localhost", "8081")
+                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
                         .validateIdRegexPattern(payload);
         checkResultOk(response, "Validation Request - RegexPattern");
     }
