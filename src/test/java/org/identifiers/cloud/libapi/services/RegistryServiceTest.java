@@ -125,4 +125,12 @@ public class RegistryServiceTest {
         checkResultOk(response, "Validation Request - Provider location");
     }
 
+    @Test
+    public void testValidateProviderCode() {
+        ServiceResponseValidateRequest response =
+                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
+                        .validateProviderCode(payload);
+        checkResultOk(response, "Validation Request - Provider code");
+    }
+
 }
