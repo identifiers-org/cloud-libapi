@@ -97,7 +97,7 @@ public class RegistryServiceTest {
     public void testValidateProviderHomeUrl() {
         ServiceResponseValidateRequest response =
                 ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
-                        .validateDescription(payload);
+                        .validateProviderHomeUrl(payload);
         checkResultOk(response, "Validation Request - Provider home URL");
     }
 
@@ -105,9 +105,9 @@ public class RegistryServiceTest {
     public void testValidateProviderName() {
         ServiceResponseValidateRequest response =
                 ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
-                        .validateDescription(payload);
+                        .validateProviderName(payload);
         checkResultOk(response, "Validation Request - Provider name");
     }
 
-    
+
 }
