@@ -94,75 +94,11 @@ public class RegistryServiceTest {
     }
 
     @Test
-    public void testValidateHomePage() {
+    public void testValidateProviderHomeUrl() {
         ServiceResponseValidateRequest response =
                 ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
-                        .validateProviderHomeUrl(payload);
-        checkResultOk(response, "Validation Request - HomePage");
-    }
-
-    @Test
-    public void testValidateOrganization() {
-        ServiceResponseValidateRequest response =
-                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
-                        .validateInstitutionName(payload);
-        checkResultOk(response, "Validation Request - Organization");
-    }
-
-    @Test
-    public void requestValidatePreferredPrefix() {
-        ServiceResponseValidateRequest response =
-                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
-                        .validateRequestedPrefix(payload);
-        checkResultOk(response, "Validation Request - PreferredPrefix");
-    }
-
-    @Test
-    public void requestValidateResourceAccessRule() {
-        ServiceResponseValidateRequest response =
-                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
-                        .validateProviderUrlPattern(payload);
-        checkResultOk(response, "Validation Request - ResourceAccessRule");
-    }
-
-    @Test
-    public void requestValidateExampleIdentifier() {
-        ServiceResponseValidateRequest response =
-                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
-                        .validateSampleId(payload);
-        checkResultOk(response, "Validation Request - ExampleIdentifier");
-    }
-
-    @Test
-    public void requestValidateRegexPattern() {
-        ServiceResponseValidateRequest response =
-                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
-                        .validateIdRegexPattern(payload);
-        checkResultOk(response, "Validation Request - RegexPattern");
-    }
-
-    @Test
-    public void requestValidateReferences() {
-        ServiceResponseValidateRequest response =
-                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
-                        .validateReferences(payload);
-        checkResultOk(response, "Validation Request - References");
-    }
-
-    @Test
-    public void requestValidateAdditionalInformation() {
-        ServiceResponseValidateRequest response =
-                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
-                        .validateAdditionalInformation(payload);
-        checkResultOk(response, "Validation Request - AdditionalInformation");
-    }
-
-    @Test
-    public void requestValidateRequester() {
-        ServiceResponseValidateRequest response =
-                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
-                        .validateRequester(payload);
-        checkResultOk(response, "Validation Request - Requester");
+                        .validateDescription(payload);
+        checkResultOk(response, "Validation Request - Provider home URL");
     }
 
 }
