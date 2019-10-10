@@ -128,7 +128,7 @@ public class RegistryServiceTest {
     @Test
     public void requestValidateExampleIdentifier() {
         ServiceResponseValidateRequest response =
-                ApiServicesFactory.getRegistryService("localhost", "8081")
+                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
                         .validateSampleId(payload);
         checkResultOk(response, "Validation Request - ExampleIdentifier");
     }
