@@ -381,7 +381,7 @@ public class RegistryService {
     /**
      * Registry Service API: validate the provided institution name
      *
-     * This will not validate the whole prefix registration request, only the 'organization' field of the request.
+     * This will not validate the whole prefix registration request, only the given institution name.
      * @param payload a prefix registration payload that contains a value for the field that is being validated.
      * @return validation request response for the prefix registration field that is being validated, or a guaranteed
      * default response, for this context, where HTTP Status code and error message fields have information on what
@@ -391,6 +391,15 @@ public class RegistryService {
         return requestValidation(String.format("%s/%s", getServiceApiEndpointBaseline(), "validateInstitutionName"), payload);
     }
 
+    /**
+     * Registry Service API: validate institution home URL.
+     *
+     * This will not validate the whole prefix registration request, only the given institution home URL.
+     * @param payload a prefix registration payload that contains a value for the field that is being validated.
+     * @return validation request response for the prefix registration field that is being validated, or a guaranteed
+     * default response, for this context, where HTTP Status code and error message fields have information on what
+     * could have happened.
+     */
     public ServiceResponseValidateRequest validateInstitutionHomeUrl(ServiceRequestRegisterPrefixPayload payload) {
         return requestValidation(String.format("%s/%s", getServiceApiEndpointBaseline(), "validateInstitutionHomeUrl"), payload);
     }
