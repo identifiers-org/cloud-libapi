@@ -144,7 +144,7 @@ public class RegistryServiceTest {
     @Test
     public void requestValidateReferences() {
         ServiceResponseValidateRequest response =
-                ApiServicesFactory.getRegistryService("localhost", "8081")
+                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
                         .validateReferences(payload);
         checkResultOk(response, "Validation Request - References");
     }
