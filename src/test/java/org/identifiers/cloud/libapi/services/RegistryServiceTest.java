@@ -157,4 +157,12 @@ public class RegistryServiceTest {
         checkResultOk(response, "Validation Request - Institution description");
     }
 
+    @Test
+    public void testValidateInstitutionLocation() {
+        ServiceResponseValidateRequest response =
+                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
+                        .validateInstitutionLocation(payload);
+        checkResultOk(response, "Validation Request - Institution location");
+    }
+
 }
