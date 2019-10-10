@@ -102,7 +102,7 @@ public class RegistryServiceTest {
     }
 
     @Test
-    public void requestValidateOrganization() {
+    public void testValidateOrganization() {
         ServiceResponseValidateRequest response =
                 ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
                         .validateInstitutionName(payload);
