@@ -173,4 +173,12 @@ public class RegistryServiceTest {
         checkResultOk(response, "Validation Request - Requested prefix");
     }
 
+    @Test
+    public void testValidateProviderUrlPattern() {
+        ServiceResponseValidateRequest response =
+                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
+                        .validateProviderUrlPattern(payload);
+        checkResultOk(response, "Validation Request - Provider URL Pattern");
+    }
+
 }
