@@ -450,8 +450,8 @@ public class RegistryService {
      * default response, for this context, where HTTP Status code and error message fields have information on what
      * could have happened.
      */
-    public ServiceResponseValidateRequest requestValidationRequester(ServiceRequestRegisterPrefixPayload payload) {
-        return requestValidation(String.format("%s/%s", getServiceApiEndpointBaseline(), "validateRegisterPrefixRequester"), payload);
+    public ServiceResponseValidateRequest validateRequester(ServiceRequestRegisterPrefixPayload payload) {
+        return requestValidation(String.format("%s/%s", getServiceApiEndpointBaseline(), "validateRequester"), payload);
     }
 
 }
