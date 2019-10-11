@@ -157,7 +157,6 @@ public class RegistryService {
      * @return a new instance of the RestTemplate
      */
     private RestTemplate getRestTemplate() {
-        // TODO Should we go for a re-try template here?
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.setErrorHandler(Configuration.responseErrorHandler());
         return restTemplate;
