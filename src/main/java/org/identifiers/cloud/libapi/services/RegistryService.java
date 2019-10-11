@@ -236,7 +236,7 @@ public class RegistryService {
      * Status code and error message fields have information on what could have happened.
      */
     public ServiceResponseRegisterPrefix requestPrefixRegistration(ServiceRequestRegisterPrefixPayload registrationPayload) {
-        String serviceApiEndpoint = String.format("/%s", getServiceApiEndpointBaseline(), "registerPrefix");
+        String serviceApiEndpoint = String.format("%s/%s", getServiceApiEndpointBaseline(), "registerPrefix");
         ServiceResponseRegisterPrefix response = createDefaultResponseRegisterPrefixRequest();
         logger.info("Requesting prefix '{}' registration at '{}'", registrationPayload.getRequestedPrefix(),
                 serviceApiEndpoint);
