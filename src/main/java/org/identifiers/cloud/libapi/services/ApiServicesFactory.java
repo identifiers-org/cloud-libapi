@@ -131,7 +131,7 @@ public class ApiServicesFactory {
      * @return an instance of the service client pointing to the given host.
      */
     public static RegistryService getRegistryService(String host) {
-        return getRegistryService(host, "80");
+        return getRegistryService(host, "443");
     }
 
     /**
