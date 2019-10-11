@@ -182,6 +182,7 @@ public class RegistryService {
     }
 
     /**
+     * (DEPRECATED) - Full validation is no longer offer by the HQ Registry API Service
      * This helper method will submit a validation request to the given service endpoint, using the given payload.
      * Expecting the validation request response from the registry service.
      * @param serviceApiEndpoint service endpoint where to submit the request.
@@ -189,8 +190,10 @@ public class RegistryService {
      * @return validation request response from the registry service, or a guaranteed default response reflecting what
      * could have happened via its HTTP Status code and error message fields.
      */
+    @Deprecated
     private ServiceResponseValidateRequest requestValidation(String serviceApiEndpoint,
                                                             ServiceRequestRegisterPrefixPayload payload) {
+        // TODO The new registration API integrated in the HQ Registry API Service no longer offers this.
         ServiceResponseValidateRequest response = createDefaultResponseValidationRequest();
         logger.info("Requesting validation at '{}'", serviceApiEndpoint);
         RequestEntity<ServiceRequestValidate> requestEntity =
