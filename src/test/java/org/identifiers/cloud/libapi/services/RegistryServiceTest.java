@@ -72,7 +72,7 @@ public class RegistryServiceTest {
     @Test
     public void testPrefixRegistration() {
         ServiceResponseRegisterPrefix response =
-                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
+                ApiServicesFactory.getRegistryService("localhost", "8180").setProtocolSchemeToHttp()
                         .requestPrefixRegistration(payload);
         checkResultOk(response, "Prefix Registration Request");
     }
@@ -80,7 +80,7 @@ public class RegistryServiceTest {
     @Test
     public void testNamespaceNameValidation() {
         ServiceResponseValidateRequest response =
-                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
+                ApiServicesFactory.getRegistryService("localhost", "8180").setProtocolSchemeToHttp()
                         .validateName(payload);
         checkResultOk(response, "Validation Request - Name");
     }
@@ -88,7 +88,7 @@ public class RegistryServiceTest {
     @Test
     public void testNamespaceDescriptionValidation() {
         ServiceResponseValidateRequest response =
-                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
+                ApiServicesFactory.getRegistryService("localhost", "8180").setProtocolSchemeToHttp()
                         .validateDescription(payload);
         checkResultOk(response, "Validation Request - Description");
     }
@@ -96,7 +96,7 @@ public class RegistryServiceTest {
     @Test
     public void testValidateProviderHomeUrl() {
         ServiceResponseValidateRequest response =
-                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
+                ApiServicesFactory.getRegistryService("localhost", "8180").setProtocolSchemeToHttp()
                         .validateProviderHomeUrl(payload);
         checkResultOk(response, "Validation Request - Provider home URL");
     }
@@ -104,7 +104,7 @@ public class RegistryServiceTest {
     @Test
     public void testValidateProviderName() {
         ServiceResponseValidateRequest response =
-                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
+                ApiServicesFactory.getRegistryService("localhost", "8180").setProtocolSchemeToHttp()
                         .validateProviderName(payload);
         checkResultOk(response, "Validation Request - Provider name");
     }
@@ -112,7 +112,7 @@ public class RegistryServiceTest {
     @Test
     public void testValidateProviderDescription() {
         ServiceResponseValidateRequest response =
-                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
+                ApiServicesFactory.getRegistryService("localhost", "8180").setProtocolSchemeToHttp()
                         .validateProviderDescription(payload);
         checkResultOk(response, "Validation Request - Provider description");
     }
@@ -120,7 +120,7 @@ public class RegistryServiceTest {
     @Test
     public void testValidateProviderLocation() {
         ServiceResponseValidateRequest response =
-                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
+                ApiServicesFactory.getRegistryService("localhost", "8180").setProtocolSchemeToHttp()
                         .validateProviderLocation(payload);
         checkResultOk(response, "Validation Request - Provider location");
     }
@@ -128,7 +128,7 @@ public class RegistryServiceTest {
     @Test
     public void testValidateProviderCode() {
         ServiceResponseValidateRequest response =
-                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
+                ApiServicesFactory.getRegistryService("localhost", "8180").setProtocolSchemeToHttp()
                         .validateProviderCode(payload);
         checkResultOk(response, "Validation Request - Provider code");
     }
@@ -136,7 +136,7 @@ public class RegistryServiceTest {
     @Test
     public void testValidateInstitutionName() {
         ServiceResponseValidateRequest response =
-                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
+                ApiServicesFactory.getRegistryService("localhost", "8180").setProtocolSchemeToHttp()
                         .validateInstitutionName(payload);
         checkResultOk(response, "Validation Request - Institution name");
     }
@@ -144,7 +144,7 @@ public class RegistryServiceTest {
     @Test
     public void testValidateInstitutionHomeUrl() {
         ServiceResponseValidateRequest response =
-                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
+                ApiServicesFactory.getRegistryService("localhost", "8180").setProtocolSchemeToHttp()
                         .validateInstitutionHomeUrl(payload);
         checkResultOk(response, "Validation Request - Institution home URL");
     }
@@ -152,7 +152,7 @@ public class RegistryServiceTest {
     @Test
     public void testValidateInstitutionDescription() {
         ServiceResponseValidateRequest response =
-                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
+                ApiServicesFactory.getRegistryService("localhost", "8180").setProtocolSchemeToHttp()
                         .validateInstitutionDescription(payload);
         checkResultOk(response, "Validation Request - Institution description");
     }
@@ -160,7 +160,7 @@ public class RegistryServiceTest {
     @Test
     public void testValidateInstitutionLocation() {
         ServiceResponseValidateRequest response =
-                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
+                ApiServicesFactory.getRegistryService("localhost", "8180").setProtocolSchemeToHttp()
                         .validateInstitutionLocation(payload);
         checkResultOk(response, "Validation Request - Institution location");
     }
@@ -168,7 +168,7 @@ public class RegistryServiceTest {
     @Test
     public void testValidateRequestedPrefix() {
         ServiceResponseValidateRequest response =
-                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
+                ApiServicesFactory.getRegistryService("localhost", "8180").setProtocolSchemeToHttp()
                         .validateRequestedPrefix(payload);
         checkResultOk(response, "Validation Request - Requested prefix");
     }
@@ -176,7 +176,7 @@ public class RegistryServiceTest {
     @Test
     public void testValidateProviderUrlPattern() {
         ServiceResponseValidateRequest response =
-                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
+                ApiServicesFactory.getRegistryService("localhost", "8180").setProtocolSchemeToHttp()
                         .validateProviderUrlPattern(payload);
         checkResultOk(response, "Validation Request - Provider URL Pattern");
     }
@@ -184,7 +184,7 @@ public class RegistryServiceTest {
     @Test
     public void testValidateSampleId() {
         ServiceResponseValidateRequest response =
-                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
+                ApiServicesFactory.getRegistryService("localhost", "8180").setProtocolSchemeToHttp()
                         .validateSampleId(payload);
         checkResultOk(response, "Validation Request - Sample ID");
     }
@@ -192,7 +192,7 @@ public class RegistryServiceTest {
     @Test
     public void testValidateIdRegexPattern() {
         ServiceResponseValidateRequest response =
-                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
+                ApiServicesFactory.getRegistryService("localhost", "8180").setProtocolSchemeToHttp()
                         .validateIdRegexPattern(payload);
         checkResultOk(response, "Validation Request - ID Regex Pattern");
     }
@@ -200,7 +200,7 @@ public class RegistryServiceTest {
     @Test
     public void testValidateReferences() {
         ServiceResponseValidateRequest response =
-                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
+                ApiServicesFactory.getRegistryService("localhost", "8180").setProtocolSchemeToHttp()
                         .validateReferences(payload);
         checkResultOk(response, "Validation Request - References");
     }
@@ -208,7 +208,7 @@ public class RegistryServiceTest {
     @Test
     public void testValidateAdditionalInformation() {
         ServiceResponseValidateRequest response =
-                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
+                ApiServicesFactory.getRegistryService("localhost", "8180").setProtocolSchemeToHttp()
                         .validateAdditionalInformation(payload);
         checkResultOk(response, "Validation Request - Additional information");
     }
@@ -216,7 +216,7 @@ public class RegistryServiceTest {
     @Test
     public void testValidateRequesterName() {
         ServiceResponseValidateRequest response =
-                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
+                ApiServicesFactory.getRegistryService("localhost", "8180").setProtocolSchemeToHttp()
                         .validateRequesterName(payload);
         checkResultOk(response, "Validation Request - Requester name");
     }
@@ -224,7 +224,7 @@ public class RegistryServiceTest {
     @Test
     public void testValidateRequesterEmail() {
         ServiceResponseValidateRequest response =
-                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
+                ApiServicesFactory.getRegistryService("localhost", "8180").setProtocolSchemeToHttp()
                         .validateRequesterEmail(payload);
         checkResultOk(response, "Validation Request - Requester e-mail");
     }
@@ -232,7 +232,7 @@ public class RegistryServiceTest {
     @Test
     public void testValidateRequester() {
         ServiceResponseValidateRequest response =
-                ApiServicesFactory.getRegistryService("localhost", "8081").setProtocolSchemeToHttp()
+                ApiServicesFactory.getRegistryService("localhost", "8180").setProtocolSchemeToHttp()
                         .validateRequester(payload);
         checkResultOk(response, "Validation Request - Requester");
     }
