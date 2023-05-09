@@ -44,6 +44,7 @@ services:
             - WS_RESOLVER_CONFIG_RESOURCE_RECOMMENDER_PORT=8083
             - WS_RESOLVER_CONFIG_APPLICATION_ACTIVE_PROFILE=development
             - WS_RESOLVER_CONFIG_REGISTRY_RESOLUTION_DATASET_ENDPOINT=http://hqregistry:8180/resolutionApi/getResolverDataset
+            - WS_RESOLVER_CONFIG_BACKEND_SERVICE_JWT_ISSUERURI=https://auth.identifiers.org/auth/realms/idorg
         ports:
             - "8080:8080"
         depends_on:

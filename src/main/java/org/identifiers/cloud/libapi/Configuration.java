@@ -102,7 +102,7 @@ public class Configuration {
         }
     }
     public static InfrastructureDeploymentSelector deploymentSelection = InfrastructureDeploymentSelector.ANY;
-    private static Map<String, Map<String, String>> servicesMap = null;
+    private static HashMap<String, HashMap<String, String>> servicesMap = null;
 
     /**
      * Load the information on identifiers.org satellite deployments from a well known deployment descriptor file.
@@ -180,7 +180,7 @@ public class Configuration {
         }
         // Default deployment to be used
         String deploymentKey = deploymentSelection.getKey();
-        if (deploymentSelection.getKey() == InfrastructureDeploymentSelector.ANY.getKey()) {
+        if (Objects.equals(deploymentSelection.getKey(), InfrastructureDeploymentSelector.ANY.getKey())) {
             List<String> deployments = new ArrayList<>(servicesMap.keySet());
             Collections.shuffle(deployments);
             deploymentKey = deployments.get(0);

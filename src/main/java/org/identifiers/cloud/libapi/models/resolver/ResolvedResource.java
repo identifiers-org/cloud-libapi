@@ -53,4 +53,9 @@ public class ResolvedResource implements Serializable {
     private Date namespaceDeprecationDate;
     private boolean deprecatedResource = false;
     private Date resourceDeprecationDate;
+    private boolean protectedUrls;
+    private boolean renderProtectedLanding;
+    private String authHelpUrl;
+    private String authHelpDescription;
+
 }

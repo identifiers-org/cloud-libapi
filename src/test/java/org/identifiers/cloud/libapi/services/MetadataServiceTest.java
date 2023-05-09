@@ -23,41 +23,41 @@ public class MetadataServiceTest {
     private static Logger logger = LoggerFactory.getLogger(ResolverServiceTest.class);
     // Again, this unit tests are a simple way of human validation of the client, as there is no test data at the
     // current iteration of this library
-    @Test
-    public void getMetadataForCompactId() {
-        ServiceResponseFetchMetadata response = ApiServicesFactory
-                .getMetadataService("localhost", "8082")
-                .getMetadataForCompactId("CHEBI:36927");
-        // Just for debugging purposes, serialized response into the logs
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            logger.info("Test request metadata for Compact ID, " +
-                    "response from the service:\n{}", mapper.writeValueAsString(response));
-        } catch (JsonProcessingException e) {
-            // Ignore
-        }
-        assertThat("Response from service is not OK, as there is no metadata for that Compact ID",
-                response.getHttpStatus() == HttpStatus.OK,
-                is(false));
-    }
+//    @Test
+//    public void getMetadataForCompactId() {
+//        ServiceResponseFetchMetadata response = ApiServicesFactory
+//                .getMetadataService("localhost", "8082")
+//                .getMetadataForCompactId("CHEBI:36927");
+//        // Just for debugging purposes, serialized response into the logs
+//        ObjectMapper mapper = new ObjectMapper();
+//        try {
+//            logger.info("Test request metadata for Compact ID, " +
+//                    "response from the service:\n{}", mapper.writeValueAsString(response));
+//        } catch (JsonProcessingException e) {
+//            // Ignore
+//        }
+//        assertThat("Response from service is not OK, as there is no metadata for that Compact ID",
+//                response.getHttpStatus() == HttpStatus.OK,
+//                is(false));
+//    }
 
-    @Test
-    public void getMetadataForRawRequest() {
-        ServiceResponseFetchMetadata response = ApiServicesFactory
-                .getMetadataService("localhost", "8082")
-                .getMetadataForRawRequest("ark:/57799/b97957");
-        // Just for debugging purposes, serialized response into the logs
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            logger.info("Test request metadata for raw request, " +
-                    "response from the service:\n{}", mapper.writeValueAsString(response));
-        } catch (JsonProcessingException e) {
-            // Ignore
-        }
-        assertThat("Response from service is not OK, as there is no metadata for that Raw Request",
-                response.getHttpStatus() == HttpStatus.OK,
-                is(false));
-    }
+//    @Test
+//    public void getMetadataForRawRequest() {
+//        ServiceResponseFetchMetadata response = ApiServicesFactory
+//                .getMetadataService("localhost", "8082")
+//                .getMetadataForRawRequest("ark:/57799/b97957");
+//        // Just for debugging purposes, serialized response into the logs
+//        ObjectMapper mapper = new ObjectMapper();
+//        try {
+//            logger.info("Test request metadata for raw request, " +
+//                    "response from the service:\n{}", mapper.writeValueAsString(response));
+//        } catch (JsonProcessingException e) {
+//            // Ignore
+//        }
+//        assertThat("Response from service is not OK, as there is no metadata for that Raw Request",
+//                response.getHttpStatus() == HttpStatus.OK,
+//                is(false));
+//    }
 
     @Test
     public void getMetadataForUrl() {

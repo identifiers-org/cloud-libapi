@@ -45,7 +45,7 @@ public class RegistryServiceTest {
                         .setInstitutionDescription("The European Bioinformatics Institute, blah, blah, blah...")
                         .setInstitutionLocation("GB")
                         .setRequestedPrefix("mynewprefix")
-                        .setProviderUrlPattern("http://httpstat.us/{$id}")
+                        .setProviderUrlPattern("https://www.httpbin.org/status/{$id}")
                         .setSampleId("200")
                         .setIdRegexPattern("\\d+")
                         .setSupportingReferences(new String[]{"ref1", "ref2"})
