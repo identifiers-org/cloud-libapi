@@ -37,6 +37,18 @@
                 <role>developer</role>
             </roles>
         </developer>
+        <developer>
+            <id>renatocjn</id>
+            <name>Renato Caminha Juaçaba Neto</name>
+            <email>renatocjn@gmail.com</email>
+            <organization>EMBL-European Bioinformatics Institute</organization>
+            <organizationUrl>http://ebi.ac.uk/</organizationUrl>
+            <timezone>Europe/London</timezone>
+            <roles>
+                <role>architect</role>
+                <role>developer</role>
+            </roles>
+        </developer>
     </developers>
 
     <scm>
