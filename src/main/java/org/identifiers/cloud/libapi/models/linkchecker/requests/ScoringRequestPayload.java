@@ -12,6 +12,15 @@ import java.io.Serializable;
  */
 public class ScoringRequestPayload implements Serializable {
     protected String url;
+    protected boolean accept401or403;
+
+    public boolean isAccept401or403() {
+        return accept401or403;
+    }
+    public ScoringRequestPayload setAccept401or403(boolean accept401or403) {
+        this.accept401or403 = accept401or403;
+        return this;
+    }
 
     public String getUrl() {
         return url;

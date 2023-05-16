@@ -2,7 +2,6 @@ package org.identifiers.cloud.libapi.services;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.identifiers.cloud.libapi.models.metadata.ServiceResponseFetchMetadata;
 import org.identifiers.cloud.libapi.models.metadata.ServiceResponseFetchMetadataForUrl;
 import org.junit.Test;
 import org.slf4j.Logger;

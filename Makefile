@@ -19,7 +19,7 @@ release: deploy set_next_development_version
 
 sync_project_version:
 	@echo "<===|DEVOPS|===> [SYNC] Synchronizing project version to version '${tag_version}'"
-	@mvn versions:set -DnewVersion=${tag_version}
+	@mvn versions:set -DnewVersion=${tag_version} -DgenerateBackupPoms=false
 
 set_next_development_version:
 	@echo "<===|DEVOPS|===> [SYNC] Setting the new development version, current ${tag_version}"
@@ -27,7 +27,7 @@ set_next_development_version:
 
 deploy: clean
 	@echo "<===|DEVOPS|===> [DEPLOY] Deploying library to Maven Respository"
-	@mvn clean deploy -P ossrh -DskipTests
+	@mvn clean deploy -DskipTests
 
 development_env_up: tmp
 	@echo "<===|DEVOPS|===> [ENVIRONMENT] Bringing development environment UP"

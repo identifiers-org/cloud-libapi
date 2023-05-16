@@ -71,7 +71,12 @@ public class LinkCheckerService {
      * @param url URL of the given provider in the context of a particular namespace / prefix
      * @return a scoring response from the Link Checking Service
      */
+
     public ServiceResponseScoringRequest getScoreForProvider(String providerId, String url) {
+        return getScoreForProvider(providerId, url, false);
+    }
+
+    public ServiceResponseScoringRequest getScoreForProvider(String providerId, String url, boolean isProtectedUrls) {
         // NOTE - I still don't like how it looks, but it's a little bit better
         String endpoint = String.format("%s/getScoreForProvider", serviceApiBaseline);
         // Prepare the request body
@@ -80,6 +85,7 @@ public class LinkCheckerService {
         requestBody.setPayload(new ScoringRequestWithIdPayload());
         requestBody.getPayload().setId(providerId);
         requestBody.getPayload().setUrl(url);
+        requestBody.getPayload().setAccept401or403(isProtectedUrls);
         // Prepare response
         ServiceResponseScoringRequest response = createDefaultResponse();
         // Prepare the request entity
@@ -133,7 +139,11 @@ public class LinkCheckerService {
         return response;
     }
 
-    public ServiceResponseScoringRequest getScoreForResolvedId(String resourceId, String url) {
+    ServiceResponseScoringRequest getScoreForResolvedId(String resourceId, String url) {
+        return getScoreForResolvedId(resourceId, url, false);
+    }
+
+    public ServiceResponseScoringRequest getScoreForResolvedId(String resourceId, String url, boolean isProtectedUrls) {
         String endpoint = String.format("%s/getScoreForResolvedId", serviceApiBaseline);
         // Prepare the request body
         ServiceRequestScoreResource requestBody = new ServiceRequestScoreResource();
@@ -141,6 +151,7 @@ public class LinkCheckerService {
         requestBody.setPayload(new ScoringRequestWithIdPayload());
         requestBody.getPayload().setId(resourceId);
         requestBody.getPayload().setUrl(url);
+        requestBody.getPayload().setAccept401or403(isProtectedUrls);
         // Prepare response
         ServiceResponseScoringRequest response = createDefaultResponse();
         // Prepare the request entity
