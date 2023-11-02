@@ -113,7 +113,7 @@ public class Configuration {
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
         try {
             TypeReference<HashMap<String, HashMap<String, String>>> servicesMapTypeRef
-                    = new TypeReference<HashMap<String, HashMap<String, String>>>() {};
+                    = new TypeReference<>() {};
             servicesMap = mapper.readValue(Configuration.class
                     .getClassLoader()
                     .getResourceAsStream("deployments.yml"), servicesMapTypeRef);
@@ -124,7 +124,7 @@ public class Configuration {
         }
         // Check the map is correct
         Arrays.stream(InfrastructureDeploymentSelector.values()).forEach(deploymentKey -> {
-            if (deploymentKey.getKey() != InfrastructureDeploymentSelector.ANY.getKey()) {
+            if (!Objects.equals(deploymentKey.getKey(), InfrastructureDeploymentSelector.ANY.getKey())) {
                 if (!servicesMap.containsKey(deploymentKey.getKey())) {
                     String errorMessage = String.format("MISSING deployment '%s', '%s'",
                             deploymentKey.getKey().toUpperCase(),
@@ -162,7 +162,7 @@ public class Configuration {
      *
      * If a selector is locked for a particular deployment, all services will be resolved to that deployment, e.g. if
      * the selector is 'AWS', all services URLs will belong to that 'AWS' deployment. In case the deployment selector is
-     * 'ANY' (default), a random satellite deployment will be use to retrieve the service URL, i.e. every time you
+     * 'ANY' (default), a random satellite deployment will be used to retrieve the service URL, i.e. every time you
      * request the URL of a service like, for example, the resolver, sometimes you'll get the resolver service URL from
      * the AWS deployment, sometimes the one from Google Cloud, and so on.
      * @param serviceName name of the service for which we want the URL.
@@ -194,14 +194,13 @@ public class Configuration {
      * @return a re-try template configured with default max attempts and back off period
      */
     public static RetryTemplate retryTemplate() {
-        RetryTemplate retryTemplate = new RetryTemplate();
         SimpleRetryPolicy retryPolicy = new SimpleRetryPolicy();
         retryPolicy.setMaxAttempts(WS_REQUEST_RETRY_MAX_ATTEMPTS);
 
         FixedBackOffPolicy backOffPolicy = new FixedBackOffPolicy();
         backOffPolicy.setBackOffPeriod(WS_REQUEST_RETRY_BACK_OFF_PERIOD);
 
-        retryTemplate = new RetryTemplate();
+        RetryTemplate retryTemplate = new RetryTemplate();
         retryTemplate.setRetryPolicy(retryPolicy);
         retryTemplate.setBackOffPolicy(backOffPolicy);
         return retryTemplate;

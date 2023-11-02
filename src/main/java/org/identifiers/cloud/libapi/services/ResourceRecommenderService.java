@@ -113,7 +113,7 @@ public class ResourceRecommenderService {
                     if (request != null) {
                         return makeRequest(request);
                     }
-                    // If we get here, send back a custom made error response
+                    // If we get here, send back a custom-made error response
                     return new ResponseEntity<>(createDefaultResponse(HttpStatus.BAD_REQUEST,
                             String.format("INVALID URI %s", serviceApiEndpoint)),
                             HttpStatus.BAD_REQUEST);
@@ -121,14 +121,14 @@ public class ResourceRecommenderService {
                 // Set the response to return to the client
                 response = requestResponse.getBody();
                 // Set actual HTTP Status in the response body
-                response.setHttpStatus(HttpStatus.valueOf(requestResponse.getStatusCodeValue()));
-                if (HttpStatus.valueOf(requestResponse.getStatusCodeValue()) != HttpStatus.OK) {
+                response.setHttpStatus(HttpStatus.valueOf(requestResponse.getStatusCode().value()));
+                if (HttpStatus.valueOf(requestResponse.getStatusCode().value()) != HttpStatus.OK) {
                     String errorMessage = String.format("ERROR retrieving resource recommendations " +
                                     "from '%s', " +
                                     "HTTP status code '%d', " +
                                     "explanation '%s'",
                             serviceApiEndpoint,
-                            requestResponse.getStatusCodeValue(),
+                            requestResponse.getStatusCode().value(),
                             requestResponse.getBody().getErrorMessage());
                     // TODO - Maybe I should set this message within the response as well
                     logger.error(errorMessage);

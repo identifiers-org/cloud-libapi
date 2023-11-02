@@ -2,10 +2,9 @@ package org.identifiers.cloud.libapi.services;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.identifiers.cloud.libapi.models.resolver.ServiceResponseResolve;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -18,8 +17,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
  * Timestamp: 2018-03-07 10:35
  * ---
  */
+@Slf4j
 public class ResolverServiceTest {
-    private static Logger logger = LoggerFactory.getLogger(ResolverServiceTest.class);
     // Again, this unit tests are a simple way of human validation of the client, as there is no test data at the
     // current iteration of this library
     @Test
@@ -30,7 +29,7 @@ public class ResolverServiceTest {
         // Just for debugging purposes, serialized response into the logs
         ObjectMapper mapper = new ObjectMapper();
         try {
-            logger.info("Test request resolver, response from the service:\n{}", mapper.writeValueAsString(response));
+            log.info("Test request resolver, response from the service:\n{}", mapper.writeValueAsString(response));
         } catch (JsonProcessingException e) {
             // Ignore
         }
@@ -47,7 +46,7 @@ public class ResolverServiceTest {
         // Just for debugging purposes, serialized response into the logs
         ObjectMapper mapper = new ObjectMapper();
         try {
-            logger.info("Test request resolver, response from the service:\n{}", mapper.writeValueAsString(response));
+            log.info("Test request resolver, response from the service:\n{}", mapper.writeValueAsString(response));
         } catch (JsonProcessingException e) {
             // Ignore
         }
@@ -64,7 +63,7 @@ public class ResolverServiceTest {
         // Just for debugging purposes, serialized response into the logs
         ObjectMapper mapper = new ObjectMapper();
         try {
-            logger.info("Test request resolver, response from the service:\n{}", mapper.writeValueAsString(response));
+            log.info("Test request resolver, response from the service:\n{}", mapper.writeValueAsString(response));
         } catch (JsonProcessingException e) {
             // Ignore
         }
@@ -81,7 +80,7 @@ public class ResolverServiceTest {
         // Just for debugging purposes, serialized response into the logs
         ObjectMapper mapper = new ObjectMapper();
         try {
-            logger.info("Test request resolver, response from the service:\n{}", mapper.writeValueAsString(response));
+            log.info("Test request resolver, response from the service:\n{}", mapper.writeValueAsString(response));
         } catch (JsonProcessingException e) {
             // Ignore
         }
@@ -98,7 +97,7 @@ public class ResolverServiceTest {
         // Just for debugging purposes, serialized response into the logs
         ObjectMapper mapper = new ObjectMapper();
         try {
-            logger.info("Test request resolver, response from the service:\n{}", mapper.writeValueAsString(response));
+            log.info("Test request resolver, response from the service:\n{}", mapper.writeValueAsString(response));
         } catch (JsonProcessingException e) {
             // Ignore
         }

@@ -71,14 +71,14 @@ public class ResolverService {
                 return restTemplate.getForEntity(serviceApiEndpoint, ServiceResponseResolve.class);
             });
             response = requestResponse.getBody();
-            response.setHttpStatus(HttpStatus.valueOf(requestResponse.getStatusCodeValue()));
-            if (HttpStatus.valueOf(requestResponse.getStatusCodeValue()) != HttpStatus.OK) {
+            response.setHttpStatus(HttpStatus.valueOf(requestResponse.getStatusCode().value()));
+            if (HttpStatus.valueOf(requestResponse.getStatusCode().value()) != HttpStatus.OK) {
                 String errorMessage = String.format("ERROR resolving Compact ID " +
                                 "at '%s', " +
                                 "HTTP status code '%d', " +
                                 "explanation '%s'",
                         serviceApiEndpoint,
-                        requestResponse.getStatusCodeValue(),
+                        requestResponse.getStatusCode().value(),
                         requestResponse.getBody().getErrorMessage());
                 logger.error(errorMessage);
             }

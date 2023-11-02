@@ -29,11 +29,11 @@ import java.net.URISyntaxException;
  * This class implements a client for the Link Checker Service.
  */
 public class LinkCheckerService {
-    public static final String apiVersion = "1.0";
+    public static final String API_VERSION = "1.0";
     private static final Logger logger = LoggerFactory.getLogger(LinkCheckerService.class);
     // Re-try pattern
-    private RetryTemplate retryTemplate = Configuration.retryTemplate();
-    private String serviceApiBaseline;
+    private final RetryTemplate retryTemplate = Configuration.retryTemplate();
+    private final String serviceApiBaseline;
 
     LinkCheckerService(String serviceHost, String servicePort) {
         // TODO - This needs to be refactored in the future for supporting multiple schema (HTTP, HTTPS)
@@ -47,7 +47,7 @@ public class LinkCheckerService {
      */
     private ServiceResponseScoringRequest createDefaultResponse() {
         ServiceResponseScoringRequest response = new ServiceResponseScoringRequest();
-        response.setApiVersion(apiVersion).setHttpStatus(HttpStatus.OK);
+        response.setApiVersion(API_VERSION).setHttpStatus(HttpStatus.OK);
         response.setPayload(new ServiceResponseScoringRequestPayload());
         return response;
     }
@@ -58,8 +58,8 @@ public class LinkCheckerService {
      *
      * @param request on which to perform the preparation steps
      */
-    private void prepareScoringRequest(ServiceRequest request) {
-        request.setApiVersion(apiVersion);
+    private void prepareScoringRequest(ServiceRequest<?> request) {
+        request.setApiVersion(API_VERSION);
     }
 
     // --- API ---
@@ -77,7 +77,7 @@ public class LinkCheckerService {
     }
 
     public ServiceResponseScoringRequest getScoreForProvider(String providerId, String url, boolean isProtectedUrls) {
-        // NOTE - I still don't like how it looks, but it's a little bit better
+        // NOTE - I still don't like how it looks, but it's a bit better
         String endpoint = String.format("%s/getScoreForProvider", serviceApiBaseline);
         // Prepare the request body
         ServiceRequestScoreProvider requestBody = new ServiceRequestScoreProvider();
@@ -109,29 +109,26 @@ public class LinkCheckerService {
                         retryTemplate.execute(retryContext ->
                                 restTemplate.exchange(finalRequestEntity, ServiceResponseScoringRequest.class));
                 response = responseEntity.getBody();
-                response.setHttpStatus(responseEntity.getStatusCode());
+                response.setHttpStatus(responseEntity.getBody().getHttpStatus());
                 if (responseEntity.getStatusCode() != HttpStatus.OK) {
                     String errorMessage = String.format("ERROR retrieving reliability scoring information for " +
-                                    "Provider ID '%s', URL '%s' " +
-                                    "from '%s', " +
-                                    "HTTP status code '%d', " +
-                                    "explanation '%s'",
+                                    "Provider ID '%s', URL '%s' from '%s', " +
+                                    "HTTP status code '%d', explanation '%s'",
                             providerId,
                             url,
                             endpoint,
-                            responseEntity.getStatusCodeValue(),
+                            responseEntity.getStatusCode().value(),
                             responseEntity.getBody().getErrorMessage());
                     logger.error(errorMessage);
                 }
             } catch (RuntimeException e) {
                 String errorMessage = String.format("ERROR retrieving reliability scoring information for " +
-                                "Provider ID '%s', URL '%s' " +
-                                "from '%s', " +
-                                "explanation '%s'",
+                                "Provider ID '%s', URL '%s' from '%s', explanation '%s'",
                         providerId,
                         url,
                         endpoint,
                         e.getMessage());
+                response = createDefaultResponse();
                 response.setHttpStatus(HttpStatus.INTERNAL_SERVER_ERROR).setErrorMessage(errorMessage);
                 logger.error(errorMessage);
             }
@@ -175,7 +172,9 @@ public class LinkCheckerService {
                         retryTemplate.execute(retryContext ->
                                 restTemplate.exchange(finalRequestEntity, ServiceResponseScoringRequest.class));
                 response = responseEntity.getBody();
-                response.setHttpStatus(responseEntity.getStatusCode());
+                if (response != null && responseEntity.getBody() != null) {
+                    response.setHttpStatus(responseEntity.getBody().getHttpStatus());
+                }
                 if (responseEntity.getStatusCode() != HttpStatus.OK) {
                     String errorMessage = String.format("ERROR retrieving reliability scoring information for " +
                                     "Resource ID '%s', URL '%s' " +
@@ -185,7 +184,7 @@ public class LinkCheckerService {
                             resourceId,
                             url,
                             endpoint,
-                            responseEntity.getStatusCodeValue(),
+                            responseEntity.getStatusCode().value(),
                             responseEntity.getBody().getErrorMessage());
                     logger.error(errorMessage);
                 }
