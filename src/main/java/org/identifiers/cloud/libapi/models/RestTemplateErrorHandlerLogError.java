@@ -14,23 +14,23 @@ import java.io.IOException;
  * Timestamp: 2018-03-07 4:09
  * ---
  *
- * For the different clients (service wrappers), this error handler is used. It's purpose is to log the error but allow
+ * For the different clients (service wrappers), this error handler is used. Its purpose is to log the error but allow
  * the caller to get the response, so the HTTP status code can be accessed.
  */
 public class RestTemplateErrorHandlerLogError implements ResponseErrorHandler {
-    private static Logger logger = LoggerFactory.getLogger(RestTemplateErrorHandlerLogError.class);
+    private static final Logger logger = LoggerFactory.getLogger(RestTemplateErrorHandlerLogError.class);
     ClientHttpResponse clientHttpResponse;
 
     @Override
     public boolean hasError(ClientHttpResponse clientHttpResponse) throws IOException {
-        // We're going to say that it has no error so we can't handle this properly
+        // We're going to say that it has no error, so we can't handle this properly
         return false;
     }
 
     @Override
     public void handleError(ClientHttpResponse clientHttpResponse) throws IOException {
         logger.error("The following error came back from the Recommender Service, HTTP Status #{}, error content '{}'",
-                clientHttpResponse.getRawStatusCode(),
+                clientHttpResponse.getStatusCode().value(),
                 clientHttpResponse.getStatusText());
     }
 }

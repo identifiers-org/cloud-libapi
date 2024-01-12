@@ -76,7 +76,7 @@ public class MetadataService {
     }
 
     /**
-     * This helper method sends a HTTP GET request to the given service endpoint, expecting a metadata fetch request response
+     * This helper method sends an HTTP GET request to the given service endpoint, expecting a metadata fetch request response
      * back from it.
      * @param serviceApiEndpoint this is the endpoint URL where to submit the request to.
      * @return a metadata fetch request response.
@@ -91,14 +91,14 @@ public class MetadataService {
                 return restTemplate.getForEntity(serviceApiEndpoint, ServiceResponseFetchMetadata.class);
             });
             response = requestResponse.getBody();
-            response.setHttpStatus(HttpStatus.valueOf(requestResponse.getStatusCodeValue()));
-            if (HttpStatus.valueOf(requestResponse.getStatusCodeValue()) != HttpStatus.OK) {
+            response.setHttpStatus(HttpStatus.valueOf(requestResponse.getStatusCode().value()));
+            if (HttpStatus.valueOf(requestResponse.getStatusCode().value()) != HttpStatus.OK) {
                 String errorMessage = String.format("ERROR fetching metadata " +
                                 "at '%s', " +
                                 "HTTP status code '%d', " +
                                 "explanation '%s'",
                         serviceApiEndpoint,
-                        requestResponse.getStatusCodeValue(),
+                        requestResponse.getStatusCode().value(),
                         requestResponse.getBody().getErrorMessage());
                 logger.error(errorMessage);
             }
@@ -212,7 +212,7 @@ public class MetadataService {
                 if (request != null) {
                     return makeRequestFetchMetadataForUrl(request);
                 }
-                // If we get here, send back a custom made error response
+                // If we get here, send back a custom-made error response
                 return new ResponseEntity<>(createDefaultResponseFetchMetadataForUrl(HttpStatus.BAD_REQUEST,
                         String.format("INVALID URI %s", serviceApiEndpoint)),
                         HttpStatus.BAD_REQUEST);
@@ -220,15 +220,15 @@ public class MetadataService {
             // Set the response to return to the client
             response = requestResponse.getBody();
             // Set actual HTTP Status in the response body
-            response.setHttpStatus(HttpStatus.valueOf(requestResponse.getStatusCodeValue()));
-            if (HttpStatus.valueOf(requestResponse.getStatusCodeValue()) != HttpStatus.OK) {
+            response.setHttpStatus(HttpStatus.valueOf(requestResponse.getStatusCode().value()));
+            if (HttpStatus.valueOf(requestResponse.getStatusCode().value()) != HttpStatus.OK) {
                 String errorMessage = String.format("ERROR retrieving metadata for URL '%s' " +
                                 "at '%s', " +
                                 "HTTP status code '%d', " +
                                 "explanation '%s'",
                         url,
                         serviceApiEndpoint,
-                        requestResponse.getStatusCodeValue(),
+                        requestResponse.getStatusCode().value(),
                         requestResponse.getBody().getErrorMessage());
                 logger.error(errorMessage);
             }

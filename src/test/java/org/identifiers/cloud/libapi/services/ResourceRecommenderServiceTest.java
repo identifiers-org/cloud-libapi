@@ -33,16 +33,16 @@ public class ResourceRecommenderServiceTest {
         // There is no testing data for this iteration of the library, so this unit test is design as a simple API
         // compliance test, where we check that the client can effectively connect the web service and pull a response
         // back from it
-        List<ResolvedResource> resolvedResources = IntStream.range(0, 9).parallel().mapToObj(index -> {
-            return new ResolvedResource()
-                    .setCompactIdentifierResolvedUrl(String.format("http://resolved.resource/%d", index))
-                    .setLocation(new Location().setCountryCode("GB").setCountryName("United Kingdom"))
-                    .setResourceHomeUrl("https://www.ebi.ac.uk")
-                    .setMirId(String.format("MIR:%08d", index))
-                    .setNamespaceDeprecationDate(new Date(System.currentTimeMillis()))
-                    .setNamespacePrefix("testprefix")
-                    .setId(Integer.toString(index));
-        }).collect(Collectors.toList());
+        List<ResolvedResource> resolvedResources = IntStream.range(0, 9).parallel().mapToObj(index ->
+            new ResolvedResource()
+                .setCompactIdentifierResolvedUrl(String.format("http://resolved.resource/%d", index))
+                .setLocation(new Location().setCountryCode("GB").setCountryName("United Kingdom"))
+                .setResourceHomeUrl("https://www.ebi.ac.uk")
+                .setMirId(String.format("MIR:%08d", index))
+                .setNamespaceDeprecationDate(new Date(System.currentTimeMillis()))
+                .setNamespacePrefix("testprefix")
+                .setId(Integer.toString(index))
+        ).collect(Collectors.toList());
         // Set an official one
         resolvedResources.get(0).setOfficial(true);
         resolvedResources.get(1).setDeprecatedResource(true).setResourceDeprecationDate(new Date(System.currentTimeMillis()));

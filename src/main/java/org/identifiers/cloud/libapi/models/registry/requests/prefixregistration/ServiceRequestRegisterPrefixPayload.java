@@ -20,7 +20,7 @@ import java.io.Serializable;
  * This class models the payload used when interacting with the registry service for registration and validation
  * requests.
  *
- * It's a basic POJO with self explanatory fields.
+ * It's a basic POJO with self-explanatory fields.
  */
 @Data
 @AllArgsConstructor

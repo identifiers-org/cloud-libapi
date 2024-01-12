@@ -257,14 +257,14 @@ public class RegistryService {
                 return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
             });
             response = responseEntity.getBody();
-            response.setHttpStatus(HttpStatus.valueOf(responseEntity.getStatusCodeValue()));
-            if (HttpStatus.valueOf(responseEntity.getStatusCodeValue()) != HttpStatus.OK) {
+            response.setHttpStatus(HttpStatus.valueOf(responseEntity.getStatusCode().value()));
+            if (HttpStatus.valueOf(responseEntity.getStatusCode().value()) != HttpStatus.OK) {
                 String errorMessage = String.format("ERROR registering your prefix " +
                                 "at '%s', " +
                                 "HTTP status code '%d', " +
                                 "explanation '%s'",
                         serviceApiEndpoint,
-                        responseEntity.getStatusCodeValue(),
+                        responseEntity.getStatusCode().value(),
                         responseEntity.getBody().getErrorMessage());
                 logger.error(errorMessage);
             }

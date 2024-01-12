@@ -59,7 +59,7 @@ public class RegistryServiceTest {
         // Just for debugging purposes, serialized response into the logs
         ObjectMapper mapper = new ObjectMapper();
         try {
-            logger.info("Test '%s', " +
+            logger.info("Test '{}', " +
                     "response from the service:\n{}", context, mapper.writeValueAsString(response));
         } catch (JsonProcessingException e) {
             // Ignore
